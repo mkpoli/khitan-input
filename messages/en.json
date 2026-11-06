@@ -1,6 +1,9 @@
 {
  "app.name": "Khitan Input",
- "app.home": "Khitan Input, home",
+ "app.sites": "Sites",
+ "app.sites.tangut": "Tangut Input",
+ "app.sites.jurchen": "Jurchen Input",
+ "app.sites.ids": "IDS Workshop",
  "app.failed": "The records could not be loaded.",
  "nav.label": "Finders",
  "nav.find": "Find",
