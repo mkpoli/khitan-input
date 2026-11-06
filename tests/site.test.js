@@ -1,4 +1,6 @@
-import { expect, test } from 'bun:test'
+import { describe, expect, test } from 'bun:test'
+import { readFileSync } from 'node:fs'
+import { indexShapes, parseShapes, rankShapes, SIZE } from '../app/lib/shape.js'
 import { blockRows, fold, parseWord, FILLER } from '../app/lib/script.js'
 import en from '../messages/en.json'
 import ja from '../messages/ja.json'
@@ -28,4 +30,22 @@ test('readings can be typed in plain letters', () => {
 test('every language has every message', () => {
   const keys = Object.keys(en).sort()
   for (const catalogue of [ja, zhHans, zhHant, ko]) expect(Object.keys(catalogue).sort()).toEqual(keys)
+})
+
+describe('drawing search', () => {
+  const index = indexShapes(parseShapes(new Uint8Array(readFileSync('app/public/data/shapes.bin'))))
+
+  test('covers the characters the face draws', () => {
+    expect(index.chars.length).toBeGreaterThan(460)
+  })
+
+  test('a glyph drawn as its own line ranks first', () => {
+    let first = 0
+    index.chars.forEach((char, at) => {
+      const drawn = new Uint8Array(SIZE * SIZE)
+      for (const cell of index.inks[at]) drawn[cell] = 1
+      if (rankShapes(index, drawn, { limit: 1 })[0].char === char) first++
+    })
+    expect(first / index.chars.length).toBeGreaterThan(0.95)
+  })
 })
