@@ -3,6 +3,7 @@
   // of the open grapheme beside it (a sheet over it on a phone).
   import { db, load } from './lib/db.svelte.js'
   import { route, go, PAGES } from './lib/route.svelte.js'
+  import { applyCanonical } from './lib/seo.js'
   import { ui, toast, applyTheme } from './lib/ui.svelte.js'
   import { MARK } from './lib/script.js'
   import { t } from './lib/i18n.svelte.js'
@@ -32,6 +33,7 @@
   $effect(() => {
     const entry = PAGES.find(p => p.path === route.page)
     document.title = entry && entry.path ? `${t(entry.label)} · ${t('app.name')}` : t('app.name')
+    applyCanonical(route.page)
   })
 
   /** @param {MouseEvent} event @param {string} page */
