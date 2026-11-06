@@ -50,6 +50,14 @@ export function searchReadings(query) {
   return [...best].sort((a, b) => a[1] - b[1] || a[0].id.localeCompare(b[0].id)).map(([g]) => g)
 }
 
+/** The value a reading search matched, which may not be the primary one. @param {any} g @param {string} query */
+export function matchedReading(g, query) {
+  const key = fold(query.trim())
+  const values = (g.rs ?? []).filter((/** @type {any} */ r) => r.k !== 'semantic' && r.k !== 'mnemonic')
+  const hit = values.find((/** @type {any} */ r) => fold(r.v) === key) ?? values.find((/** @type {any} */ r) => key && fold(r.v).startsWith(key))
+  return hit?.v ?? g.v
+}
+
 /** Words whose form, gloss, Chinese or segmentation holds the query. @param {string} query @param {string} [kind] */
 export function searchWords(query, kind = '') {
   const q = query.trim().toLowerCase()

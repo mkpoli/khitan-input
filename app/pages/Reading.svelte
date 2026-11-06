@@ -2,8 +2,7 @@
   // An input method over readings. A hyphen or space writes the first candidate and starts the next
   // segment, so a segmented form such as (ə)b-uu can be typed straight through.
   import { db } from '../lib/db.svelte.js'
-  import { searchReadings } from '../lib/data.js'
-  import { fold } from '../lib/script.js'
+  import { matchedReading, searchReadings } from '../lib/data.js'
   import { route, setQuery } from '../lib/route.svelte.js'
   import { put, autofocus, choose } from '../lib/ui.svelte.js'
   import { t } from '../lib/i18n.svelte.js'
@@ -14,13 +13,6 @@
   const LETTERS = ['ə', 'ɵ', 'ʊ', 'ä', 'ö', 'ü', 'ı', 'ǰ', 'č', 'š', 'ž', 'ň', 'ľ', 'ŋ', 'γ', 'χ', 'ğ', 'ʷ']
   const ready = $derived(db.status === 'ready')
   const hits = $derived(ready && query.trim() ? searchReadings(query).filter(g => g.char).slice(0, 18) : [])
-
-  /** The value that matched, which may not be the primary one. @param {any} g */
-  function matched(g) {
-    const key = fold(query.trim())
-    const hit = (g.rs ?? []).find((/** @type {any} */ r) => r.k === 'phonetic' && fold(r.v) === key) ?? (g.rs ?? []).find((/** @type {any} */ r) => r.k === 'phonetic' && fold(r.v).startsWith(key))
-    return hit?.v ?? g.v ?? ''
-  }
 
   /** @param {any} g */
   function pick(g) {
@@ -60,7 +52,7 @@
       <ol class="candidates">
         {#each hits as g, i (g.id)}
           <li><button type="button" class="candidate" onclick={() => pick(g)} ondblclick={() => choose(g.id)}>
-            <span class="n">{i < 9 ? i + 1 : ''}</span><span class="ui-script">{g.char}</span><span class="said">{matched(g)}</span><span class="id ui-hint">{g.id.startsWith('U+') ? g.cp : g.id}</span>
+            <span class="n">{i < 9 ? i + 1 : ''}</span><span class="ui-script">{g.char}</span><span class="said">{matchedReading(g, query) ?? ''}</span><span class="id ui-hint">{g.id.startsWith('U+') ? g.cp : g.id}</span>
           </button></li>
         {/each}
       </ol>
