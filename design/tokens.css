@@ -1,0 +1,187 @@
+/* Khitan Input design tokens.
+
+   The semantic layer and the primitives. Every colour is a light-dark() pair,
+   so `color-scheme` alone picks the side; a page that offers a switch sets `data-theme="light"`
+   or `data-theme="dark"` on the root.
+
+   Rules:
+   - Components read semantic tokens, never a raw colour.
+   - A page may override a token on :root; it may not restyle the control classes.
+   - Text tokens clear 4.5:1 on the surfaces they sit on; control boundaries clear 3:1. */
+
+:root {
+  color-scheme: light dark;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+:root {
+  /* The primitives; the semantic tokens below read them. */
+  --p-canvas: light-dark(#eef0e2, #12140c);
+  --p-surface: light-dark(#fbfcf4, #1a1d12);
+  --p-sunken: light-dark(#e2e5d3, #0c0e07);
+  --p-hover: light-dark(#e8ebda, #252917);
+  --p-active: light-dark(#dcdfca, #30351e);
+  --p-ink: light-dark(#1f2412, #e9ecd9);
+  --p-soft: light-dark(#434a2c, #bfc6a4);
+  --p-muted: light-dark(#5c6442, #98a07c);
+  --p-border: light-dark(#dde0cb, #30351f);
+  --p-border-strong: light-dark(#bfc4a4, #4a5131);
+  --p-control: light-dark(#7d8560, #7f8862);
+  --p-control-hover: light-dark(#5c6442, #98a07c);
+  --p-accent: light-dark(#566b0f, #b4cf5a);
+  --p-accent-hover: light-dark(#445509, #c6de79);
+  --p-accent-active: light-dark(#344106, #d6e99b);
+  --p-accent-soft: light-dark(#e4ecc4, #2d3812);
+  --p-accent-ink: light-dark(#445509, #c6de79);
+  --p-on-accent: light-dark(#fbfdf0, #171d04);
+  --p-danger: light-dark(#b3261e, #ff8f87);
+  --p-danger-hover: light-dark(#93201a, #ffaaa3);
+  --p-danger-soft: light-dark(#fbe9e8, #3a1f1f);
+  --p-on-danger: light-dark(#fdf6f5, #2a0b0a);
+  --p-inverse-surface: light-dark(#1f2412, #e9ecd9);
+  --p-inverse-ink: light-dark(#fbfcf4, #12140c);
+  --p-selection: light-dark(#d9e5ae, #3d4a18);
+  --p-scrollbar: light-dark(#bfc4a4, #4a5131);
+  --p-scrollbar-hover: light-dark(#7d8560, #7f8862);
+
+  /* Surfaces. There are three: the page, the panel, and the inset. Hover and pressed are the
+     only other fills, so a page does not grow a stack of near-identical greys. */
+  --ui-color-canvas: var(--p-canvas);
+  --ui-color-surface: var(--p-surface);
+  --ui-color-surface-sunken: var(--p-sunken);
+  --ui-color-surface-hover: var(--p-hover);
+  --ui-color-surface-active: var(--p-active);
+  --ui-color-overlay: light-dark(rgb(24 30 8 / 0.34), rgb(0 0 0 / 0.62));
+
+  /* Text */
+  --ui-color-ink: var(--p-ink);
+  --ui-color-ink-soft: var(--p-soft);
+  --ui-color-ink-muted: var(--p-muted);
+
+  /* Lines. `border` and `border-strong` are decoration; `control-border` is the 3:1 boundary
+     that identifies a field or an unchecked box. */
+  --ui-color-border: var(--p-border);
+  --ui-color-border-strong: var(--p-border-strong);
+  --ui-color-control-border: var(--p-control);
+  --ui-color-control-border-hover: var(--p-control-hover);
+
+  /* Accent: the one colour of action. Used for the mark, the primary action and selection. */
+  --ui-color-accent: var(--p-accent);
+  --ui-color-accent-hover: var(--p-accent-hover);
+  --ui-color-accent-active: var(--p-accent-active);
+  --ui-color-accent-soft: var(--p-accent-soft);
+  --ui-color-accent-ink: var(--p-accent-ink);
+  --ui-color-on-accent: var(--p-on-accent);
+  /* Focus is ink: a coloured ring around every field reads as an error, and ink keeps its
+     contrast on every surface in both schemes. */
+  --ui-color-focus: var(--p-ink);
+
+  /* Danger */
+  --ui-color-danger: var(--p-danger);
+  --ui-color-danger-hover: var(--p-danger-hover);
+  --ui-color-danger-soft: var(--p-danger-soft);
+  --ui-color-on-danger: var(--p-on-danger);
+
+  /* Selection and scrollbars */
+  --ui-color-selection: var(--p-selection);
+  --ui-color-selection-ink: var(--p-ink);
+  --ui-color-scrollbar: var(--p-scrollbar);
+  --ui-color-scrollbar-hover: var(--p-scrollbar-hover);
+
+  /* Inverted surfaces: the toast. */
+  --ui-color-inverse-surface: var(--p-inverse-surface);
+  --ui-color-inverse-ink: var(--p-inverse-ink);
+
+  /* Shadow: only overlays cast one. The page itself is flat. */
+  --ui-shadow-color-2: light-dark(rgb(30 36 10 / 0.18), rgb(0 0 0 / 0.6));
+  --ui-shadow-1: 0 1px 2px light-dark(rgb(30 36 10 / 0.08), rgb(0 0 0 / 0.45));
+  --ui-shadow-2: 0 10px 28px var(--ui-shadow-color-2);
+
+  /* Type */
+  --ui-font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Noto Sans JP',
+    'Noto Sans SC', sans-serif;
+  --ui-font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia,
+    'Noto Serif JP', 'Songti SC', serif;
+  --ui-font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Roboto Mono', Menlo, Consolas,
+    monospace;
+  /* The script this site is about, and the face its structure operators come from. A host page
+     points these at its own faces; everything else falls back to the serif. */
+  --ui-font-script: var(--ui-font-serif);
+  --ui-font-ids: var(--ui-font-script);
+  --ui-text-2xs: 11px;
+  --ui-text-xs: 12px;
+  --ui-text-sm: 13px;
+  --ui-text-md: 14px;
+  --ui-text-lg: 16px;
+  --ui-text-xl: 20px;
+  --ui-text-2xl: 26px;
+  --ui-text-3xl: 32px;
+  --ui-leading-tight: 1.25;
+  --ui-leading-normal: 1.5;
+  --ui-leading-loose: 1.65;
+  --ui-weight-normal: 400;
+  --ui-weight-medium: 500;
+  --ui-weight-semibold: 600;
+  --ui-weight-bold: 650;
+  --ui-tracking-caps: 0.08em;
+
+  /* Space */
+  --ui-space-3xs: 2px;
+  --ui-space-2xs: 4px;
+  --ui-space-xs: 6px;
+  --ui-space-sm: 8px;
+  --ui-space-md: 10px;
+  --ui-space-lg: 12px;
+  --ui-space-xl: 16px;
+  --ui-space-2xl: 20px;
+  --ui-space-3xl: 24px;
+  --ui-space-4xl: 32px;
+  --ui-space-5xl: 40px;
+
+  /* Shape */
+  --ui-radius-xs: 4px;
+  --ui-radius-sm: 6px;
+  --ui-radius-md: 8px;
+  --ui-radius-lg: 10px;
+  --ui-radius-xl: 12px;
+  --ui-radius-2xl: 14px;
+  --ui-radius-pill: 999px;
+
+  /* Controls */
+  --ui-control-h-sm: 28px;
+  --ui-control-h-md: 32px;
+  --ui-control-h-lg: 38px;
+  --ui-control-h-xl: 50px;
+  --ui-target-min: 24px;
+  --ui-checkbox-size: 18px;
+  --ui-radio-size: 18px;
+  --ui-switch-width: 40px;
+  --ui-switch-height: 24px;
+  --ui-switch-thumb: 18px;
+  --ui-switch-travel: 16px;
+  --ui-color-switch-thumb: light-dark(#fbfcf4, #e9ecd9);
+  --ui-disabled-opacity: 0.45;
+
+  /* Focus: one ring, everywhere. */
+  --ui-ring-width: 2px;
+  --ui-ring-offset: 2px;
+
+  /* Motion. Short, and only on colour and opacity. */
+  --ui-duration-fast: 110ms;
+  --ui-duration: 160ms;
+  --ui-ease: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Layers */
+  --ui-z-chrome: 30;
+  --ui-z-menu: 40;
+  --ui-z-hint: 50;
+  --ui-z-modal: 60;
+  --ui-z-toast: 70;
+}

@@ -1,0 +1,10 @@
+node_modules/
+/cache/
+/dist/
+/private/
+__pycache__/
+.svelte-check/
+*.log
+.DS_Store
+/shots/
+.playwright-mcp/
