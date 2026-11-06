@@ -16,7 +16,7 @@
  "draw.here": "Draw here",
  "draw.undo": "Undo",
  "draw.clear": "Clear",
- "draw.strokes": "{count} strokes",
+ "draw.strokes": "Strokes: {count}",
  "draw.results": "Closest shapes",
  "draw.loading": "Loading the shapes…",
  "draw.failed": "The shapes could not be loaded.",

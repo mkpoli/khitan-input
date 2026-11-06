@@ -5,16 +5,18 @@
   import { db } from '../lib/db.svelte.js'
   import { ix } from '../lib/data.js'
   import { parseShapes, indexShapes, rasterize, rankShapes, SIZE } from '../lib/shape.js'
-  import { put } from '../lib/ui.svelte.js'
+  import { put, ui } from '../lib/ui.svelte.js'
   import { t } from '../lib/i18n.svelte.js'
   import Tile from '../ui/Tile.svelte'
 
   /** @type {HTMLCanvasElement | null} */
   let canvas = $state(null)
-  /** @type {[number, number][][]} */
+  /** Strokes as fractions of the pad's side, so they survive the pad changing size. @type {[number, number][][]} */
   let strokes = $state.raw([])
   /** @type {[number, number][] | null} */
   let current = null
+  /** The one pointer drawing; a palm or second finger is ignored. @type {number | null} */
+  let pen = null
   /** @type {'loading' | 'ready' | 'failed'} */
   let status = $state('loading')
   /** @type {import('../lib/shape.js').ShapeIndex | null} */
@@ -28,6 +30,15 @@
       .then(buffer => { index = indexShapes(parseShapes(new Uint8Array(buffer))); status = 'ready' })
       .catch(() => { status = 'failed' })
     resize()
+    // The ink colour comes from the theme, which the system can change too.
+    const scheme = matchMedia('(prefers-color-scheme: dark)')
+    scheme.addEventListener('change', paint)
+    return () => scheme.removeEventListener('change', paint)
+  })
+
+  $effect(() => {
+    void ui.theme
+    paint()
   })
 
   const hits = $derived.by(() => {
@@ -57,8 +68,8 @@
     context.lineWidth = Math.max(5, width / 42)
     for (const stroke of [...strokes, ...(current ? [current] : [])]) {
       context.beginPath()
-      stroke.forEach(([x, y], i) => i ? context.lineTo(x, y) : context.moveTo(x, y))
-      if (stroke.length === 1) context.lineTo(stroke[0][0] + 0.1, stroke[0][1])
+      stroke.forEach(([x, y], i) => i ? context.lineTo(x * width, y * height) : context.moveTo(x * width, y * height))
+      if (stroke.length === 1) context.lineTo(stroke[0][0] * width + 0.1, stroke[0][1] * height)
       context.stroke()
     }
   }
@@ -66,12 +77,13 @@
   /** @param {PointerEvent} event @returns {[number, number]} */
   function point(event) {
     const box = /** @type {HTMLCanvasElement} */ (canvas).getBoundingClientRect()
-    return [event.clientX - box.left, event.clientY - box.top]
+    return [(event.clientX - box.left) / box.width, (event.clientY - box.top) / box.height]
   }
 
   /** @param {PointerEvent} event */
   function down(event) {
-    if (event.button !== 0) return
+    if (event.button !== 0 || pen !== null) return
+    pen = event.pointerId
     canvas?.setPointerCapture(event.pointerId)
     current = [point(event)]
     paint()
@@ -79,16 +91,19 @@
 
   /** @param {PointerEvent} event */
   function move(event) {
-    if (!current) return
+    if (!current || event.pointerId !== pen) return
     const [x, y] = point(event)
     const last = current[current.length - 1]
-    if (Math.hypot(x - last[0], y - last[1]) < 2) return
+    const side = /** @type {HTMLCanvasElement} */ (canvas).getBoundingClientRect().width
+    if (Math.hypot(x - last[0], y - last[1]) * side < 2) return
     current.push([x, y])
     paint()
   }
 
-  function up() {
-    if (!current) return
+  /** @param {PointerEvent} event */
+  function up(event) {
+    if (!current || event.pointerId !== pen) return
+    pen = null
     strokes = [...strokes, current]
     current = null
     update()
@@ -104,10 +119,13 @@
 
   /** @param {KeyboardEvent} event */
   function keys(event) {
-    if (/** @type {HTMLElement} */ (event.target).closest('input, textarea')) return
+    const target = /** @type {HTMLElement} */ (event.target)
+    if (target.closest('input, textarea, select')) return
     if ((event.ctrlKey || event.metaKey) && event.key === 'z') { event.preventDefault(); undo() }
-    else if (event.key === 'Escape') clear()
-    else if (event.key === 'Enter' && hits[0]) { event.preventDefault(); put(hits[0].char); clear() }
+    // Something else already took this Escape, such as the settings closing.
+    else if (event.key === 'Escape' && !event.defaultPrevented) clear()
+    // A focused link, tile or button keeps its own Enter.
+    else if (event.key === 'Enter' && hits[0] && !target.closest('a, button')) { event.preventDefault(); put(hits[0].char); clear() }
   }
 </script>
 
@@ -139,7 +157,7 @@
     {#if hits.length}
       <div class="ui-tiles" style:--ui-tile-size="62px">{#each hits as g (g.id)}<Tile {g} />{/each}</div>
       <p class="ui-hint keys">{t('draw.keys')}</p>
-    {:else}
+    {:else if status === 'ready' && !strokes.length}
       <p class="ui-empty">{t('draw.empty')}</p>
     {/if}
     <p class="ui-notice note">{t('draw.note')}</p>

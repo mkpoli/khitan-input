@@ -46,11 +46,16 @@
       const input = /** @type {HTMLElement | null} */ (document.querySelector('[data-primary]'))
       if (input) { event.preventDefault(); input.focus() }
     }
-    if (event.key === 'Escape') { ui.sheet = false; settingsOpen = false }
+    if (event.key === 'Escape' && (ui.sheet || settingsOpen)) {
+      event.preventDefault()
+      ui.sheet = false
+      settingsOpen = false
+    }
   }
 </script>
 
-<svelte:window onkeydown={keys} />
+<!-- Capture, so a page sees whether Escape already closed something. -->
+<svelte:window onkeydowncapture={keys} />
 
 <div class="shell">
   <header class="top">

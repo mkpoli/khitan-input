@@ -125,9 +125,11 @@ function placeStrokes(strokes, width = PEN) {
     minX = Math.min(minX, x); maxX = Math.max(maxX, x)
     minY = Math.min(minY, y); maxY = Math.max(maxY, y)
   }
-  const spanX = Math.max(maxX - minX, 1e-6), spanY = Math.max(maxY - minY, 1e-6)
-  // Fitted by the longer side, as the glyph masks are: the drawing keeps its proportions.
-  const scale = (FIT - width) / Math.max(spanX, spanY)
+  const spanX = maxX - minX, spanY = maxY - minY
+  const span = Math.max(spanX, spanY)
+  // Fitted by the longer side, as the glyph masks are: the drawing keeps its proportions. A lone tap
+  // has no size to fit, so it stays a dot in the middle.
+  const scale = span < 1e-3 ? 0 : (FIT - width) / span
   const offsetX = (SIZE - spanX * scale) / 2
   const offsetY = (SIZE - spanY * scale) / 2
   return strokes.map(stroke => stroke.map(([x, y]) => /** @type {[number, number]} */ ([(x - minX) * scale + offsetX, (y - minY) * scale + offsetY])))

@@ -25,7 +25,7 @@ T = {
  "draw.here": ("Draw here","ここに描く","在此书写","在此書寫","여기에 그리기"),
  "draw.undo": ("Undo","一画戻す","撤销一笔","復原一筆","한 획 취소"),
  "draw.clear": ("Clear","消去","清除","清除","지우기"),
- "draw.strokes": ("{count} strokes","{count}画","{count} 笔","{count} 筆","{count}획"),
+ "draw.strokes": ("Strokes: {count}","{count}画","{count} 笔","{count} 筆","{count}획"),
  "draw.results": ("Closest shapes","近い字形","相近字形","相近字形","가까운 자형"),
  "draw.loading": ("Loading the shapes…","字形を読み込み中…","正在载入字形…","正在載入字形…","자형을 불러오는 중…"),
  "draw.failed": ("The shapes could not be loaded.","字形を読み込めませんでした。","无法载入字形。","無法載入字形。","자형을 불러오지 못했습니다."),
