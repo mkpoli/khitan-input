@@ -170,6 +170,21 @@ T = {
  "number.chinggeltei2010": ("Chinggeltei 2010","清格爾泰 2010","清格尔泰 2010","清格爾泰 2010","Chinggeltei 2010"),
  "number.kane2009": ("Kane 2009","Kane 2009","Kane 2009","Kane 2009","Kane 2009"),
  "number.n4725r": ("N4725R","N4725R","N4725R","N4725R","N4725R"),
+ "app.sponsor.label": ("Sponsor","スポンサー","赞助","贊助","후원"),
+ "app.sponsor.supporters": ("Recent supporters","最近の支援者","最近的支持者","最近的贊助者","최근 후원자"),
+ "app.sponsor.anonymous": ("Someone","匿名希望","某人","某人","누군가"),
+ "app.sponsor.lead": ("I build Khitan Input on my own, with no funding behind it. It's free for everyone, and I'd like to keep it that way.","契丹文字入力は個人で開発しており、外部からの資金援助などはありません。どなたでも無料で利用でき、これからもずっと無料で提供し続けたいと思っています。","契丹文输入是我一个人开发的，没有资金支持。所有人都可以免费使用，我也希望能一直免费下去。","契丹文輸入是我一個人開發的，沒有外部資金支持。所有人都能免費使用，我也希望能一直維持下去。","거란 문자 입력은 별도의 자금 지원 없이 혼자 만들고 있어요. 누구나 무료로 쓸 수 있고, 앞으로도 계속 무료로 제공하고 싶어요."),
+ "app.sponsor.ask": ("If Khitan Input is useful to you, a tip gives me time to keep improving it.","もし契丹文字入力がお役に立っていましたら、チップをいただけると、改善を続けていく時間を作ることができます。","如果契丹文输入对你有帮助，打赏能让我有时间继续改进它。","如果契丹文輸入對你有幫助，歡迎贊助一點心意，讓我有更多時間繼續改進。","거란 문자 입력이 유용하다면 가볍게 후원해 주세요. 꾸준히 개선하는 데 시간을 더 쓸 수 있어요."),
+ "app.sponsor.howTo": ("How to tip","チップの送り方","如何打赏","如何贊助","후원 방법"),
+ "app.sponsor.step1": ("Tap either button below.","下のどちらかのボタンを押します。","点击下方的任一按钮。","點選下方的任一按鈕。","아래 버튼 중 하나를 눌러 주세요."),
+ "app.sponsor.step2": ("Pick an amount.","金額を選びます。","选择金额。","選擇金額。","금액을 선택해 주세요."),
+ "app.sponsor.step3": ("Pay by card. No sign-up needed.","カードで支払います。登録は不要です。","用银行卡付款，无需注册。","刷卡付款，不用註冊帳號。","카드로 결제하면 돼요. 회원가입은 필요 없어요."),
+ "app.sponsor.kofi": ("One-time or monthly","1回のみ、または毎月","单次打赏或按月支持","單次或每月贊助","일회성 또는 매월 정기 후원"),
+ "app.sponsor.ofuse": ("Tip with a message","メッセージ付きチップ","留言打赏","留言贊助","메시지와 함께 후원"),
+ "app.sponsor.company": ("Companies can sponsor too.","企業スポンサーも歓迎しています。","也欢迎企业赞助。","也歡迎企業贊助。","기업도 후원할 수 있어요."),
+ "app.sponsor.companyHint": ("Write to mkpoli@mkpo.li.","mkpoli@mkpo.liまでご連絡ください。","请发邮件至mkpoli@mkpo.li。","請來信mkpoli@mkpo.li。","mkpoli@mkpo.li로 연락해 주세요."),
+ "app.sponsor.thanks": ("Thank you for using Khitan Input 💗","契丹文字入力をご利用いただきありがとうございます💗","谢谢你使用契丹文输入 💗","謝謝你使用契丹文輸入 💗","거란 문자 입력을 사용해 주셔서 고마워요 💗"),
+ "app.sponsor.close": ("Close","閉じる","关闭","關閉","닫기"),
 }
 SCHOLARS = {"otake2025":"大竹 2025","otake2024":"大竹 2024","otake2020":"大竹 2020","otake2018":"大竹 2018","otake2015":"大竹 2015","kane2009":"Kane 2009","liu2009":"Liu 2009","liu2014":"Liu 2014","chinggeltei2010":"Chinggeltei 2010","wu_janhunen2010":"Wu & Janhunen 2010","jishi2012":"Jishi 2012","takeuchi2012":"Takeuchi 2012"}
 for key, name in SCHOLARS.items():
