@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'bun:test'
+import { matchedReading } from '../app/lib/data.js'
 import { readFileSync } from 'node:fs'
 import { indexShapes, parseShapes, rankShapes, rasterize, SIZE } from '../app/lib/shape.js'
 import { blockRows, fold, parseWord, FILLER } from '../app/lib/script.js'
@@ -63,5 +64,23 @@ describe('drawing search', () => {
       if (rankShapes(index, drawn, { limit: 1 })[0].char === char) first++
     })
     expect(first / index.chars.length).toBeGreaterThan(0.95)
+  })
+})
+
+describe('the reading a search matched', () => {
+  const g = { v: 'ard', rs: [{ v: 'ard', k: 'phonetic' }, { v: 'aard', k: 'phonetic' }, { v: 'ABOVE', k: 'semantic' }] }
+
+  test('is the value that matched, not the primary one', () => {
+    expect(matchedReading(g, 'aa')).toBe('aard')
+    expect(matchedReading(g, 'ard')).toBe('ard')
+  })
+
+  test('prefers an exact match over an earlier prefix', () => {
+    expect(matchedReading({ v: 'aar', rs: [{ v: 'aar', k: 'phonetic' }, { v: 'aa', k: 'phonetic' }] }, 'aa')).toBe('aa')
+  })
+
+  test('falls back to the primary value when no reading matched', () => {
+    expect(matchedReading(g, '339')).toBe('ard')
+    expect(matchedReading(g, 'above')).toBe('ard')
   })
 })
