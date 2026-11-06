@@ -1,6 +1,9 @@
 {
  "app.name": "거란 문자 입력",
  "app.sites": "사이트",
+ "app.sites.tangut": "서하 문자 입력",
+ "app.sites.jurchen": "여진 문자 입력기",
+ "app.sites.ids": "IDS 공방",
  "app.failed": "데이터를 불러오지 못했습니다.",
  "nav.label": "찾기 방법",
  "nav.find": "찾기",

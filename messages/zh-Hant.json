@@ -1,6 +1,9 @@
 {
  "app.name": "契丹文輸入",
  "app.sites": "網站",
+ "app.sites.tangut": "西夏文輸入",
+ "app.sites.jurchen": "女真文輸入",
+ "app.sites.ids": "IDS工坊",
  "app.failed": "無法載入資料。",
  "nav.label": "查找方式",
  "nav.find": "查找",

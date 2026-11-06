@@ -46,6 +46,8 @@
   function keys(event) {
     // A modal dialog handles its own keys.
     if (document.querySelector('dialog[open]')) return
+    // So does an open menu.
+    if (/** @type {HTMLElement} */ (event.target).closest('[role="menu"]')) return
     const typing = /** @type {HTMLElement} */ (event.target).closest('input, textarea')
     if (event.key === '/' && !typing) {
       const input = /** @type {HTMLElement | null} */ (document.querySelector('[data-primary]'))

@@ -1,6 +1,9 @@
 {
  "app.name": "契丹文字入力",
  "app.sites": "サイト",
+ "app.sites.tangut": "西夏文字入力",
+ "app.sites.jurchen": "女真文字入力",
+ "app.sites.ids": "IDS工房",
  "app.failed": "データを読み込めませんでした。",
  "nav.label": "検索方法",
  "nav.find": "検索",
