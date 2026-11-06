@@ -12,6 +12,7 @@
   import Find from './pages/Find.svelte'
   import Syllabary from './pages/Syllabary.svelte'
   import Graphemes from './pages/Graphemes.svelte'
+  import Draw from './pages/Draw.svelte'
   import Reading from './pages/Reading.svelte'
   import Words from './pages/Words.svelte'
   import Sentences from './pages/Sentences.svelte'
@@ -45,11 +46,16 @@
       const input = /** @type {HTMLElement | null} */ (document.querySelector('[data-primary]'))
       if (input) { event.preventDefault(); input.focus() }
     }
-    if (event.key === 'Escape') { ui.sheet = false; settingsOpen = false }
+    if (event.key === 'Escape' && (ui.sheet || settingsOpen)) {
+      event.preventDefault()
+      ui.sheet = false
+      settingsOpen = false
+    }
   }
 </script>
 
-<svelte:window onkeydown={keys} />
+<!-- Capture, so a page sees whether Escape already closed something. -->
+<svelte:window onkeydowncapture={keys} />
 
 <div class="shell">
   <header class="top">
@@ -84,6 +90,7 @@
         {#if route.page === ''}<Find />
         {:else if route.page === 'syllabary'}<Syllabary />
         {:else if route.page === 'graphemes'}<Graphemes />
+        {:else if route.page === 'draw'}<Draw />
         {:else if route.page === 'reading'}<Reading />
         {:else if route.page === 'words'}<Words />
         {:else if route.page === 'sentences'}<Sentences />
