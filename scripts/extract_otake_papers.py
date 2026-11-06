@@ -5,7 +5,7 @@
 # ///
 """Extract Otake's papers into data/otake_papers/*.tsv.
 
-usage: scripts/extract_otake_papers.py <references/khitan directory>
+usage: scripts/extract_otake_papers.py <directory of the papers>
 """
 from __future__ import annotations
 
