@@ -43,6 +43,8 @@
 
   /** @param {KeyboardEvent} event */
   function keys(event) {
+    // A modal dialog handles its own keys.
+    if (document.querySelector('dialog[open]')) return
     const typing = /** @type {HTMLElement} */ (event.target).closest('input, textarea')
     if (event.key === '/' && !typing) {
       const input = /** @type {HTMLElement | null} */ (document.querySelector('[data-primary]'))
@@ -185,8 +187,6 @@
     .card{position:fixed;inset:0;block-size:100dvh;z-index:var(--ui-z-modal);border:0;transform:translateY(100%);transition:transform var(--ui-duration) var(--ui-ease);visibility:hidden}
     .card.open{transform:none;visibility:visible}
     .name{display:none}
-    .sponsor{justify-content:center;inline-size:32px;padding:0}
-    .sponsor-label{display:none}
     .tabs{position:fixed;inset-inline:0;bottom:0;z-index:var(--ui-z-chrome);display:flex;overflow-x:auto;scrollbar-width:none;gap:2px;padding:var(--ui-space-xs) var(--ui-space-sm) calc(var(--ui-space-xs) + env(safe-area-inset-bottom));background:var(--ui-color-surface);border-top:1px solid var(--ui-color-border)}
     .tabs a{flex:0 0 auto;padding:9px 4px;border:0;border-radius:var(--ui-radius-sm);text-align:center;color:var(--ui-color-ink-soft);background:none;text-decoration:none;font-size:var(--ui-text-xs);font-weight:var(--ui-weight-medium);white-space:nowrap}
     .tabs a.on{background:var(--ui-color-accent-soft);color:var(--ui-color-accent-ink)}
@@ -204,6 +204,11 @@
   .sponsor-label{line-height:1}
   @keyframes sponsor-beat{0%,70%,100%{transform:scale(1)}78%{transform:scale(1.22)}86%{transform:scale(.96)}93%{transform:scale(1.12)}}
   @media (prefers-reduced-motion:reduce){.sponsor,.sponsor-heart{animation:none;transition:none}}
+  /* On a phone the face alone carries the sponsor. */
+  @media (max-width:900px){
+    .sponsor{justify-content:center;inline-size:32px;padding:0}
+    .sponsor-label{display:none}
+  }
   @media (prefers-reduced-motion:reduce){.card{transition:none}}
 </style>
 
