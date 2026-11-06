@@ -9,6 +9,7 @@
   import Writing from './ui/Writing.svelte'
   import SettingsRows from './ui/SettingsRows.svelte'
   import Card from './ui/Card.svelte'
+  import SponsorDialog from './ui/SponsorDialog.svelte'
   import Find from './pages/Find.svelte'
   import Syllabary from './pages/Syllabary.svelte'
   import Graphemes from './pages/Graphemes.svelte'
@@ -25,6 +26,7 @@
   applyTheme()
 
   let settingsOpen = $state(false)
+  let sponsorOpen = $state(false)
   const FULL = new Set(['about', 'documents', 'large'])
 
   $effect(() => {
@@ -41,6 +43,8 @@
 
   /** @param {KeyboardEvent} event */
   function keys(event) {
+    // A modal dialog handles its own keys.
+    if (document.querySelector('dialog[open]')) return
     const typing = /** @type {HTMLElement} */ (event.target).closest('input, textarea')
     if (event.key === '/' && !typing) {
       const input = /** @type {HTMLElement | null} */ (document.querySelector('[data-primary]'))
@@ -70,6 +74,13 @@
       {/each}
     </nav>
     <div class="aside">
+      <button type="button" class="sponsor" title={t('app.sponsor.label')} aria-label={t('app.sponsor.label')} aria-haspopup="dialog" aria-expanded={sponsorOpen} onclick={() => { sponsorOpen = true }}>
+        <span class="sponsor-face" aria-hidden="true">
+          <img src="/sponsor-face.webp" alt="" width="24" height="24" decoding="async" />
+          <svg class="sponsor-heart" viewBox="0 0 24 24"><path d="M12 21s-8.5-5.1-8.5-11.3A4.7 4.7 0 0 1 12 6.9a4.7 4.7 0 0 1 8.5 2.8C20.5 15.9 12 21 12 21Z" /></svg>
+        </span>
+        <span class="sponsor-label">{t('app.sponsor.label')}</span>
+      </button>
       <div class="settings">
         <button class="ui-button" data-variant="quiet" data-size="icon" type="button" aria-label={t('settings.label')} title={t('settings.label')}
           aria-expanded={settingsOpen} onclick={() => { settingsOpen = !settingsOpen }}>
@@ -114,6 +125,8 @@
       <a href="/{page.path}" class:on={route.page === page.path} onclick={event => nav(event, page.path)}>{t(page.label)}</a>
     {/each}
   </nav>
+
+  <SponsorDialog bind:open={sponsorOpen} />
 
   <div class="toast" role="status" aria-live="polite">{#if toast.message}<span class="ui-toast">{toast.message}</span>{/if}</div>
 </div>
@@ -178,6 +191,23 @@
     .tabs a{flex:0 0 auto;padding:9px 4px;border:0;border-radius:var(--ui-radius-sm);text-align:center;color:var(--ui-color-ink-soft);background:none;text-decoration:none;font-size:var(--ui-text-xs);font-weight:var(--ui-weight-medium);white-space:nowrap}
     .tabs a.on{background:var(--ui-color-accent-soft);color:var(--ui-color-accent-ink)}
     .toast{bottom:calc(76px + env(safe-area-inset-bottom))}
+  }
+  /* The sponsor button: a soft pink pill led by the author's face, with a small heart on it that beats. */
+  .sponsor{--sp-from:light-dark(#ffe6ef,#3d1a2b);--sp-to:light-dark(#fff0e0,#3a2318);--sp-ink:light-dark(#c2185b,#ffb3cd);--sp-heart:light-dark(#ff4f88,#ff7aa6);--sp-line:light-dark(#ffd0de,#5a2a3f);
+    display:inline-flex;align-items:center;gap:var(--ui-space-xs);flex:none;block-size:32px;padding:0 12px 0 4px;border:1px solid var(--sp-line);border-radius:var(--ui-radius-pill);background:linear-gradient(120deg,var(--sp-from),var(--sp-to));color:var(--sp-ink);font:inherit;font-size:var(--ui-text-xs);font-weight:var(--ui-weight-bold);white-space:nowrap;cursor:pointer;transition:transform var(--ui-duration) var(--ui-ease),box-shadow var(--ui-duration) var(--ui-ease)}
+  .sponsor:hover,.sponsor:focus-visible{transform:translateY(-1px);box-shadow:0 4px 12px rgb(255 79 136 / .28)}
+  .sponsor:active{transform:translateY(0) scale(.97)}
+  .sponsor:focus-visible{outline:2px solid var(--ui-color-focus);outline-offset:2px}
+  .sponsor-face{position:relative;flex:none;inline-size:24px;block-size:24px}
+  .sponsor-face img{display:block;inline-size:100%;block-size:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1.5px light-dark(#fff,#3d1a2b),0 0 0 2.5px var(--sp-line)}
+  .sponsor-heart{position:absolute;right:-4px;bottom:-3px;inline-size:12px;block-size:12px;fill:var(--sp-heart);stroke:light-dark(#fff,#3d1a2b);stroke-width:2.5;paint-order:stroke;overflow:visible;transform-origin:50% 60%;animation:sponsor-beat 2.8s ease-in-out infinite}
+  .sponsor-label{line-height:1}
+  @keyframes sponsor-beat{0%,70%,100%{transform:scale(1)}78%{transform:scale(1.22)}86%{transform:scale(.96)}93%{transform:scale(1.12)}}
+  @media (prefers-reduced-motion:reduce){.sponsor,.sponsor-heart{animation:none;transition:none}}
+  /* On a phone the face alone carries the sponsor. */
+  @media (max-width:900px){
+    .sponsor{justify-content:center;inline-size:32px;padding:0}
+    .sponsor-label{display:none}
   }
   @media (prefers-reduced-motion:reduce){.card{transition:none}}
 </style>

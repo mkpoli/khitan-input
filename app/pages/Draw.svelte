@@ -119,6 +119,8 @@
 
   /** @param {KeyboardEvent} event */
   function keys(event) {
+    // The sponsor dialog is modal: its keys do not reach the pad behind it.
+    if (document.querySelector('dialog[open]')) return
     const target = /** @type {HTMLElement} */ (event.target)
     if (target.closest('input, textarea, select')) return
     if ((event.ctrlKey || event.metaKey) && event.key === 'z') { event.preventDefault(); undo() }
