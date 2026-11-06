@@ -1,0 +1,48 @@
+/* The app layer: the design system and the faces. */
+@import '../design/index.css';
+
+@font-face {
+  font-family: 'Noto Serif Khitan Small Script';
+  src: url('/fonts/NotoSerifKhitanSmallScript-Regular.woff2') format('woff2');
+  font-display: swap;
+  unicode-range: U+18B00-18CFF, U+16FE4;
+}
+
+@font-face {
+  font-family: 'BabelStone Khitan Large';
+  src: url('/fonts/BabelStoneKhitanLargeGlyphs.woff2') format('woff2');
+  font-display: swap;
+  unicode-range: U+E000-E64F;
+}
+
+:root {
+  --ui-font-script: 'Noto Serif Khitan Small Script', serif;
+  --topbar-h: 54px;
+}
+
+.ui-input,
+.ui-textarea {
+  /* The face claims only its own blocks, so it goes first or the sans stack's fallback takes them. */
+  font-family: 'Noto Serif Khitan Small Script', var(--ui-font-sans);
+}
+
+.ui-toast {
+  font-family: 'Noto Serif Khitan Small Script', var(--ui-font-sans);
+}
+
+/* Phonetic transcription, in a face with the letters it needs. */
+.said {
+  font-family: 'Charis SIL', 'Doulos SIL', 'Noto Serif', var(--ui-font-serif);
+}
+
+.large-glyph {
+  font-family: 'BabelStone Khitan Large', serif;
+}
+
+/* The font's glyphs advance two ems with the ink in the middle one, so one grapheme takes one em here. */
+.ui-script {
+  display: inline-block;
+  inline-size: 2em;
+  margin-inline: -0.5em;
+  text-align: center;
+}
