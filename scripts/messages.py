@@ -9,7 +9,7 @@ from pathlib import Path
 LOCALES = ("en", "ja", "zh-Hans", "zh-Hant", "ko")
 T = {
  "app.name": ("Khitan Input","契丹文字入力","契丹文输入","契丹文輸入","거란 문자 입력"),
- "app.home": ("Khitan Input, home","契丹文字入力 ホーム","契丹文输入 首页","契丹文輸入 首頁","거란 문자 입력 홈"),
+ "app.sites": ("Sites","サイト","网站","網站","사이트"),
  "app.failed": ("The records could not be loaded.","データを読み込めませんでした。","无法载入数据。","無法載入資料。","데이터를 불러오지 못했습니다."),
  "nav.label": ("Finders","検索方法","查找方式","查找方式","찾기 방법"),
  "nav.find": ("Find","検索","查找","查找","찾기"),
