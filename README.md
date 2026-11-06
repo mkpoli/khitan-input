@@ -36,3 +36,7 @@ bun run dev
 
 The tables are described in [`docs/database.md`](docs/database.md) and the sources in
 [`docs/materials.md`](docs/materials.md). `data/sources.tsv` states every source's terms.
+
+## Deployment
+
+A push to `main` runs the tests, type check and build, then deploys to <https://khitan.mkpo.li/>. It needs the repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
