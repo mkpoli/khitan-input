@@ -21,6 +21,11 @@ Citations and terms are in `data/sources.tsv`.
 | [Liu and Wang 2004 list](https://babelstone.co.uk/Khitan/LiuWang2004.html), transcribed by West | 189 large-script reconstructions | none stated |
 | [BabelStone Khitan Large Glyphs](https://www.babelstone.co.uk/Fonts/KhitanLarge.html) v1.012, 2023 | the face of the Large script page; 1,469 Private Use glyphs, unordered and experimental | redistributable, not for sale alone |
 | [Noto Serif Khitan Small Script](https://github.com/notofonts/khitan-small-script) | shapes compared by eye; 470 of the block, plus the filler, without U+18CD6–18CDA and U+18CFF | OFL 1.1 |
+| [Nova N 176 folio 9](https://commons.wikimedia.org/wiki/File:Nova_N_176_folio_9.jpg), Wikimedia Commons, from V. P. Zaytsev (2011), fig. 4 | the photograph the running-script forms are cut from | PD-scan (PD-old-100) |
+
+`data/running/` cuts 96 forms from folio 9 of Nova N 176 (IOM RAS, Nova N 176, inv. 1055). Zaytsev
+identifies the manuscript and the state name at the head of column 6; the rest of the page is
+undeciphered, so the face keeps page-local code points. See [`data/running/README.md`](../data/running/README.md).
 
 Otake's fonts, `KhitanSmall` and `KSS-Gengokenkyu`, identify glyphs during extraction and are never
 written out. Font revisions between the papers changed some outlines; `data/otake_papers/` records how each
