@@ -1,0 +1,1399 @@
+{
+ "source": {
+  "title": "Nova N 176, folio 9",
+  "image": "Nova_N_176_folio_9.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Nova_N_176_folio_9.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Nova_N_176_folio_9.jpg",
+  "sha256": "057931c5a99e7a9a7c07aebd62b1442579539565d65f4596194e84ba69732157",
+  "width": 1543,
+  "height": 1964,
+  "credit": "V. P. Zaytsev, \"A Manuscript Codex Written in the Khitan Large Script from the Collection of the Institute of Oriental Manuscripts, Russian Academy of Sciences\" (2011), fig. 4; digitised on Wikimedia Commons.",
+  "terms": "Public domain (PD-scan, PD-old-100); the manuscript dates to the 11th–12th century."
+ },
+ "columns": [
+  {
+   "col": 1,
+   "x0": 1170,
+   "x1": 1340
+  },
+  {
+   "col": 2,
+   "x0": 980,
+   "x1": 1140
+  },
+  {
+   "col": 3,
+   "x0": 780,
+   "x1": 940
+  },
+  {
+   "col": 4,
+   "x0": 580,
+   "x1": 730
+  },
+  {
+   "col": 5,
+   "x0": 390,
+   "x1": 530
+  },
+  {
+   "col": 6,
+   "x0": 190,
+   "x1": 330
+  }
+ ],
+ "forms": [
+  {
+   "pua": "E600",
+   "col": 1,
+   "box": [
+    1170,
+    126,
+    170,
+    79
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E601",
+   "col": 1,
+   "box": [
+    1185,
+    134,
+    126,
+    167
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E602",
+   "col": 1,
+   "box": [
+    1212,
+    269,
+    89,
+    114
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E603",
+   "col": 1,
+   "box": [
+    1210,
+    381,
+    96,
+    116
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E604",
+   "col": 1,
+   "box": [
+    1209,
+    492,
+    115,
+    136
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E605",
+   "col": 1,
+   "box": [
+    1223,
+    609,
+    79,
+    122
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E606",
+   "col": 1,
+   "box": [
+    1220,
+    729,
+    95,
+    67
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E607",
+   "col": 1,
+   "box": [
+    1219,
+    799,
+    90,
+    139
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E608",
+   "col": 1,
+   "box": [
+    1240,
+    932,
+    61,
+    48
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E609",
+   "col": 1,
+   "box": [
+    1223,
+    932,
+    79,
+    138
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E60A",
+   "col": 1,
+   "box": [
+    1215,
+    1055,
+    100,
+    118
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E60B",
+   "col": 1,
+   "box": [
+    1240,
+    1163,
+    79,
+    79
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E60C",
+   "col": 1,
+   "box": [
+    1218,
+    1237,
+    111,
+    129
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E60D",
+   "col": 1,
+   "box": [
+    1239,
+    1338,
+    87,
+    84
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E60E",
+   "col": 1,
+   "box": [
+    1252,
+    1397,
+    88,
+    123
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E60F",
+   "col": 1,
+   "box": [
+    1251,
+    1516,
+    85,
+    94
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E610",
+   "col": 1,
+   "box": [
+    1253,
+    1600,
+    87,
+    133
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E611",
+   "col": 2,
+   "box": [
+    1027,
+    123,
+    98,
+    90
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E612",
+   "col": 2,
+   "box": [
+    1021,
+    209,
+    99,
+    100
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E613",
+   "col": 2,
+   "box": [
+    1047,
+    311,
+    63,
+    78
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E614",
+   "col": 2,
+   "box": [
+    1047,
+    384,
+    89,
+    61
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E615",
+   "col": 2,
+   "box": [
+    1027,
+    441,
+    91,
+    85
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E616",
+   "col": 2,
+   "box": [
+    1045,
+    515,
+    91,
+    92
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E617",
+   "col": 2,
+   "box": [
+    1042,
+    602,
+    82,
+    71
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E618",
+   "col": 2,
+   "box": [
+    1027,
+    666,
+    96,
+    83
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E619",
+   "col": 2,
+   "box": [
+    1045,
+    743,
+    80,
+    84
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E61A",
+   "col": 2,
+   "box": [
+    1048,
+    818,
+    77,
+    84
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E61B",
+   "col": 2,
+   "box": [
+    1021,
+    895,
+    119,
+    93
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E61C",
+   "col": 2,
+   "box": [
+    1036,
+    981,
+    102,
+    72
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E61D",
+   "col": 2,
+   "box": [
+    1040,
+    1054,
+    91,
+    153
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E61E",
+   "col": 2,
+   "box": [
+    1023,
+    1191,
+    117,
+    114
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E61F",
+   "col": 2,
+   "box": [
+    1044,
+    1279,
+    96,
+    72
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E620",
+   "col": 2,
+   "box": [
+    1058,
+    1437,
+    82,
+    81
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E621",
+   "col": 2,
+   "box": [
+    1063,
+    1568,
+    77,
+    93
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E622",
+   "col": 2,
+   "box": [
+    1064,
+    1652,
+    76,
+    75
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E623",
+   "col": 3,
+   "box": [
+    845,
+    138,
+    75,
+    107
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E624",
+   "col": 3,
+   "box": [
+    828,
+    238,
+    87,
+    96
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E625",
+   "col": 3,
+   "box": [
+    821,
+    331,
+    102,
+    132
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E626",
+   "col": 3,
+   "box": [
+    846,
+    497,
+    72,
+    48
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E627",
+   "col": 3,
+   "box": [
+    892,
+    521,
+    48,
+    119
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E628",
+   "col": 3,
+   "box": [
+    842,
+    587,
+    82,
+    136
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E629",
+   "col": 3,
+   "box": [
+    843,
+    711,
+    73,
+    71
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E62A",
+   "col": 3,
+   "box": [
+    826,
+    711,
+    109,
+    170
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E62B",
+   "col": 3,
+   "box": [
+    855,
+    880,
+    73,
+    86
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E62C",
+   "col": 3,
+   "box": [
+    892,
+    910,
+    48,
+    125
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E62D",
+   "col": 3,
+   "box": [
+    839,
+    1038,
+    83,
+    105
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E62E",
+   "col": 3,
+   "box": [
+    848,
+    1143,
+    92,
+    59
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E62F",
+   "col": 3,
+   "box": [
+    853,
+    1197,
+    83,
+    165
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E630",
+   "col": 3,
+   "box": [
+    892,
+    1353,
+    48,
+    91
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E631",
+   "col": 3,
+   "box": [
+    850,
+    1421,
+    90,
+    120
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E632",
+   "col": 3,
+   "box": [
+    892,
+    1590,
+    48,
+    104
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E633",
+   "col": 4,
+   "box": [
+    631,
+    143,
+    99,
+    97
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E634",
+   "col": 4,
+   "box": [
+    640,
+    233,
+    88,
+    169
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E635",
+   "col": 4,
+   "box": [
+    580,
+    238,
+    150,
+    55
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E636",
+   "col": 4,
+   "box": [
+    643,
+    391,
+    77,
+    128
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E637",
+   "col": 4,
+   "box": [
+    639,
+    520,
+    91,
+    58
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E638",
+   "col": 4,
+   "box": [
+    639,
+    572,
+    88,
+    83
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E639",
+   "col": 4,
+   "box": [
+    642,
+    630,
+    88,
+    87
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E63A",
+   "col": 4,
+   "box": [
+    640,
+    714,
+    74,
+    88
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E63B",
+   "col": 4,
+   "box": [
+    631,
+    791,
+    78,
+    86
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E63C",
+   "col": 4,
+   "box": [
+    617,
+    874,
+    100,
+    93
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E63D",
+   "col": 4,
+   "box": [
+    625,
+    940,
+    85,
+    98
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E63E",
+   "col": 4,
+   "box": [
+    626,
+    1017,
+    93,
+    85
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E63F",
+   "col": 4,
+   "box": [
+    635,
+    1083,
+    95,
+    76
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E640",
+   "col": 4,
+   "box": [
+    636,
+    1149,
+    91,
+    69
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E641",
+   "col": 4,
+   "box": [
+    632,
+    1203,
+    98,
+    85
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E642",
+   "col": 4,
+   "box": [
+    627,
+    1284,
+    89,
+    78
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E643",
+   "col": 4,
+   "box": [
+    640,
+    1355,
+    90,
+    84
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E644",
+   "col": 4,
+   "box": [
+    651,
+    1424,
+    79,
+    79
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E645",
+   "col": 4,
+   "box": [
+    643,
+    1499,
+    87,
+    98
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E646",
+   "col": 4,
+   "box": [
+    630,
+    1575,
+    110,
+    140
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": true
+  },
+  {
+   "pua": "E647",
+   "col": 5,
+   "box": [
+    416,
+    143,
+    103,
+    135
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E648",
+   "col": 5,
+   "box": [
+    438,
+    273,
+    74,
+    83
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E649",
+   "col": 5,
+   "box": [
+    437,
+    346,
+    77,
+    54
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E64A",
+   "col": 5,
+   "box": [
+    411,
+    388,
+    97,
+    91
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E64B",
+   "col": 5,
+   "box": [
+    427,
+    473,
+    97,
+    144
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E64C",
+   "col": 5,
+   "box": [
+    434,
+    613,
+    82,
+    115
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E64D",
+   "col": 5,
+   "box": [
+    424,
+    700,
+    104,
+    91
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E64E",
+   "col": 5,
+   "box": [
+    411,
+    777,
+    109,
+    99
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E64F",
+   "col": 5,
+   "box": [
+    429,
+    876,
+    101,
+    80
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E650",
+   "col": 5,
+   "box": [
+    420,
+    994,
+    110,
+    116
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E651",
+   "col": 5,
+   "box": [
+    428,
+    1103,
+    92,
+    129
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E652",
+   "col": 6,
+   "box": [
+    190,
+    160,
+    145,
+    100
+   ],
+   "aliases": [
+    "E05A"
+   ],
+   "identification": "大",
+   "identification_basis": "Zaytsev 2011, Table 4: the state name at the head of column 6",
+   "manual": true
+  },
+  {
+   "pua": "E653",
+   "col": 6,
+   "box": [
+    190,
+    260,
+    145,
+    100
+   ],
+   "aliases": [],
+   "identification": "中",
+   "identification_basis": "Zaytsev 2011, Table 4: the state name at the head of column 6",
+   "manual": true
+  },
+  {
+   "pua": "E654",
+   "col": 6,
+   "box": [
+    190,
+    360,
+    145,
+    80
+   ],
+   "aliases": [],
+   "identification": "央",
+   "identification_basis": "Zaytsev 2011, Table 4: the state name at the head of column 6",
+   "manual": true
+  },
+  {
+   "pua": "E655",
+   "col": 6,
+   "box": [
+    190,
+    440,
+    145,
+    120
+   ],
+   "aliases": [],
+   "identification": "hulʤi",
+   "identification_basis": "Zaytsev 2011, Table 4: the state name at the head of column 6",
+   "manual": true
+  },
+  {
+   "pua": "E656",
+   "col": 6,
+   "box": [
+    190,
+    560,
+    145,
+    80
+   ],
+   "aliases": [
+    "E28F"
+   ],
+   "identification": "契",
+   "identification_basis": "Zaytsev 2011, Table 4: the state name at the head of column 6",
+   "manual": true
+  },
+  {
+   "pua": "E657",
+   "col": 6,
+   "box": [
+    190,
+    640,
+    145,
+    80
+   ],
+   "aliases": [
+    "E396"
+   ],
+   "identification": "丹",
+   "identification_basis": "Zaytsev 2011, Table 4: the state name at the head of column 6",
+   "manual": true
+  },
+  {
+   "pua": "E658",
+   "col": 6,
+   "box": [
+    190,
+    720,
+    145,
+    100
+   ],
+   "aliases": [
+    "E03C"
+   ],
+   "identification": "國",
+   "identification_basis": "Zaytsev 2011, Table 4: the state name at the head of column 6",
+   "manual": true
+  },
+  {
+   "pua": "E659",
+   "col": 6,
+   "box": [
+    232,
+    872,
+    98,
+    85
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E65A",
+   "col": 6,
+   "box": [
+    243,
+    944,
+    87,
+    70
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E65B",
+   "col": 6,
+   "box": [
+    232,
+    1001,
+    92,
+    112
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E65C",
+   "col": 6,
+   "box": [
+    218,
+    1110,
+    96,
+    90
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E65D",
+   "col": 6,
+   "box": [
+    232,
+    1172,
+    94,
+    111
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E65E",
+   "col": 6,
+   "box": [
+    220,
+    1269,
+    103,
+    87
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  },
+  {
+   "pua": "E65F",
+   "col": 6,
+   "box": [
+    224,
+    1350,
+    103,
+    79
+   ],
+   "aliases": [],
+   "identification": null,
+   "identification_basis": null,
+   "manual": false
+  }
+ ]
+}
