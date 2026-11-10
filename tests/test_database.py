@@ -58,6 +58,11 @@ class Database(unittest.TestCase):
     def test_dissertation_record_states_its_availability(self):
         self.assertIn('abstracts only', self.one("SELECT terms FROM source WHERE id='otake2020'"))
 
+    def test_classics_paper_is_cited_by_the_cognates(self):
+        self.assertIn('KOTONOHA', self.one("SELECT citation FROM source WHERE id='otake2015c'"))
+        for form in ('mɵɵr', 'yaw-'):
+            self.assertIn('2015c', self.one("SELECT cf FROM cognate WHERE form=?", form))
+
     def test_example_sentence_keeps_transcription_and_citation(self):
         self.assertEqual(self.one("SELECT citation FROM example WHERE n=2"), "B.CAL 10‒11")
         self.assertEqual(self.one("SELECT transcription FROM example_word WHERE n=2 AND line=1 AND position=1"), "miin")

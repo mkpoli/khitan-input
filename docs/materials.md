@@ -14,6 +14,7 @@ Citations and terms are in `data/sources.tsv`.
 | 大竹昌巳 (2024), [『言語研究』165](https://doi.org/10.11435/gengo.165.0_85) | spellings with transcriptions | published |
 | 大竹昌巳 (2018), 「契丹語を俯瞰する」 and its 例文集, [project site](https://sites.google.com/view/ilcaa-mongolic/) | grapheme grids, spellings, 13 interlinear sentences | password-protected download; none stated |
 | 大竹昌巳 (2015), [『言語研究』148](https://www.jstage.jst.go.jp/article/gengo/148/0/148_81/_article/-char/ja) | V and CV graphemes (表6, 表9), spellings | free on J-STAGE |
+| 大竹昌巳 (2015c), 「契丹小字文献所引の漢文古典籍」『KOTONOHA』152: 1–19, [古代文字資料館](http://kodaimoji.chowder.jp/pdf/pdf12/ootake152.pdf) | 10 or more Chinese classical works quoted in Khitan inscriptions; new sources 白居易「祭微之文」, 『後漢書』江革伝 and 『孟子』告子上 | PDF posted free by the publisher; no licence stated |
 | [Unicode 18.0 UCD](https://www.unicode.org/Public/18.0.0/ucd/) | code points, names, radical groups | Unicode License V3 |
 | [KSS_Mappings](https://babelstone.co.uk/Khitan/KSS_Mappings.pdf), West, Zaytsev and Everson, 2020 | code point to 16 catalogue numberings | none stated |
 | [N4725R](https://www.unicode.org/L2/L2016/16113r-n4725r-khitan-small-script.pdf) Table 6, 2016 | values by six scholars, relations between characters | none stated |
@@ -28,6 +29,10 @@ such glyph was identified, and five stay unidentified.
 
 大竹昌巳 (2018) 「日本契丹学小史」 gives the history of the field and no data. 大竹昌巳 (2013) is the
 predecessor of the 2015 paper; its text layer is OCR and has lost the Khitan.
+
+大竹昌巳 (2015c) locates 10 or more Chinese classical works behind quotations in Khitan inscriptions and adds
+白居易「祭微之文」, 『後漢書』江革伝 and 『孟子』告子上. The dissertation cites it for mɵɵr (TAY 26) and
+yaw- (YER 17); its 31 quotations are not transcribed here.
 
 ## How the script is encoded
 
