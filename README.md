@@ -16,6 +16,7 @@ Grapheme values follow 大竹昌巳 (2020, 2025). Other scholars' values sit bes
 - **Words** and **Sentences**: attested words with their evidence, and interlinear sentences.
 - **Blocks**: the text being written, set as blocks in columns running right to left.
 - **Large script**: reconstructions on BabelStone's Private Use code points.
+- **Code chart**: every mapped character in block order, with the inventory's counts.
 
 ## Build
 
