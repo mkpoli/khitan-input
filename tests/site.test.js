@@ -3,6 +3,7 @@ import { matchedReading } from '../app/lib/data.js'
 import { readFileSync } from 'node:fs'
 import { indexShapes, parseShapes, rankShapes, rasterize, SIZE } from '../app/lib/shape.js'
 import { blockRows, fold, parseWord, FILLER } from '../app/lib/script.js'
+import { BLOCK_START, FILLER as FILLER_CP, NO_GLYPH, PAGE_SIZE, codeChart, codePointLabel, rangeLabel } from '../app/lib/code-chart.js'
 import en from '../messages/en.json'
 import ja from '../messages/ja.json'
 import zhHans from '../messages/zh-Hans.json'
@@ -31,6 +32,37 @@ test('readings can be typed in plain letters', () => {
 test('every language has every message', () => {
   const keys = Object.keys(en).sort()
   for (const catalogue of [ja, zhHans, zhHant, ko]) expect(Object.keys(catalogue).sort()).toEqual(keys)
+})
+
+const codeData = JSON.parse(readFileSync('app/public/data/khitan.json', 'utf8'))
+const chart = codeChart(codeData.graphemes)
+
+test('the code chart pages the block in runs of sixteen', () => {
+  expect(chart.pages).toHaveLength(2)
+  for (const page of chart.pages) expect(page.cells).toHaveLength(PAGE_SIZE)
+  expect(chart.pages[0].start).toBe(BLOCK_START)
+  expect(chart.pages[0].cells[0].cp).toBe('18B00')
+  expect(chart.pages[1].cells[255].cp).toBe('18CFF')
+  expect(chart.pages.flatMap(page => page.cells).filter(Boolean)).toHaveLength(476)
+  expect(chart.pages[1].cells.slice(219, 255).every(cell => cell === null)).toBe(true)
+  expect(codePointLabel(FILLER_CP)).toBe('U+16FE4')
+  expect(rangeLabel(chart.pages[0])).toBe('U+18B00–U+18BFF')
+})
+
+test('marks the code points the bundled face does not draw', () => {
+  const cells = chart.pages.flatMap(page => page.cells).filter(Boolean)
+  for (const cp of NO_GLYPH) expect(cells.find(g => parseInt(g.cp, 16) === cp)?.drawn).toBe(false)
+  expect(cells.filter(g => !g.drawn)).toHaveLength(NO_GLYPH.size)
+})
+
+test('the code chart counts the inventory and its statuses', () => {
+  expect(chart.graphemes).toBe(491)
+  expect(chart.codePoints).toBe(477)
+  expect(chart.withoutCodePoint).toBe(14)
+  expect(chart.block).toBe(476)
+  expect(chart.filler).toBe(1)
+  expect(chart.status).toEqual({ current: 368, variant: 12, unicode: 109, uncatalogued: 2 })
+  expect(chart.confidence).toEqual({ high: 362, medium: 6, none: 109 })
 })
 
 describe('drawing search', () => {

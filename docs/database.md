@@ -26,7 +26,8 @@ numbers, with Unicode text alongside when every grapheme has a code point.
 - `west_1985_renumbered`: the same, through an old number (005 → 004D).
 - `visual`: judged by eye against Noto Serif Khitan Small Script, with `unicode_confidence`.
 
-Twelve graphemes have no code point: 002D, 211D, C03, C05, C09, C13, C15, C16, C19, C20, C21, C29.
+Fourteen graphemes have no code point: 002D, 211D, C03, C05, C09, C13, C15, C16, C19,
+C20, C21, C29, xea39eb, xf4aa50.
 Four have a weak match in `unicode_candidate`, which is not used for text. The glyphs of 275, 276 and
 277 in the dissertation have a left-hand element that Noto's forms at West's code points lack.
 
