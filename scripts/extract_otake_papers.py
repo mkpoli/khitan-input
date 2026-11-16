@@ -229,7 +229,7 @@ def main() -> None:
                 forms.append(["otake2024", " ".join(ids(sp)), word, "", 84 + page])
 
     by_text = {chr(int(r["text_layer_codepoint"], 16)): r["grapheme"] for r in tsv("kss_gengokenkyu_glyphs") if r["grapheme"]}
-    p2015 = Paper(reference(directory, "（2015）"), thesis, "KSS", aliases, by_text)
+    p2015 = Paper(reference(directory, "母音の長さの書き分け"), thesis, "KSS", aliases, by_text)
     for page, where in ((8, "表6"), (10, "表9")):
         text = "\n".join(p2015.lines(page))
         block = text[text.index(where):]
