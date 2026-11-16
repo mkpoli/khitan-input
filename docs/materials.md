@@ -15,6 +15,8 @@ Citations and terms are in `data/sources.tsv`.
 | 大竹昌巳 (2018), 「契丹語を俯瞰する」 and its 例文集, [project site](https://sites.google.com/view/ilcaa-mongolic/) | grapheme grids, spellings, 13 interlinear sentences | password-protected download; none stated |
 | 大竹昌巳 (2015), [『言語研究』148](https://www.jstage.jst.go.jp/article/gengo/148/0/148_81/_article/-char/ja) | V and CV graphemes (表6, 表9), spellings | free on J-STAGE |
 | 大竹昌巳 (2015c), 「契丹小字文献所引の漢文古典籍」『KOTONOHA』152: 1–19, [古代文字資料館](http://kodaimoji.chowder.jp/pdf/pdf12/ootake152.pdf) | 10 or more Chinese classical works quoted in Khitan inscriptions; new sources 白居易「祭微之文」, 『後漢書』江革伝 and 『孟子』告子上 | PDF posted free by the publisher; no licence stated |
+| 大竹昌巳 (2016), 「契丹語形容詞の性・数標示体系について」『京都大学言語学研究』35: 59–89, [KURENAI](https://hdl.handle.net/2433/219016) | spellings with transcriptions | free on KURENAI |
+| Ōtake (2017), [AOASH 70(2): 189–206](https://doi.org/10.1556/062.2017.70.2.3) | spellings with transcriptions | free on [REAL](https://real.mtak.hu/56021/) |
 | [Unicode 18.0 UCD](https://www.unicode.org/Public/18.0.0/ucd/) | code points, names, radical groups | Unicode License V3 |
 | [KSS_Mappings](https://babelstone.co.uk/Khitan/KSS_Mappings.pdf), West, Zaytsev and Everson, 2020 | code point to 16 catalogue numberings | none stated |
 | [N4725R](https://www.unicode.org/L2/L2016/16113r-n4725r-khitan-small-script.pdf) Table 6, 2016 | values by six scholars, relations between characters | none stated |
@@ -51,7 +53,6 @@ Jurchen Small Script; `character.jurchen_tentative` carries that. Noto Serif Khi
 - [N5319](https://www.unicode.org/wg2/docs/n5319-KhitanLargeScriptEncoding.pdf), 2025: replaces N4631. [N5323](https://www.unicode.org/L2/L2025/25166-wg2-n5323.pdf) (West, Zaytsev) criticises it as a glyph encoding without source references. Repertoire not checked.
 - [吉本智慧子 (Aisin Gioro) 2012](http://www.ritsumei.ac.jp/acd/cg/lt/rb/627/627PDF/yosimoto.pdf), 立命館文學 627: reading notes, and who first proposed each value. Cited by N4725R; not opened. The largest missing layer.
 - 大竹昌巳 (2025) TABLE IV–XIII: about 100 cognates with glyphs, in a scan. Not yet transcribed.
-- Ōtake 2017, [AOASH 70(2)](https://real.mtak.hu/56021/): not read.
 - [ja.wiktionary per-character pages](https://ja.wiktionary.org/wiki/%F0%98%AC%AD): copies of N4725R Table 6. [en.wiktionary Module:zkt-translit/data](https://en.wiktionary.org/wiki/Module:zkt-translit/data): source not stated. Neither adds evidence.
 - [Xebec33 Rime schemas](https://github.com/Xebec33/khitan_small_script_wubi), GPL-3.0: one author's Wubi codes, in the Private Use Area and built around CCAMC fonts. A design reference at most.
 - CCAMC: not used, by this site's policy.
