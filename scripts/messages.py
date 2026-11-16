@@ -208,7 +208,7 @@ T = {
  "app.sponsor.thanks": ("Thank you for using Khitan Input 💗","契丹文字入力をご利用いただきありがとうございます💗","谢谢你使用契丹文输入 💗","謝謝你使用契丹文輸入 💗","거란 문자 입력을 사용해 주셔서 고마워요 💗"),
  "app.sponsor.close": ("Close","閉じる","关闭","關閉","닫기"),
 }
-SCHOLARS = {"otake2025":"大竹 2025","otake2024":"大竹 2024","otake2020":"大竹 2020","otake2018":"大竹 2018","otake2015":"大竹 2015","kane2009":"Kane 2009","liu2009":"Liu 2009","liu2014":"Liu 2014","chinggeltei2010":"Chinggeltei 2010","wu_janhunen2010":"Wu & Janhunen 2010","jishi2012":"Jishi 2012","takeuchi2012":"Takeuchi 2012"}
+SCHOLARS = {"otake2025":"大竹 2025","otake2024":"大竹 2024","otake2020":"大竹 2020","otake2018":"大竹 2018","otake2015":"大竹 2015","kane2009":"Kane 2009","liu2009":"Liu 2009","liu2014":"Liu 2014","chinggeltei2010":"Chinggeltei 2010","wu_janhunen2010":"Wu & Janhunen 2010","jishi2012":"Jishi 2012","takeuchi2012":"Takeuchi 2012","rona_tas2026":"Róna-Tas 2026"}
 for key, name in SCHOLARS.items():
     T[f"scholar.{key}"] = (name,) * 5
 

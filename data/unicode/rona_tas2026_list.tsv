@@ -1,0 +1,453 @@
+cwj_no	menksoft	codepoint	unicode_method	value	not_initial	page
+001	E000	18B01	west_1985_number	hoi	0	803
+002	E001	18B02	west_1985_number	jur₂	0	803
+003	E002	18B06	west_1985_number		0	803
+004	E003	18B08	west_1985_number	siu	0	803
+005	E004	18B09	west_1985_number	siuᵒ	0	803
+006	E005	18B0A	west_1985_number	har₃	0	803
+007	E006	18B0C	west_1985_number	nem	0	803
+008	E007	18B0D	west_1985_number	nemᵒ	0	803
+009	E008	18B0E	west_1985_number		1	803
+010	E009	18B0F	west_1985_number	hoii	0	803
+011	E00A	18B10	west_1985_number	an	0	803
+012	E00B	18B11	west_1985_number		0	803
+013	E00C	18B12	west_1985_number		0	803
+014	E00D	18B13	west_1985_number	hu₂	0	803
+015	E00E	18B15	west_1985_number	jau	0	803
+016	E00F	18B17	west_1985_number	od	0	803
+017	E010	18B18	west_1985_number	dai	0	803
+017.1	E181	18B19	visual		0	803
+018	E011	18B1A	west_1985_number	in	0	803
+019	E012	18B1B	west_1985_number	iu	0	803
+020	E013	18B1C	west_1985_number	y	0	803
+021	E014	18B1D	west_1985_number	eme	0	803
+022	E015	18B1E	west_1985_number	cau	0	803
+022.1	E6EF	18B1F	visual	i₂	0	803
+022.2	E1FB	18B16	visual		0	803
+023	E016	18B20	west_1985_number		0	803
+024	E017	18B21	west_1985_number		0	803
+025	E018	18B22	west_1985_number		0	803
+026	E019	18B23	west_1985_number	emu	0	803
+027	E01A	18B24	west_1985_number	emuᵒ	0	803
+028	E01B	18B25	west_1985_number	sh	0	803
+029	E01C	18B26	west_1985_number	tau	0	803
+030	E01D	18B27	west_1985_number	tauᵒ	0	803
+031	E01E	18B28	west_1985_number	chi	0	803
+031.1	E1F6	18B34	visual		0	803
+031.2	E1FE	18B35	visual		1	803
+032	E01F	18B29	west_1985_number		0	803
+033	E020	18B2A	west_1985_number	ishi	0	803
+034	E021	18B2B	west_1985_number	ishiᵒ	0	803
+035	E022	18B2C	west_1985_number		0	803
+035.1	E1E6	18B03	visual		0	803
+035.2	E186	18B04	visual		0	803
+035.3	E1F5	18B05	visual	iu₂	1	804
+036	E023	18B2D	west_1985_number	xu	0	804
+037	E024	18B2E	west_1985_number	di	0	804
+038	E025	18B2F	west_1985_number	ri₃	0	804
+038.1	E18B	18B31	visual	ri₄	0	804
+039	E026	18B30	west_1985_number		0	804
+040	E027	18B36	west_1985_number	si₂	0	804
+041	E028	18B37	west_1985_number	su	0	804
+042	E029	18B38	west_1985_number	kus	0	804
+043	E02A	18B39	west_1985_number	mod	0	804
+043.1	E6F8	18B3B	visual		0	804
+044	E02B	18B93	west_1985_number		0	804
+045	E02C	18B3C	west_1985_number		0	804
+046	E02D	18B3D	west_1985_number		0	804
+047	E02E	18B3E	west_1985_number	hor	0	804
+048	E02F	18B3F	west_1985_number	hul	0	804
+049	E030	18B40	west_1985_number	le₂	1	804
+050	E031	18B41	west_1985_number		0	804
+051	E032	18B42	west_1985_number	ha	0	804
+052	E033	18B43	west_1985_number	RECORD	0	804
+052.1	E6F6	18B44	visual	RECORD2	0	804
+053	E034	18B45	west_1985_number	qa	0	804
+054	E035	18B46	west_1985_number		0	804
+055	E036	18B47	west_1985_number		0	804
+056	E037	18B49	west_1985_number		1	804
+056.1	E6F5	18B48	visual		0	804
+057	E038	18B4A	west_1985_number	xo	0	804
+058	E039	18B4B	west_1985_number		0	804
+059	E03A	18B4C	west_1985_number	uni	0	804
+060	E03B	18B4D	west_1985_number	bai₂	1	804
+061	E03C	18B4E	west_1985_number	bai	0	804
+062	E03D	18B4F	west_1985_number	iang	1	804
+063	E03E	18B50	west_1985_number	ETERNAL	0	804
+063.1	E6F4	18B52	visual		0	804
+064	E03F	18B51	west_1985_number	lu₂	0	804
+065	E040	18B82	west_1985_number		0	804
+066	E041	18B54	west_1985_number		0	804
+066.1	E195				0	804
+067	E042	18B55	west_1985_number	eu	0	804
+068	E043	18B56	west_1985_number	us	0	804
+069	E044	18B57	west_1985_number	ri	0	804
+070	E045	18B58	west_1985_number	w	0	804
+071	E046	18B59	west_1985_number	ong	0	804
+072	E047	18B5A	west_1985_number	dor₂	0	804
+073	E048	18B5B	west_1985_number	ên	0	804
+074	E049	18B5C	west_1985_number	tir	0	804
+075	E04A	18B5D	west_1985_number	hong	0	804
+076	E04B	18B5E	west_1985_number	or	0	804
+077	E04C	18B5F	west_1985_number		0	804
+078	E04D	18B60	west_1985_number		0	804
+079	E04E	18B61	west_1985_number		0	804
+080	E04F	18B62	west_1985_number	li₂	0	804
+081	E050	18B67	west_1985_number	sär	0	804
+082	E051	18B68	west_1985_number	üe	0	804
+082.1	E212	18B66	visual	aju	0	804
+083	E052	18B69	west_1985_number	sï	0	804
+084	E053	18B6A	west_1985_number	ar₂	0	804
+084.1	E19A	18B6B	visual		1	804
+085	E054	18B6C	west_1985_number	ñol	0	804
+086	E055	18B6D	west_1985_number	ñolᵒ	0	804
+087	E056	18B6F	west_1985_number	jï	0	804
+088	E057	18B70	west_1985_number		0	804
+089	E058	18B71	west_1985_number	du₃	0	804
+090	E059	18B72	west_1985_number	ó	0	805
+091	E05A	18B73	west_1985_number	do₂	0	805
+092	E05B	18B74	west_1985_number	om	0	805
+093	E05C	18B75	west_1985_number	le	0	805
+094	E05D	18B86	west_1985_number		0	805
+094.1	E6F2	18B33	visual		1	805
+095	E05E	18B90	west_1985_number		0	805
+096	E05F	18B91	west_1985_number		0	805
+097	E060	18B92	west_1985_number	úr	0	805
+098	E061	18B85	west_1985_number	al	0	805
+098.1	E1E9	18B8C	visual	jih	0	805
+099	E062	18B87	west_1985_number	ad	0	805
+100	E063	18B88	west_1985_number	én₂	0	805
+100.1	E6F9	18B8D	visual	én₃	0	805
+100.2	E1D4	18B8E	visual		1	805
+101	E064	18B89	west_1985_number	deu	0	805
+102	E065	18B8A	west_1985_number	cu	0	805
+103	E066	18B8B	west_1985_number	us₂	0	805
+104	E067	18B8F	west_1985_number	j	0	805
+105	E068	18B76	west_1985_number	om	0	805
+106	E069	18B77	west_1985_number	ung₂	0	805
+107	E06A	18B78	west_1985_number	oi₂	0	805
+108	E06B	18B79	west_1985_number		1	805
+109	E06C	18B7A	west_1985_number	e₂	0	805
+110	E06D	18B7B	west_1985_number		0	805
+111	E06E	18B7C	west_1985_number		0	805
+112	E06F	18B7D	west_1985_number	ge₂	0	805
+113	E070	18B7E	west_1985_number	ï₂	1	805
+114	E071	18B7F	west_1985_number	í₂	1	805
+115	E072	18B80	west_1985_number	ol	0	805
+116	E073	18B81	west_1985_number		0	805
+117	E074	18B83	west_1985_number		0	805
+118	E075	18B84	west_1985_number	qú	0	805
+119	E076	18C8C	west_1985_number	dau	0	805
+120	E077	18C8E	west_1985_number	shi	0	805
+121	E078	18C8F	west_1985_number	un₃	1	805
+122	E079	18C90	west_1985_number	ai	0	805
+123	E07A	18C91	west_1985_number	ar	0	805
+124	E07B	18C92	west_1985_number		0	805
+125	E07C	18C93	west_1985_number	aû	0	805
+126	E07D	18C94	west_1985_number		1	805
+127	E07E	18C95	west_1985_number	ib	0	805
+128	E07F	18C96	west_1985_number	ri₂	0	805
+129	E080	18C97	west_1985_number		1	805
+129.1	E17B	18B32	visual		0	805
+130	E081	18C98	west_1985_number	xa	0	805
+131	E082	18C9A	west_1985_number	u	0	805
+132	E083	18C9B	west_1985_number		0	805
+133	E084	18C9C	west_1985_number	m	0	805
+134	E085	18C9D	west_1985_number	jur	0	805
+135	E086	18C9E	west_1985_number	jurᵒ	0	805
+135.1	E6FC	18C9F	visual		0	805
+136	E087	18CA1	west_1985_number		0	805
+137	E088	18CA2	west_1985_number	ir	0	805
+137.1	E1A0	18CA0	visual		1	805
+138	E089	18CA3	west_1985_number	iuk	0	805
+139	E08A	18CA4	west_1985_number	na	0	805
+139.1	E1A4	18CA5	visual		0	805
+140	E08B	18CA6	west_1985_number	en	0	805
+141	E08C	18CA7	west_1985_number	dalu	0	805
+141.1	E21A	18CA8	visual	daluᵒ	0	805
+142	E08D	18CA9	west_1985_number	MANAGE	0	805
+143	E08E	18CAA	west_1985_number	xua	0	805
+144	E08F	18CAB	west_1985_number	un₂	0	805
+145	E090	18CAC	west_1985_number	FORTY	0	805
+146	E091	18CAD	west_1985_number	es	0	805
+147	E092	18CAE	west_1985_number	ju	0	806
+148	E093	18CAF	west_1985_number		0	806
+149	E094	18CB0	west_1985_number	l₂	0	806
+150	E095	18CB1	west_1985_number	ja	0	806
+151	E096	18CB2	west_1985_number	hu	0	806
+152	E097	18CB3	west_1985_number	ji	0	806
+153	E098	18CB4	west_1985_number	ji₂	0	806
+154	E099	18CB5	west_1985_number	on	0	806
+155	E09A	18CB6	west_1985_number	FIFTY	0	806
+156	E09B	18CB7	west_1985_number		0	806
+157	E09C	18CB8	west_1985_number		1	806
+158	E09D	18CB9	west_1985_number	l₄	0	806
+159	E09E	18CBA	west_1985_number	när	0	806
+160	E09F	18CBB	west_1985_number		0	806
+160.1	E200	18CBF	visual		1	806
+161	E0A0	18CBC	west_1985_number	au	0	806
+162	E0A1	18CBD	west_1985_number	ci	0	806
+163	E0A2	18CBE	west_1985_number	ki	0	806
+164	E0A3	18BD6	west_1985_number	yos	0	806
+165	E0A4	18BD7	west_1985_number	gu	0	806
+165.1	E6F3	18BD8	visual	gu₂	1	806
+166	E0A5	18BD9	west_1985_number	gur	0	806
+167	E0A6	18BDA	west_1985_number	gurᵒ	0	806
+168	E0A7	18BDB	west_1985_number	qo	0	806
+169	E0A8	18BDC	west_1985_number	qó	0	806
+170	E0A9	18BDD	west_1985_number	MR	0	806
+171	E0AA	18BDE	west_1985_number	da	0	806
+172	E0AB	18BDF	west_1985_number	uh	0	806
+173	E0AC	18BE0	west_1985_number	jel	0	806
+174	E0AD	18BE1	visual	as	0	806
+175	E0AE	18BE2	visual	eng	0	806
+176	E0AF	18BE3	west_1985_number	bud	0	806
+177	E0B0	18BE4	west_1985_number	ur	0	806
+177.1	E1F2	18BE6	visual		0	806
+178	E0B1	18BE5	west_1985_number	ku	0	806
+178.1	E1AE	18BEA	visual	kuo	0	806
+178.2	E20C	18BEB	visual		0	806
+179	E0B2	18BE8	west_1985_number	dú	0	806
+179.1	E1EE	18BEC	visual		0	806
+179.2	E1AF	18BED	visual		0	806
+180	E0B3	18BE9	west_1985_number	shï	0	806
+181	E0B4	18BF0	west_1985_number	iúng	1	806
+182	E0B5	18BF1	west_1985_number		0	806
+183	E0B6	18BF2	west_1985_number	cal	0	806
+183.1	E6FF	18BF3	visual	calᵒ	0	806
+184	E0B7	18BF4	west_1985_number	am	0	806
+185	E0B8	18BF5	west_1985_number	mor	0	806
+186	E0B9	18BF6	west_1985_number	o	0	806
+186.1	E225	18BF7	visual		1	806
+187	E0BA	18BF8	west_1985_number	tum	0	806
+188	E0BB	18BF9	west_1985_number	SMALL	0	806
+189	E0BC	18BFA	west_1985_number	a	0	806
+190	E0BD	18BFB	west_1985_number		0	806
+191	E0BE	18BFD	west_1985_number	tou	0	806
+192	E0BF	18BFE	west_1985_number	MRS	0	806
+193	E0C0	18BFF	west_1985_number	nas	0	806
+194	E0C1	18C00	west_1985_number		0	806
+195	E0C2	18C01	west_1985_number	tal	0	806
+196	E0C3	18C02	west_1985_number	abu	0	806
+197	E0C4	18C04	west_1985_number	ai₂	0	806
+198	E0C5	18C05	west_1985_number	hiu	0	806
+198.1	E1B6			hiu	0	806
+199	E0C6	18C06	west_1985_number		1	806
+200	E0C7	18C07	west_1985_number		1	806
+201	E0C8	18C08	west_1985_number		0	806
+202	E0C9	18C0A	west_1985_number	tu	0	806
+203	E0CA	18C0B	west_1985_number		1	807
+204	E0CB	18C0C	west_1985_number	de₂	0	807
+205	E0CC	18C0D	west_1985_number	de	0	807
+206	E0CD	18C0E	west_1985_number	li	0	807
+207	E0CE	18C0F	west_1985_number	ming	0	807
+208	E0CF	18C10	west_1985_number	lu	0	807
+209	E0D0	18C11	west_1985_number		1	807
+210	E0D1	18C12	west_1985_number	aú	0	807
+210.1	E19D	18BD3	visual		0	807
+210.2	E1AB	18BD4	visual		1	807
+211	E0D2	18CC0	west_1985_number	THIRTY	0	807
+211.1	E21F			THIRTYᵒ	0	807
+211.2	E6ED			nai	0	807
+212	E0D3	18CC1	west_1985_number	od₂	0	807
+213	E0D4	18CC3	west_1985_number	to	0	807
+213.1	E6FA	18C03	visual		1	807
+213.2	E1BB	18CC2	visual		0	807
+214	E0D5	18CC4	west_1985_number	da₃	0	807
+216	E0D6	18CC6	west_1985_number	hus	0	807
+216.1	E1B7	18CC5	visual		0	807
+217	E0D7	18CC7	west_1985_number	do	0	807
+218	E0D8	18CC8	west_1985_number	dor	0	807
+219	E0D9	18CC9	west_1985_number		0	807
+220	E0DA	18C13	west_1985_number	mú	0	807
+221	E0DB	18C14	west_1985_number		0	807
+222	E0DC	18C15	west_1985_number	ñ	0	807
+223	E0DD	18C16	west_1985_number	mu₂	0	807
+224	E0DE	18C17	west_1985_number	mu	0	807
+224.1	E1F3	18C1A	visual		1	807
+225	E0DF	18C18	west_1985_number	bi	0	807
+226	E0E0	18C19	west_1985_number	üe₂	0	807
+227	E0E1	18C1B	west_1985_number		0	807
+228	E0E2	18C1C	west_1985_number		0	807
+229	E0E3	18C1D	west_1985_number	ta	0	807
+230	E0E4	18C1E	west_1985_number		0	807
+231	E0E5	18C1F	west_1985_number		0	807
+232	E0E6	18C20	west_1985_number		0	807
+233	E0E7	18C21	west_1985_number	ku₂	0	807
+234	E0E8	18C22	west_1985_number		0	807
+235	E0E9	18C23	west_1985_number	ri	0	807
+236	E0EA	18C25	west_1985_number	ur₂	0	807
+237	E0EB	18C26	west_1985_number	du	0	807
+238	E0EC	18C27	west_1985_number	sui	0	807
+239	E0ED	18C28	west_1985_number		0	807
+240	E0EE	18C2F	west_1985_number	par	0	807
+240.1	E211	18C30	visual	parᵒ	0	807
+241	E0EF	18C29	west_1985_number	pu	0	807
+242	E0F0	18C2A	west_1985_number	fu	0	807
+243	E0F1	18C32	west_1985_number	HEAVEN	0	807
+244	E0F2	18C37	west_1985_number	s	0	807
+245	E0F3	18C2B	west_1985_number	ú	0	807
+246	E0F4	18C39	west_1985_number	qu	0	807
+247	E0F5	18C3A	west_1985_number	t	0	807
+248	E0F6	18C33	west_1985_number	YOUNG	0	807
+249	E0F7	18C3B	west_1985_number	dû	0	807
+250	E0F8	18C2C	west_1985_number	heu	0	807
+251	E0F9	18C2D	west_1985_number	n	0	807
+252	E0FA	18C3C	west_1985_number	ô	0	807
+253	E0FB	18C2E	west_1985_number	ô₂	0	807
+254	E0FC	18C34	west_1985_number	d	0	807
+255	E0FD	18C3D	west_1985_number	ri₅	0	807
+256	E0FE	18C3F	west_1985_number		0	807
+256.1	E1E3				0	808
+257	E0FF	18C40	west_1985_number	em₂	0	808
+258	E100	18C41	west_1985_number	z	0	808
+259	E101	18C42	west_1985_number	hur	0	808
+260	E102	18C43	west_1985_number	t₂	0	808
+261	E103	18C44	west_1985_number	l	0	808
+261.1	E204	18C45	visual		0	808
+262	E104	18C46	west_1985_number	ui	0	808
+263	E105	18C47	west_1985_number	uiᵒ	0	808
+264	E106	18C4A	west_1985_number	ng	0	808
+264.1	E210	18C49	visual		1	808
+265	E107	18C4B	west_1985_number	ui₂	0	808
+266	E108	18C4C	west_1985_number	SIXTY	0	808
+266.1	E1C8	18C4D	visual	yun	0	808
+267	E109	18C4E	west_1985_number		0	808
+268	E10A	18C4F	west_1985_number	xe	0	808
+269	E10B	18C50	west_1985_number	er₂	0	808
+270	E10C	18C51	west_1985_number	ém	0	808
+271	E10D	18CD3	west_1985_number		0	808
+272	E10E	18CD4	west_1985_number	búl	0	808
+273	E10F	18CD5	west_1985_number	un	0	808
+274	E110	18CCD	west_1985_number	iá	0	808
+275	E111	18CCF	west_1985_number	LUCK	1	808
+275.1	E214	18CCE	visual		0	808
+276	E112	18CD0	west_1985_number		1	808
+277	E113	18CD1	west_1985_number		1	808
+278	E114	18CD2	west_1985_number		1	808
+278.1	E6F7	18B94	visual		0	808
+279	E115	18B97	west_1985_number	po	0	808
+279.1	E216	18B95	visual		0	808
+280	E116	18B98	west_1985_number	áng	0	808
+281	E117	18B99	west_1985_number		1	808
+282	E118	18B9A	west_1985_number	ku	0	808
+283	E119	18B9B	west_1985_number	k	0	808
+284	E11A	18B9C	west_1985_number		0	808
+285	E11B	18B9D	west_1985_number	GOLD	0	808
+286	E11C	18B9E	west_1985_number	GOLDᵒ	0	808
+287	E11D	18B9F	west_1985_number	xar	0	808
+288	E11E	18BA0	west_1985_number	bun	0	808
+289	E11F	18BA1	west_1985_number	iú	0	808
+290	E120	18BA2	west_1985_number	án	0	808
+291	E121	18BA3	west_1985_number		0	808
+292	E122	18BA4	west_1985_number		0	808
+293	E123	18BA5	west_1985_number	si₂	0	808
+294	E124	18BA6	west_1985_number	dele	0	808
+294.1	E1D2	18B96	visual		0	808
+294.2	E1D3	18BE7	visual		1	808
+295	E125	18BA7	west_1985_number	p	0	808
+296	E126	18BA8	west_1985_number		0	808
+296.1	E1FD	18BA9	visual		1	808
+297	E127	18BAA	west_1985_number	gú	0	808
+298	E128	18BAB	west_1985_number	co	0	808
+299	E129	18BAC	west_1985_number		0	808
+300	E12A	18BAD	west_1985_number	SEVENTY	0	808
+301	E12B	18BAE	west_1985_number	SEVENTYᵒ	0	808
+302	E12C	18BAF	west_1985_number	il	0	808
+303	E12D	18BB0	west_1985_number	ing	0	808
+304	E12E	18BB1	west_1985_number	du₂	0	808
+305	E12F	18BB2	west_1985_number		0	808
+306	E130	18BB3	west_1985_number		0	808
+307	E131	18BB4	west_1985_number		0	808
+308	E132	18BB5	west_1985_number	COMPOSE	0	808
+309	E133	18BB6	west_1985_number	bod	0	808
+310	E134	18BB7	west_1985_number	li₄	0	808
+310.1	E1CF	18BBA	visual	dus	0	808
+310.2	E6FE	18BBC	visual		1	808
+310.3	E21D	18BBB	visual		1	809
+311	E135	18BBD	west_1985_number	b	0	809
+312	E136	18BBE	west_1985_number	lu₃	0	809
+313	E137	18BBF	west_1985_number	lu₄	1	809
+314	E138	18BC0	west_1985_number	iang	0	809
+315	E139	18BC1	west_1985_number	she	0	809
+316	E13A	18BC2	west_1985_number	zhul	0	809
+316.1	E1CE	18BB8	visual	COMPOSE₃	0	809
+316.2	E1D1	18BB9	visual	COMPOSE₂	0	809
+317	E13B	18BC3	west_1985_number		0	809
+318	E13C	18BC4	west_1985_number	na₂	0	809
+318.1	E202	18BC7	visual		0	809
+319	E13D	18BC6	west_1985_number	go	0	809
+320	E13E	18BCC	west_1985_number	pu₂	0	809
+321	E13F	18BCD	west_1985_number	har	0	809
+321.1	E1E1	18BCA	visual	har₂	0	809
+322	E140	18BCE	west_1985_number	ón	0	809
+323	E141	18BCF	west_1985_number	te	0	809
+324	E142	18BD0	west_1985_number	en₂	0	809
+324.1	E6FD	18BC9	visual		1	809
+324.2	E1E2	18BC8	visual	úng₂	1	809
+324.3	E1F1	18BCB	visual		0	809
+325	E143	18BD1	west_1985_number		0	809
+326	E144	18C52	west_1985_number		0	809
+327	E145	18C53	west_1985_number	ie	0	809
+328	E146	18C54	west_1985_number	kei	0	809
+329	E147	18C55	west_1985_number	ün	0	809
+330	E148	18C56	west_1985_number	ž	0	809
+331	E149	18C57	west_1985_number	neu	0	809
+332	E14A	18C58	west_1985_number	nai	0	809
+333	E14B	18C59	west_1985_number	QUEEN	0	809
+334	E14C	18C5A	west_1985_number	g	0	809
+335	E14D	18C5B	west_1985_number	ia	0	809
+336	E14E	18C5D	west_1985_number	ul₂	0	809
+336.1	E213	18C5C	visual		0	809
+336.2	E1E4				0	809
+336.3	E1DF	18C63	visual		0	809
+337	E14F	18C5E	west_1985_number	ji₃	0	809
+337.1	E1EC	18C5F	visual	pen	0	809
+337.2	E1D7	18C60	visual		0	809
+338	E150	18C62	west_1985_number	i₃	0	809
+339	E151	18C64	west_1985_number	i	0	809
+339.1	E1DE	18C7A	visual		0	809
+339.2	E1ED	18C7B	visual		0	809
+340	E152	18C65	west_1985_number	h	0	809
+341	E153	18C66	west_1985_number	er	0	809
+342	E154	18C68	west_1985_number	WINE	0	809
+343	E155	18C69	west_1985_number		0	809
+343.1	E1DB	18C67	visual		0	809
+344	E156	18C6A	west_1985_number	ud	0	809
+345	E157	18C6B	west_1985_number	ung	0	809
+346	E158	18C6C	west_1985_number	ung₃	0	809
+347	E159	18C6D	west_1985_number	oi	0	809
+348	E15A	18C6E	west_1985_number	e	0	809
+349	E15B	18C6F	west_1985_number	ge	0	809
+350	E15C	18C70	west_1985_number	d₂	0	809
+351	E15D	18C71	west_1985_number		1	809
+352	E15E	18C72	west_1985_number	í	0	809
+353	E15F	18C73	west_1985_number	ï	1	809
+354	E160	18C74	west_1985_number	s₂	0	809
+355	E161	18C75	west_1985_number	odu	0	809
+355.1	E6FB	18B53	visual		1	809
+356	E162	18C31	west_1985_number	te₂	0	809
+357	E163	18C76	west_1985_number	úng	0	810
+358	E164	18C35	west_1985_number	mû	0	810
+359	E165	18C36	west_1985_number		1	810
+360	E166	18C77	west_1985_number	pang	1	810
+361	E167	18C78	west_1985_number	én	0	810
+361.1	E6EE			deu₂	0	810
+362	E168	18C79	west_1985_number	iau	0	810
+363	E169	18C7D	west_1985_number	che	0	810
+364	E16A	18C7E	west_1985_number	dele₂	0	810
+365	E16B	18C7F	west_1985_number	qita	0	810
+366	E16C	18C80	west_1985_number	ul	0	810
+367	E16D	18C81	west_1985_number	rung	0	810
+368	E16E	18C82	west_1985_number	dur	0	810
+369	E16F	18C83	west_1985_number	durᵒ	0	810
+370	E170	18C84	west_1985_number	REGION	0	810
+371	E171	18C85	west_1985_number	ja₂	0	810
+372	E172	18C86	west_1985_number	û	0	810
+373	E173	18C87	west_1985_number	GREAT	0	810
+374	E174	18C88	west_1985_number	tai	0	810
+375	E175	18C89	west_1985_number	ca	0	810
+376	E176	18C8A	west_1985_number		0	810
+377	E177	18C8B	west_1985_number	oh	0	810
+377.1	E226				0	810
+378	E178	18B00	west_1985_number	DITTO	0	810

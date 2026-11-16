@@ -26,6 +26,7 @@ scripts/extract_otake2020.py <dissertation.pdf>
 scripts/extract_otake_papers.py <directory of the papers>
 scripts/extract_kss_mappings.py cache/web/KSS_Mappings.pdf > data/unicode/kss_mappings.tsv
 scripts/extract_web_layers.py
+scripts/extract_rona_tas2026.py <volume two PDF>
 python3 scripts/build_db.py          # dist/khitan.sqlite
 python3 -m unittest discover tests
 python3 scripts/build_site_data.py   # app/public/data/khitan.json

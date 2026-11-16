@@ -19,6 +19,7 @@ Citations and terms are in `data/sources.tsv`.
 | [KSS_Mappings](https://babelstone.co.uk/Khitan/KSS_Mappings.pdf), West, Zaytsev and Everson, 2020 | code point to 16 catalogue numberings | none stated |
 | [N4725R](https://www.unicode.org/L2/L2016/16113r-n4725r-khitan-small-script.pdf) Table 6, 2016 | values by six scholars, relations between characters | none stated |
 | [Kane 2009 index](https://babelstone.co.uk/Khitan/Kane2009List.html), transcribed by West | values and glosses | Brill's book; page states none |
+| Róna-Tas (2026), [vol. 2](https://konfuciuszintezet.hu/downloads/monographs/Rona-Tas_Gaoshi_VOL-2.pdf) 19.1, the Höhhot list revised | values and CWJ (2017) numbers for 452 graphemes, 444 with a code point | free download; no licence stated |
 | [Liu and Wang 2004 list](https://babelstone.co.uk/Khitan/LiuWang2004.html), transcribed by West | 189 large-script reconstructions | none stated |
 | [BabelStone Khitan Large Glyphs](https://www.babelstone.co.uk/Fonts/KhitanLarge.html) v1.012, 2023 | the face of the Large script page; 1,469 Private Use glyphs, unordered and experimental | redistributable, not for sale alone |
 | [Noto Serif Khitan Small Script](https://github.com/notofonts/khitan-small-script) | shapes compared by eye; 470 of the block, plus the filler, without U+18CD6–18CDA and U+18CFF | OFL 1.1 |
