@@ -24,6 +24,8 @@ OUT = ROOT / "data" / "unicode" / "rona_tas2026_list.tsv"
 FIRST_PAGE = 803  # printed page of the list's first page
 SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
 SUP = {"a": "ᵃ", "e": "ᵉ", "i": "ⁱ", "o": "ᵒ", "u": "ᵘ"}
+# Two values whose small type is set off its line in 19.1, as the book's own index (19.2) prints them.
+MISSET = {"236": "ur₂", "240.1": "parᵒ"}
 ENTRY = re.compile(r"(\d{2,3}(?:\.\d+)?)\s+([-])\s*([^\s-]*(?:\s+n\.i\.?)?)")
 
 
@@ -98,6 +100,7 @@ def main() -> None:
                 # A repeated list number means the glyph has no reading yet.
                 if re.fullmatch(r"[\d.]+", value):
                     value = ""
+                value = MISSET.get(number, value)
                 if menksoft in visual:
                     codepoint, method = visual[menksoft]["codepoint"], "visual" if visual[menksoft]["codepoint"] else ""
                 else:

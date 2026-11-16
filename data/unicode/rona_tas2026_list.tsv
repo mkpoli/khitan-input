@@ -276,12 +276,12 @@ cwj_no	menksoft	codepoint	unicode_method	value	not_initial	page
 233	E0E7	18C21	west_1985_number	ku₂	0	807
 234	E0E8	18C22	west_1985_number		0	807
 235	E0E9	18C23	west_1985_number	ri	0	807
-236	E0EA	18C25	west_1985_number	ur2	0	807
+236	E0EA	18C25	west_1985_number	ur₂	0	807
 237	E0EB	18C26	west_1985_number	du	0	807
 238	E0EC	18C27	west_1985_number	sui	0	807
 239	E0ED	18C28	west_1985_number		0	807
 240	E0EE	18C2F	west_1985_number	par	0	807
-240.1	E211	18C30	visual	paro	0	807
+240.1	E211	18C30	visual	parᵒ	0	807
 241	E0EF	18C29	west_1985_number	pu	0	807
 242	E0F0	18C2A	west_1985_number	fu	0	807
 243	E0F1	18C32	west_1985_number	HEAVEN	0	807

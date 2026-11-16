@@ -43,7 +43,7 @@ class Database(unittest.TestCase):
         self.assertEqual(self.one("SELECT count(*) FROM reading WHERE source='kane2009' AND kind='phonetic' AND value GLOB '*[ảẻỉỏủ]*'"), 0)
 
     def test_rona_tas_list_reaches_code_points_by_number_and_by_eye(self):
-        for cp, value in (("18B01", "hoi"), ("18B02", "jur₂"), ("18B09", "siuᵒ"), ("18BE1", "as")):
+        for cp, value in (("18B01", "hoi"), ("18B02", "jur₂"), ("18B09", "siuᵒ"), ("18BE1", "as"), ("18C25", "ur₂"), ("18C30", "parᵒ")):
             self.assertEqual(self.one("SELECT count(*) FROM reading WHERE source='rona_tas2026' AND codepoint=? AND value=?", cp, value), 1, cp)
         self.assertEqual(self.one("SELECT value FROM catalogue_number WHERE scheme='cwj_rona_tas2026' AND codepoint='18B19'"), "017.1")
         self.assertEqual(self.one("SELECT kind FROM reading WHERE source='rona_tas2026' AND value='ETERNAL'"), "semantic")
