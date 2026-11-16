@@ -205,6 +205,13 @@ def main() -> None:
             value = row["value"].strip()
             if value and cp in chars:
                 db.execute("INSERT INTO reading VALUES (?,?,?,?,?,?,?,?,?)", (by_cp.get(cp), cp, "kane2009", value, kind_of(value), None, "scholar", "Index of Graphs " + row["kane_no"], None))
+    for row in tsv(DATA / "unicode/rona_tas2026_list.tsv"):
+        cp = row["codepoint"]
+        if cp not in chars:
+            continue
+        db.execute("INSERT INTO catalogue_number VALUES (?,?,?)", (cp, "cwj_rona_tas2026", row["cwj_no"]))
+        if row["value"]:
+            db.execute("INSERT INTO reading VALUES (?,?,?,?,?,?,?,?,?)", (by_cp.get(cp), cp, "rona_tas2026", row["value"], kind_of(row["value"]), None, "scholar", "19.1 " + row["cwj_no"], int(row["page"])))
 
     # Documents
     abbreviations = set()

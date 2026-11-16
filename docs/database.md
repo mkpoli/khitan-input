@@ -50,6 +50,9 @@ Otake's papers use different notations, kept as printed: 2015 writes `tā` and `
 readings. `primary_reading` holds one value per grapheme in the dissertation's notation: the 2025 tables first,
 then the dissertation by tier.
 
+Róna-Tas (2026) numbers graphemes by the CWJ (2017) index, kept in `catalogue_number` as `cwj_rona_tas2026`.
+His values keep their printed marks: a lowered digit separates homophones (`jur₂`), and a raised letter belongs to the value (`siuᵒ`).
+
 ## Availability
 
 `source.terms` gives each source's terms. The dissertation's full text is not public, and `rhyme`, `cognate`,
