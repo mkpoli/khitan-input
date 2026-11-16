@@ -48,6 +48,11 @@ class Database(unittest.TestCase):
         self.assertEqual(self.one("SELECT value FROM catalogue_number WHERE scheme='cwj_rona_tas2026' AND codepoint='18B19'"), "017.1")
         self.assertEqual(self.one("SELECT kind FROM reading WHERE source='rona_tas2026' AND value='ETERNAL'"), "semantic")
 
+    def test_later_papers_add_spellings_with_their_page(self):
+        self.assertEqual(self.one("SELECT page FROM form WHERE source='otake2016' AND transcription='mɵɵ-n' LIMIT 1"), 60)
+        for source in ("otake2016", "otake2017"):
+            self.assertGreater(self.one("SELECT count(*) FROM form WHERE source=?", source), 50, source)
+
     def test_rhyme_scans_stay_in_their_document(self):
         self.assertEqual(self.one("SELECT reading FROM rhyme WHERE document='B.CAL' AND verse='2'"), "tuu")
 

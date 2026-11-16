@@ -242,6 +242,16 @@ def main() -> None:
             for sp, word in pairs(line):
                 forms.append(["otake2015", " ".join(ids(sp)), word, "", 80 + page])
 
+    # Spellings set in running text, with the page offset to the printed page.
+    for source, marker, first in (("otake2016", "形容詞の性・数", 58), ("otake2017", "Reconstructing the Khitan Vowel", 188)):
+        paper = Paper(reference(directory, marker), thesis, "KhitanSmall", aliases)
+        for page in range(1, len(paper.doc) + 1):
+            for line in paper.lines(page):
+                for sp, word in pairs(line):
+                    # These papers letter their examples (a), (b), ...; a lone letter there is a label.
+                    if not re.fullmatch(r"[a-h]", word):
+                        forms.append([source, " ".join(ids(sp)), word, "", first + page])
+
     for r in tsv("otake2025_tables"):
         readings.append(["otake2025", r["grapheme"], r["value"], "stated", "TABLE " + r["table"], 10])
     write("readings", ["source", "grapheme", "value", "tier", "location", "page"], readings)

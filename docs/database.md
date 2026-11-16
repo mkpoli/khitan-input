@@ -66,7 +66,7 @@ His values keep their printed marks: a lowered digit separates homophones (`jurâ
 | `rhyme` | 795 | rhyme words by document, line, stanza and verse |
 | `cognate`, `cognate_reflex` | 178, 799 | Khitan words with Mongolic and other comparanda |
 | `loan_spelling`, `loan_use` | 702, 1490 | Chinese words in the small script, by rhyme group |
-| `form` | 1010 | spellings with transcription, harvested from running text, by `source` |
+| `form` | 1178 | spellings with transcription, harvested from running text, by `source` |
 | `example`, `example_line`, `example_word` | 13, 36, 249 | interlinear sentences from Otake (2018), with citation; glosses by line because one gloss can cover two written words |
 | `attestation` | 5825 | document and line for the above |
 | `bibliography` | 460 | the dissertation's references |
