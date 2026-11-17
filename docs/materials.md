@@ -91,6 +91,9 @@ Jurchen Small Script; `character.jurchen_tentative` carries that. Noto Serif Khi
 - [Xebec33 Rime schemas](https://github.com/Xebec33/khitan_small_script_wubi), GPL-3.0: one author's Wubi codes, in the Private Use Area and built around CCAMC fonts. A design reference at most.
 - CCAMC: not used, by this site's policy.
 - [Brett-Khitan-Script-Decoder](https://github.com/nbbulk-dotcom/Brett-Khitan-Script-Decoder): excluded. Its decoding claim has no support.
+- 康鹏 (2016), 「《马卫集书》中的契丹语词“Sh.rghūr（汉人）”」, 《西域研究》2016(3): 30–37: Khitan words in Arabic transcription (*ǰiaukūr, *suŋkur, *kur/*kui); the Khitan-script forms are images in the PDF, so no reading is added.
+- 康鹏 (2017), 「马卫集书中的契丹“都城”」, 《民族研究》2017(2): *ūdkīn and *ūam in the same source, with the route east. Offprint PDF; the forms are images.
+- 孙伯君 (2015), 「契丹小字碑铭中的金代年号」, 《满语研究》2015(1): 54–57: the Jin era names in the three Jin-dated small-script epitaphs, read through Jurchen. The glyphs are images in the PDF and are not transcribed here.
 
 ## Missing
 
