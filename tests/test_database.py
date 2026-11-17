@@ -42,6 +42,17 @@ class Database(unittest.TestCase):
     def test_mnemonic_readings_are_not_marked_phonetic(self):
         self.assertEqual(self.one("SELECT count(*) FROM reading WHERE source='kane2009' AND kind='phonetic' AND value GLOB '*[ảẻỉỏủ]*'"), 0)
 
+    def test_rona_tas_list_reaches_code_points_by_number_and_by_eye(self):
+        for cp, value in (("18B01", "hoi"), ("18B02", "jur₂"), ("18B09", "siuᵒ"), ("18BE1", "as"), ("18C25", "ur₂"), ("18C30", "parᵒ")):
+            self.assertEqual(self.one("SELECT count(*) FROM reading WHERE source='rona_tas2026' AND codepoint=? AND value=?", cp, value), 1, cp)
+        self.assertEqual(self.one("SELECT value FROM catalogue_number WHERE scheme='cwj_rona_tas2026' AND codepoint='18B19'"), "017.1")
+        self.assertEqual(self.one("SELECT kind FROM reading WHERE source='rona_tas2026' AND value='ETERNAL'"), "semantic")
+
+    def test_later_papers_add_spellings_with_their_page(self):
+        self.assertEqual(self.one("SELECT page FROM form WHERE source='otake2016' AND transcription='mɵɵ-n' LIMIT 1"), 60)
+        for source in ("otake2016", "otake2017"):
+            self.assertGreater(self.one("SELECT count(*) FROM form WHERE source=?", source), 50, source)
+
     def test_rhyme_scans_stay_in_their_document(self):
         self.assertEqual(self.one("SELECT reading FROM rhyme WHERE document='B.CAL' AND verse='2'"), "tuu")
 
@@ -57,6 +68,11 @@ class Database(unittest.TestCase):
 
     def test_dissertation_record_states_its_availability(self):
         self.assertIn('abstracts only', self.one("SELECT terms FROM source WHERE id='otake2020'"))
+
+    def test_classics_paper_is_cited_by_the_cognates(self):
+        self.assertIn('KOTONOHA', self.one("SELECT citation FROM source WHERE id='otake2015c'"))
+        for form in ('mɵɵr', 'yaw-'):
+            self.assertIn('2015c', self.one("SELECT cf FROM cognate WHERE form=?", form))
 
     def test_example_sentence_keeps_transcription_and_citation(self):
         self.assertEqual(self.one("SELECT citation FROM example WHERE n=2"), "B.CAL 10‒11")

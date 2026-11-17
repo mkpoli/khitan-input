@@ -10,6 +10,7 @@ export const ix = {
   /** @type {any[]} */ documents: [],
   /** @type {any[]} */ sources: [],
   /** @type {any[]} */ large: [],
+  /** @type {Map<string, any>} */ largeByPua: new Map(),
   /** @type {Map<string, any>} */ source: new Map(),
   /** @type {{ key: string, g: any, rank: number }[]} */ readings: [],
 }
@@ -31,6 +32,11 @@ export function fill(data) {
     if (g.char) ix.byChar.set(g.char, g)
     for (const r of g.rs ?? []) if (r.k !== 'semantic' && r.k !== 'mnemonic') ix.readings.push({ key: fold(r.v), g, rank: rankOf(r) })
   }
+  for (const r of ix.large) {
+    const parts = /** @type {string[]} */ ((r.pua ?? '').split(' ').filter(Boolean))
+    r.char = parts.map(hex => String.fromCodePoint(parseInt(hex, 16))).join('')
+    for (const hex of parts) ix.largeByPua.set(String.fromCodePoint(parseInt(hex, 16)), r)
+  }
   for (const s of ix.sources) ix.source.set(s.id, s)
   for (const w of ix.words) w.search = [w.f, w.f && fold(w.f), w.g, w.h, w.sg].filter(Boolean).join(' ').toLowerCase()
 }
@@ -48,6 +54,14 @@ export function searchReadings(query) {
     if (!best.has(r.g) || /** @type {number} */ (best.get(r.g)) > score) best.set(r.g, score)
   }
   return [...best].sort((a, b) => a[1] - b[1] || a[0].id.localeCompare(b[0].id)).map(([g]) => g)
+}
+
+/** The value a reading search matched, which may not be the primary one. @param {any} g @param {string} query */
+export function matchedReading(g, query) {
+  const key = fold(query.trim())
+  const values = (g.rs ?? []).filter((/** @type {any} */ r) => r.k !== 'semantic' && r.k !== 'mnemonic')
+  const hit = values.find((/** @type {any} */ r) => fold(r.v) === key) ?? values.find((/** @type {any} */ r) => key && fold(r.v).startsWith(key))
+  return hit?.v ?? g.v
 }
 
 /** Words whose form, gloss, Chinese or segmentation holds the query. @param {string} query @param {string} [kind] */
@@ -74,3 +88,42 @@ export const wordsWith = id => ix.words.filter(w => w.sp && w.sp.replace(/~/g, '
 
 /** The primary reading of a character, for transcription. @param {string} ch */
 export const readingOf = ch => ix.byChar.get(ch)?.v ?? ''
+
+// Liu and Wang mark a character's job inside a word after the word: "建 initial", "建, 勸 final".
+const ROLE = /\b(initial|final|medial)\b/g
+
+/**
+ * The words a large-script character helps spell, with its job in each.
+ * @param {string} [c] the Chinese transcription as printed
+ * @returns {{ role: string, word: string }[]}
+ */
+export function largeUses(c) {
+  /** @type {{ role: string, word: string }[]} */
+  const uses = []
+  if (!c) return uses
+  let last = 0
+  ROLE.lastIndex = 0
+  for (let m; (m = ROLE.exec(c)); ) {
+    for (const word of c.slice(last, m.index).split(/[,，、\s]+/)) if (word) uses.push({ role: m[1], word })
+    last = ROLE.lastIndex
+  }
+  return uses
+}
+
+/**
+ * The large-script readings pivoted by word: which character spells the word's
+ * initial, final or medial. Only readings the source marks for a job appear.
+ * @param {any[]} rows
+ */
+export function phoneticTable(rows) {
+  /** @type {Map<string, any>} */
+  const byWord = new Map()
+  for (const r of rows) {
+    for (const { role, word } of largeUses(r.c)) {
+      let row = byWord.get(word)
+      if (!row) byWord.set(word, row = { word, initial: [], final: [], medial: [] })
+      row[role].push(r)
+    }
+  }
+  return [...byWord.values()]
+}

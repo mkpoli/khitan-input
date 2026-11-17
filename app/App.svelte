@@ -3,9 +3,11 @@
   // of the open grapheme beside it (a sheet over it on a phone).
   import { db, load } from './lib/db.svelte.js'
   import { route, go, PAGES } from './lib/route.svelte.js'
+  import { applyCanonical } from './lib/seo.js'
   import { ui, toast, applyTheme } from './lib/ui.svelte.js'
   import { MARK } from './lib/script.js'
   import { t } from './lib/i18n.svelte.js'
+  import SiteSelect from './ui/SiteSelect.svelte'
   import Writing from './ui/Writing.svelte'
   import SettingsRows from './ui/SettingsRows.svelte'
   import Card from './ui/Card.svelte'
@@ -19,6 +21,9 @@
   import Sentences from './pages/Sentences.svelte'
   import Blocks from './pages/Blocks.svelte'
   import Large from './pages/Large.svelte'
+  import Jurchen from './pages/Jurchen.svelte'
+  import Seal from './pages/Seal.svelte'
+  import Codes from './pages/Codes.svelte'
   import Documents from './pages/Documents.svelte'
   import About from './pages/About.svelte'
 
@@ -27,11 +32,14 @@
 
   let settingsOpen = $state(false)
   let sponsorOpen = $state(false)
-  const FULL = new Set(['about', 'documents', 'large'])
+  const FULL = new Set(['about', 'documents', 'large', 'jurchen', 'seal', 'codes'])
 
   $effect(() => {
     const entry = PAGES.find(p => p.path === route.page)
     document.title = entry && entry.path ? `${t(entry.label)} · ${t('app.name')}` : t('app.name')
+    applyCanonical(route.page)
+    const tab = document.querySelector('.tabs a.on')
+    if (tab) tab.scrollIntoView({ block: 'nearest', inline: 'center' })
   })
 
   /** @param {MouseEvent} event @param {string} page */
@@ -45,6 +53,8 @@
   function keys(event) {
     // A modal dialog handles its own keys.
     if (document.querySelector('dialog[open]')) return
+    // So does an open menu.
+    if (/** @type {HTMLElement} */ (event.target).closest('[role="menu"]')) return
     const typing = /** @type {HTMLElement} */ (event.target).closest('input, textarea')
     if (event.key === '/' && !typing) {
       const input = /** @type {HTMLElement | null} */ (document.querySelector('[data-primary]'))
@@ -63,10 +73,14 @@
 
 <div class="shell">
   <header class="top">
-    <a class="mark" href="/" onclick={event => nav(event, '')} aria-label={t('app.home')}>
-      <span class="badge" aria-hidden="true"><span class="ui-script">{MARK}</span></span>
-      <span class="name">{t('app.name')}</span>
-    </a>
+    <div class="site">
+      <SiteSelect home={event => nav(event, '')}>
+        <span class="mark">
+          <span class="badge" aria-hidden="true"><span class="ui-script">{MARK}</span></span>
+          <span class="name">{t('app.name')}</span>
+        </span>
+      </SiteSelect>
+    </div>
     <nav class="finders" aria-label={t('nav.label')}>
       {#each PAGES as page (page.path)}
         <a href="/{page.path}" class:on={route.page === page.path} aria-current={route.page === page.path ? 'page' : undefined}
@@ -107,6 +121,9 @@
         {:else if route.page === 'sentences'}<Sentences />
         {:else if route.page === 'blocks'}<Blocks />
         {:else if route.page === 'large'}<Large />
+        {:else if route.page === 'jurchen'}<Jurchen />
+        {:else if route.page === 'seal'}<Seal />
+        {:else if route.page === 'codes'}<Codes />
         {:else if route.page === 'documents'}<Documents />
         {:else}<About />{/if}
         <footer class="foot ui-hint">
@@ -134,7 +151,8 @@
 <style>
   .shell{min-block-size:100dvh;display:flex;flex-direction:column}
   .top{position:sticky;top:0;z-index:var(--ui-z-chrome);display:flex;align-items:center;gap:var(--ui-space-xl);block-size:var(--topbar-h);padding-inline:var(--ui-space-2xl);background:var(--ui-color-surface);border-bottom:1px solid var(--ui-color-border)}
-  .mark{display:flex;align-items:center;gap:var(--ui-space-sm);color:var(--ui-color-ink);text-decoration:none}
+  .site{align-self:stretch}
+  .mark{display:flex;align-items:center;gap:var(--ui-space-sm)}
   .badge{display:grid;place-items:center;inline-size:30px;block-size:30px;border-radius:var(--ui-radius-sm);background:var(--ui-color-accent);color:var(--ui-color-on-accent);font-size:21px}
   .name{font-family:var(--ui-font-serif);font-size:17px;font-weight:var(--ui-weight-semibold);letter-spacing:.005em;white-space:nowrap}
   .finders{align-self:stretch;display:flex;align-items:stretch;gap:2px;min-inline-size:0;overflow-x:auto;scrollbar-width:none}
@@ -171,7 +189,7 @@
   @media (min-width:901px) and (max-width:1180px){
     .shell{--topbar-h:96px}
     .top{flex-wrap:wrap;gap:0 var(--ui-space-xl);padding-inline:var(--ui-space-xl);block-size:var(--topbar-h)}
-    .mark,.aside{block-size:55px}
+    .site,.aside{block-size:55px}
     .finders{order:3;flex:0 0 100%;block-size:40px;border-top:1px solid var(--ui-color-border)}
     .finders a{padding-inline:var(--ui-space-sm);font-size:var(--ui-text-sm)}
     .finders a.on::after{inset-inline:var(--ui-space-sm)}

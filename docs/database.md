@@ -26,7 +26,8 @@ numbers, with Unicode text alongside when every grapheme has a code point.
 - `west_1985_renumbered`: the same, through an old number (005 → 004D).
 - `visual`: judged by eye against Noto Serif Khitan Small Script, with `unicode_confidence`.
 
-Twelve graphemes have no code point: 002D, 211D, C03, C05, C09, C13, C15, C16, C19, C20, C21, C29.
+Fourteen graphemes have no code point: 002D, 211D, C03, C05, C09, C13, C15, C16, C19,
+C20, C21, C29, xea39eb, xf4aa50.
 Four have a weak match in `unicode_candidate`, which is not used for text. The glyphs of 275, 276 and
 277 in the dissertation have a left-hand element that Noto's forms at West's code points lack.
 
@@ -49,6 +50,9 @@ Otake's papers use different notations, kept as printed: 2015 writes `tā` and `
 readings. `primary_reading` holds one value per grapheme in the dissertation's notation: the 2025 tables first,
 then the dissertation by tier.
 
+Róna-Tas (2026) numbers graphemes by the CWJ (2017) index, kept in `catalogue_number` as `cwj_rona_tas2026`.
+His values keep their printed marks: a lowered digit separates homophones (`jur₂`), and a raised letter belongs to the value (`siuᵒ`).
+
 ## Availability
 
 `source.terms` gives each source's terms. The dissertation's full text is not public, and `rhyme`, `cognate`,
@@ -62,7 +66,7 @@ then the dissertation by tier.
 | `rhyme` | 795 | rhyme words by document, line, stanza and verse |
 | `cognate`, `cognate_reflex` | 178, 799 | Khitan words with Mongolic and other comparanda |
 | `loan_spelling`, `loan_use` | 702, 1490 | Chinese words in the small script, by rhyme group |
-| `form` | 1010 | spellings with transcription, harvested from running text, by `source` |
+| `form` | 1178 | spellings with transcription, harvested from running text, by `source` |
 | `example`, `example_line`, `example_word` | 13, 36, 249 | interlinear sentences from Otake (2018), with citation; glosses by line because one gloss can cover two written words |
 | `attestation` | 5825 | document and line for the above |
 | `bibliography` | 460 | the dissertation's references |

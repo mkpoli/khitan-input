@@ -1,0 +1,588 @@
+{
+ "sources": [
+  {
+   "id": "commons_daozong",
+   "citation": "Funeral Epitaph in Khitan Script and Its Cover of Emperor Daozong of Liao Dynasty",
+   "author": "红烧腰果",
+   "date": "2019-07-14",
+   "url": "https://commons.wikimedia.org/wiki/File:Funeral_Epitaph_in_Khitan_Script_and_Its_Cover_of_Emperor_Daozong_of_Liao_Dynasty.jpg",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Funeral_Epitaph_in_Khitan_Script_and_Its_Cover_of_Emperor_Daozong_of_Liao_Dynasty.jpg",
+   "sha256": "6b276f162be0ce3bf570cae07a285c21eed59f1663efe8412ddade9b98e66b0f",
+   "width": 2976,
+   "height": 3968,
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "terms": "Photograph of the stone in the Liaoning Provincial Museum, own work by the uploader, licensed CC BY 4.0. The cropped WebP on this page is offered under the same licence."
+  },
+  {
+   "id": "commons_xuanyi",
+   "citation": "Epitaph of Empress Xuanyi of Liao",
+   "author": "Tonyxy1992",
+   "date": "2015-08-05",
+   "url": "https://commons.wikimedia.org/wiki/File:Epitaph_of_Empress_Xuanyi_of_Liao.jpg",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/5/51/Epitaph_of_Empress_Xuanyi_of_Liao.jpg",
+   "sha256": "bdf7a44f6c36e871c8a2d44316599e293d9ff0b1b48d0228b35dde7c76e6460c",
+   "width": 3264,
+   "height": 2448,
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "terms": "Photograph of the stone in the Liaoning Provincial Museum, own work by the uploader, licensed CC BY-SA 4.0. The cropped WebP on this page is offered under the same licence."
+  },
+  {
+   "id": "wang1931",
+   "citation": "王靜如（1931）「遼道宗及宣懿皇后契丹國字哀冊初釋」《中央研究院歷史語言研究所集刊》第三本第四分，467–478頁，圖版一至四。",
+   "author": "王靜如",
+   "date": "1931-11",
+   "url": "https://www1.ihp.sinica.edu.tw/storage/w2_file/5017YcdiByr.pdf",
+   "page": "https://www1.ihp.sinica.edu.tw/Publications/Bulletin/856/Article/1167",
+   "sha256": "12c4744251e4b30ed58cca7d2a869c8b965806fa8a550f7a66da45a5888ac75a",
+   "licence": "No reuse licence stated",
+   "terms": "The article and its plates are read for the inscriptions, their dates and the history of the problem; this page reproduces the Commons photographs, not the article's plates. The IHP site states that its text and images may not be used without the Institute's authorisation."
+  }
+ ],
+ "inscriptions": [
+  {
+   "id": "daozong",
+   "title": "遼道宗哀冊契丹篆字蓋文",
+   "object": "遼道宗哀冊蓋",
+   "person": "道宗耶律洪基",
+   "date": "乾統元年（1101）",
+   "plate": "圖版一",
+   "source": "commons_daozong",
+   "crop": [
+    430,
+    110,
+    2200,
+    1530
+   ],
+   "columns": 6,
+   "rows": 5,
+   "image": "/seal/daozong-cover.webp",
+   "image_width": 1400,
+   "image_height": 1123,
+   "note": "Wang 1931 reads the first line of the epitaph text as 仁聖大孝文皇帝哀冊文 and identifies the pair of covers with the Daozong and Xuanyi tombs. The cover blocks themselves are not assigned individually.",
+   "reading": "仁聖大孝文皇帝哀冊文",
+   "reading_source": "Wang 1931, 471",
+   "source_record": {
+    "id": "commons_daozong",
+    "citation": "Funeral Epitaph in Khitan Script and Its Cover of Emperor Daozong of Liao Dynasty",
+    "author": "红烧腰果",
+    "date": "2019-07-14",
+    "url": "https://commons.wikimedia.org/wiki/File:Funeral_Epitaph_in_Khitan_Script_and_Its_Cover_of_Emperor_Daozong_of_Liao_Dynasty.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Funeral_Epitaph_in_Khitan_Script_and_Its_Cover_of_Emperor_Daozong_of_Liao_Dynasty.jpg",
+    "sha256": "6b276f162be0ce3bf570cae07a285c21eed59f1663efe8412ddade9b98e66b0f",
+    "width": 2976,
+    "height": 3968,
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "terms": "Photograph of the stone in the Liaoning Provincial Museum, own work by the uploader, licensed CC BY 4.0. The cropped WebP on this page is offered under the same licence."
+   },
+   "image_bytes": 367704
+  },
+  {
+   "id": "xuanyi",
+   "title": "遼宣懿皇后哀冊契丹篆字蓋文",
+   "object": "遼宣懿皇后哀冊蓋",
+   "person": "宣懿皇后蕭觀音",
+   "date": "乾統元年（1101）",
+   "plate": "圖版三",
+   "source": "commons_xuanyi",
+   "crop": [
+    950,
+    350,
+    2170,
+    1370
+   ],
+   "columns": 4,
+   "rows": 4,
+   "image": "/seal/xuanyi-cover.webp",
+   "image_width": 1200,
+   "image_height": 1003,
+   "note": "Wang 1931 reads the first line of the epitaph text as 宣懿皇后哀冊文 and identifies the pair of covers with the Daozong and Xuanyi tombs. The cover blocks themselves are not assigned individually.",
+   "reading": "宣懿皇后哀冊文",
+   "reading_source": "Wang 1931, 471",
+   "source_record": {
+    "id": "commons_xuanyi",
+    "citation": "Epitaph of Empress Xuanyi of Liao",
+    "author": "Tonyxy1992",
+    "date": "2015-08-05",
+    "url": "https://commons.wikimedia.org/wiki/File:Epitaph_of_Empress_Xuanyi_of_Liao.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/51/Epitaph_of_Empress_Xuanyi_of_Liao.jpg",
+    "sha256": "bdf7a44f6c36e871c8a2d44316599e293d9ff0b1b48d0228b35dde7c76e6460c",
+    "width": 3264,
+    "height": 2448,
+    "licence": "CC BY-SA 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "terms": "Photograph of the stone in the Liaoning Provincial Museum, own work by the uploader, licensed CC BY-SA 4.0. The cropped WebP on this page is offered under the same licence."
+   },
+   "image_bytes": 284430
+  }
+ ],
+ "forms": [
+  {
+   "id": "DZ-01",
+   "inscription": "daozong",
+   "n": 1,
+   "col": 1,
+   "row": 1,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-02",
+   "inscription": "daozong",
+   "n": 2,
+   "col": 1,
+   "row": 2,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-03",
+   "inscription": "daozong",
+   "n": 3,
+   "col": 1,
+   "row": 3,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-04",
+   "inscription": "daozong",
+   "n": 4,
+   "col": 1,
+   "row": 4,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-05",
+   "inscription": "daozong",
+   "n": 5,
+   "col": 1,
+   "row": 5,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-06",
+   "inscription": "daozong",
+   "n": 6,
+   "col": 2,
+   "row": 1,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-07",
+   "inscription": "daozong",
+   "n": 7,
+   "col": 2,
+   "row": 2,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-08",
+   "inscription": "daozong",
+   "n": 8,
+   "col": 2,
+   "row": 3,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-09",
+   "inscription": "daozong",
+   "n": 9,
+   "col": 2,
+   "row": 4,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-10",
+   "inscription": "daozong",
+   "n": 10,
+   "col": 2,
+   "row": 5,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-11",
+   "inscription": "daozong",
+   "n": 11,
+   "col": 3,
+   "row": 1,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-12",
+   "inscription": "daozong",
+   "n": 12,
+   "col": 3,
+   "row": 2,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-13",
+   "inscription": "daozong",
+   "n": 13,
+   "col": 3,
+   "row": 3,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-14",
+   "inscription": "daozong",
+   "n": 14,
+   "col": 3,
+   "row": 4,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-15",
+   "inscription": "daozong",
+   "n": 15,
+   "col": 3,
+   "row": 5,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-16",
+   "inscription": "daozong",
+   "n": 16,
+   "col": 4,
+   "row": 1,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-17",
+   "inscription": "daozong",
+   "n": 17,
+   "col": 4,
+   "row": 2,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-18",
+   "inscription": "daozong",
+   "n": 18,
+   "col": 4,
+   "row": 3,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-19",
+   "inscription": "daozong",
+   "n": 19,
+   "col": 4,
+   "row": 4,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-20",
+   "inscription": "daozong",
+   "n": 20,
+   "col": 4,
+   "row": 5,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-21",
+   "inscription": "daozong",
+   "n": 21,
+   "col": 5,
+   "row": 1,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-22",
+   "inscription": "daozong",
+   "n": 22,
+   "col": 5,
+   "row": 2,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-23",
+   "inscription": "daozong",
+   "n": 23,
+   "col": 5,
+   "row": 3,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-24",
+   "inscription": "daozong",
+   "n": 24,
+   "col": 5,
+   "row": 4,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-25",
+   "inscription": "daozong",
+   "n": 25,
+   "col": 5,
+   "row": 5,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-26",
+   "inscription": "daozong",
+   "n": 26,
+   "col": 6,
+   "row": 1,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-27",
+   "inscription": "daozong",
+   "n": 27,
+   "col": 6,
+   "row": 2,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-28",
+   "inscription": "daozong",
+   "n": 28,
+   "col": 6,
+   "row": 3,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-29",
+   "inscription": "daozong",
+   "n": 29,
+   "col": 6,
+   "row": 4,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "DZ-30",
+   "inscription": "daozong",
+   "n": 30,
+   "col": 6,
+   "row": 5,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-01",
+   "inscription": "xuanyi",
+   "n": 1,
+   "col": 1,
+   "row": 1,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-02",
+   "inscription": "xuanyi",
+   "n": 2,
+   "col": 1,
+   "row": 2,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-03",
+   "inscription": "xuanyi",
+   "n": 3,
+   "col": 1,
+   "row": 3,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-04",
+   "inscription": "xuanyi",
+   "n": 4,
+   "col": 1,
+   "row": 4,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-05",
+   "inscription": "xuanyi",
+   "n": 5,
+   "col": 2,
+   "row": 1,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-06",
+   "inscription": "xuanyi",
+   "n": 6,
+   "col": 2,
+   "row": 2,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-07",
+   "inscription": "xuanyi",
+   "n": 7,
+   "col": 2,
+   "row": 3,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-08",
+   "inscription": "xuanyi",
+   "n": 8,
+   "col": 2,
+   "row": 4,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-09",
+   "inscription": "xuanyi",
+   "n": 9,
+   "col": 3,
+   "row": 1,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-10",
+   "inscription": "xuanyi",
+   "n": 10,
+   "col": 3,
+   "row": 2,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-11",
+   "inscription": "xuanyi",
+   "n": 11,
+   "col": 3,
+   "row": 3,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-12",
+   "inscription": "xuanyi",
+   "n": 12,
+   "col": 3,
+   "row": 4,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-13",
+   "inscription": "xuanyi",
+   "n": 13,
+   "col": 4,
+   "row": 1,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-14",
+   "inscription": "xuanyi",
+   "n": 14,
+   "col": 4,
+   "row": 2,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-15",
+   "inscription": "xuanyi",
+   "n": 15,
+   "col": 4,
+   "row": 3,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  },
+  {
+   "id": "XY-16",
+   "inscription": "xuanyi",
+   "n": 16,
+   "col": 4,
+   "row": 4,
+   "identification": null,
+   "status": "unidentified",
+   "basis": "No block of either cover has been assigned a reading on this page. Wang 1931 reads the first line of the epitaph text, not the cover block by block."
+  }
+ ],
+ "counts": {
+  "inscriptions": 2,
+  "forms": 46,
+  "identified": 0
+ }
+}

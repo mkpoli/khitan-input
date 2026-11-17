@@ -1,7 +1,7 @@
 <script>
   // One box for anything: pasted Khitan, a catalogue number, a code point, a reading, a meaning, a Chinese word.
   import { db } from '../lib/db.svelte.js'
-  import { ix, lookup, searchReadings, searchWords } from '../lib/data.js'
+  import { ix, lookup, matchedReading, searchReadings, searchWords } from '../lib/data.js'
   import { hasKhitan } from '../lib/script.js'
   import { route, setQuery } from '../lib/route.svelte.js'
   import { autofocus } from '../lib/ui.svelte.js'
@@ -49,7 +49,7 @@
   {:else}
     {#if graphemes.length}
       <div class="ui-section-head"><h2 class="ui-label">{t('nav.graphemes')}</h2><span class="ui-count">{graphemes.length}</span></div>
-      <div class="ui-tiles" style:--ui-tile-size="66px">{#each graphemes as g, i (`${g.id}${i}`)}<Tile {g} />{/each}</div>
+      <div class="ui-tiles" style:--ui-tile-size="66px">{#each graphemes as g, i (`${g.id}${i}`)}<Tile {g} note={pasted.length ? undefined : matchedReading(g, q)} />{/each}</div>
     {/if}
     {#if words.length}
       <div class="ui-section-head"><h2 class="ui-label">{t('nav.words')}</h2><span class="ui-count">{words.length}</span></div>

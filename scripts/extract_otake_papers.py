@@ -229,7 +229,7 @@ def main() -> None:
                 forms.append(["otake2024", " ".join(ids(sp)), word, "", 84 + page])
 
     by_text = {chr(int(r["text_layer_codepoint"], 16)): r["grapheme"] for r in tsv("kss_gengokenkyu_glyphs") if r["grapheme"]}
-    p2015 = Paper(reference(directory, "（2015）"), thesis, "KSS", aliases, by_text)
+    p2015 = Paper(reference(directory, "母音の長さの書き分け"), thesis, "KSS", aliases, by_text)
     for page, where in ((8, "表6"), (10, "表9")):
         text = "\n".join(p2015.lines(page))
         block = text[text.index(where):]
@@ -241,6 +241,16 @@ def main() -> None:
         for line in p2015.lines(page):
             for sp, word in pairs(line):
                 forms.append(["otake2015", " ".join(ids(sp)), word, "", 80 + page])
+
+    # Spellings set in running text, with the page offset to the printed page.
+    for source, marker, first in (("otake2016", "形容詞の性・数", 58), ("otake2017", "Reconstructing the Khitan Vowel", 188)):
+        paper = Paper(reference(directory, marker), thesis, "KhitanSmall", aliases)
+        for page in range(1, len(paper.doc) + 1):
+            for line in paper.lines(page):
+                for sp, word in pairs(line):
+                    # These papers letter their examples (a), (b), ...; a lone letter there is a label.
+                    if not re.fullmatch(r"[a-h]", word):
+                        forms.append([source, " ".join(ids(sp)), word, "", first + page])
 
     for r in tsv("otake2025_tables"):
         readings.append(["otake2025", r["grapheme"], r["value"], "stated", "TABLE " + r["table"], 10])

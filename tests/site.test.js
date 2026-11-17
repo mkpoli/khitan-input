@@ -1,7 +1,9 @@
 import { describe, expect, test } from 'bun:test'
+import { largeUses, matchedReading, phoneticTable } from '../app/lib/data.js'
 import { readFileSync } from 'node:fs'
 import { indexShapes, parseShapes, rankShapes, rasterize, SIZE } from '../app/lib/shape.js'
 import { blockRows, fold, parseWord, FILLER } from '../app/lib/script.js'
+import { BLOCK_START, FILLER as FILLER_CP, NO_GLYPH, PAGE_SIZE, codeChart, codePointLabel, rangeLabel } from '../app/lib/code-chart.js'
 import en from '../messages/en.json'
 import ja from '../messages/ja.json'
 import zhHans from '../messages/zh-Hans.json'
@@ -27,9 +29,72 @@ test('readings can be typed in plain letters', () => {
   expect(fold('*əəg')).toBe('eeg')
 })
 
+test('a large-script character’s jobs split from the words it spells', () => {
+  expect(largeUses('建, 勸 final')).toEqual([{ role: 'final', word: '建' }, { role: 'final', word: '勸' }])
+  expect(largeUses('等 final牛 initial')).toEqual([{ role: 'final', word: '等' }, { role: 'initial', word: '牛' }])
+  expect(largeUses('度節度')).toEqual([])
+  expect(largeUses(undefined)).toEqual([])
+})
+
+test('the phonetic table pivots characters by word and job', () => {
+  const table = phoneticTable([
+    { n: 1, c: '元, 原 medial' },
+    { n: 2, c: '元, 原 final' },
+    { n: 3, c: '等 initial' },
+    { n: 4, c: '建, 勸 final' },
+  ])
+  expect(table.map(r => r.word)).toEqual(['元', '原', '等', '建', '勸'])
+  expect(table[0].medial.map(r => r.n)).toEqual([1])
+  expect(table[0].final.map(r => r.n)).toEqual([2])
+  expect(table[2].initial.map(r => r.n)).toEqual([3])
+})
+
 test('every language has every message', () => {
   const keys = Object.keys(en).sort()
   for (const catalogue of [ja, zhHans, zhHant, ko]) expect(Object.keys(catalogue).sort()).toEqual(keys)
+})
+
+const codeData = JSON.parse(readFileSync('app/public/data/khitan.json', 'utf8'))
+const chart = codeChart(codeData.graphemes)
+
+test('the phonetic table covers the words the source marks', () => {
+  const table = phoneticTable(codeData.large)
+  expect(table).toHaveLength(37)
+  expect(table[0].word).toBe('建')
+  for (const row of table) {
+    for (const role of ['initial', 'final', 'medial']) for (const r of row[role]) expect(r.c).toContain(row.word)
+  }
+  const yuan = table.find(r => r.word === '元')
+  expect(yuan.medial.map(r => r.r)).toEqual(['wo'])
+  expect(yuan.final.map(r => r.r)).toEqual(['ɑn'])
+})
+
+test('the code chart pages the block in runs of sixteen', () => {
+  expect(chart.pages).toHaveLength(2)
+  for (const page of chart.pages) expect(page.cells).toHaveLength(PAGE_SIZE)
+  expect(chart.pages[0].start).toBe(BLOCK_START)
+  expect(chart.pages[0].cells[0].cp).toBe('18B00')
+  expect(chart.pages[1].cells[255].cp).toBe('18CFF')
+  expect(chart.pages.flatMap(page => page.cells).filter(Boolean)).toHaveLength(476)
+  expect(chart.pages[1].cells.slice(219, 255).every(cell => cell === null)).toBe(true)
+  expect(codePointLabel(FILLER_CP)).toBe('U+16FE4')
+  expect(rangeLabel(chart.pages[0])).toBe('U+18B00–U+18BFF')
+})
+
+test('marks the code points the bundled face does not draw', () => {
+  const cells = chart.pages.flatMap(page => page.cells).filter(Boolean)
+  for (const cp of NO_GLYPH) expect(cells.find(g => parseInt(g.cp, 16) === cp)?.drawn).toBe(false)
+  expect(cells.filter(g => !g.drawn)).toHaveLength(NO_GLYPH.size)
+})
+
+test('the code chart counts the inventory and its statuses', () => {
+  expect(chart.graphemes).toBe(491)
+  expect(chart.codePoints).toBe(477)
+  expect(chart.withoutCodePoint).toBe(14)
+  expect(chart.block).toBe(476)
+  expect(chart.filler).toBe(1)
+  expect(chart.status).toEqual({ current: 368, variant: 12, unicode: 109, uncatalogued: 2 })
+  expect(chart.confidence).toEqual({ high: 362, medium: 6, none: 109 })
 })
 
 describe('drawing search', () => {
@@ -63,5 +128,44 @@ describe('drawing search', () => {
       if (rankShapes(index, drawn, { limit: 1 })[0].char === char) first++
     })
     expect(first / index.chars.length).toBeGreaterThan(0.95)
+  })
+})
+
+describe('large drawing search', () => {
+  const index = indexShapes(parseShapes(new Uint8Array(readFileSync('app/public/data/shapes-large.bin'))))
+
+  test('covers the large face on Private Use code points', () => {
+    expect(index.chars.length).toBeGreaterThan(1400)
+    for (const char of index.chars) expect(char.codePointAt(0)).toBeGreaterThanOrEqual(0xE000)
+  })
+
+  test('a glyph drawn as its own line ranks first', () => {
+    let first = 0
+    const sample = index.chars.filter((_, at) => at % 20 === 0)
+    for (const char of sample) {
+      const at = index.chars.indexOf(char)
+      const drawn = new Uint8Array(SIZE * SIZE)
+      for (const cell of index.inks[at]) drawn[cell] = 1
+      if (rankShapes(index, drawn, { limit: 1 })[0].char === char) first++
+    }
+    expect(first / sample.length).toBeGreaterThan(0.95)
+  })
+})
+
+describe('the reading a search matched', () => {
+  const g = { v: 'ard', rs: [{ v: 'ard', k: 'phonetic' }, { v: 'aard', k: 'phonetic' }, { v: 'ABOVE', k: 'semantic' }] }
+
+  test('is the value that matched, not the primary one', () => {
+    expect(matchedReading(g, 'aa')).toBe('aard')
+    expect(matchedReading(g, 'ard')).toBe('ard')
+  })
+
+  test('prefers an exact match over an earlier prefix', () => {
+    expect(matchedReading({ v: 'aar', rs: [{ v: 'aar', k: 'phonetic' }, { v: 'aa', k: 'phonetic' }] }, 'aa')).toBe('aa')
+  })
+
+  test('falls back to the primary value when no reading matched', () => {
+    expect(matchedReading(g, '339')).toBe('ard')
+    expect(matchedReading(g, 'above')).toBe('ard')
   })
 })

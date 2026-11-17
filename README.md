@@ -11,12 +11,18 @@ Grapheme values follow 大竹昌巳 (2020, 2025). Other scholars' values sit bes
 - **Find**: one box for pasted Khitan, a reading, a catalogue number, a code point, a meaning or a Chinese word.
 - **Syllabary**: Otake's values, vowels across and codas down.
 - **Graphemes**: every grapheme, by Unicode group or catalogue number.
-- **Draw**: a drawing pad ranked by shape against Noto Serif Khitan Small Script.
+- **Draw**: a drawing pad ranked by shape against Noto Serif Khitan Small Script, or against
+  BabelStone's large-script glyphs.
 - **Reading**: an input method over readings, with phonetic letters or plain ones.
 - **Words** and **Sentences**: attested words with their evidence, and interlinear sentences.
 - **Blocks**: the text being written, set as blocks in columns running right to left.
 - **Large script**: reconstructions on BabelStone's Private Use code points, and a
   [running-script face](data/running/README.md) cut from folio 9 of Nova N 176.
+- **Jurchen**: nine characters a cited figure sets beside a Khitan large-script form, drawn from
+  BabelStone's glyphs and the Jurchen face, with what the sources say of the four directions.
+- **Seal script**: the two seal-script covers of the Qingling 哀册, with a
+  [block record](data/seal/README.md) for each.
+- **Code chart**: every mapped character in block order, with the inventory's counts.
 
 ## Build
 
@@ -26,6 +32,7 @@ scripts/extract_otake2020.py <dissertation.pdf>
 scripts/extract_otake_papers.py <directory of the papers>
 scripts/extract_kss_mappings.py cache/web/KSS_Mappings.pdf > data/unicode/kss_mappings.tsv
 scripts/extract_web_layers.py
+scripts/extract_rona_tas2026.py <volume two PDF>
 python3 scripts/build_db.py          # dist/khitan.sqlite
 python3 -m unittest discover tests
 python3 scripts/build_site_data.py   # app/public/data/khitan.json
@@ -33,7 +40,7 @@ bun install
 bun run dev
 ```
 
-`scripts/build_shapes.py` builds the pen lines the drawing pad compares with. `scripts/messages.py` writes the five interface languages to `messages/`.
+`scripts/build_shapes.py` builds the pen lines the drawing pad compares with, for both faces (`--large` for the large script). `scripts/messages.py` writes the five interface languages to `messages/`.
 
 The tables are described in [`docs/database.md`](docs/database.md) and the sources in
 [`docs/materials.md`](docs/materials.md). `data/sources.tsv` states every source's terms.
