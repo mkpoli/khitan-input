@@ -25,6 +25,9 @@ Citations and terms are in `data/sources.tsv`.
 | [Liu and Wang 2004 list](https://babelstone.co.uk/Khitan/LiuWang2004.html), transcribed by West | 189 large-script reconstructions | none stated |
 | [BabelStone Khitan Large Glyphs](https://www.babelstone.co.uk/Fonts/KhitanLarge.html) v1.012, 2023 | the face of the Large script page; 1,469 Private Use glyphs, unordered and experimental | redistributable, not for sale alone |
 | [Noto Serif Khitan Small Script](https://github.com/notofonts/khitan-small-script) | shapes compared by eye; 470 of the block, plus the filler, without U+18CD6–18CDA and U+18CFF | OFL 1.1 |
+| [Funeral Epitaph in Khitan Script and Its Cover of Emperor Daozong of Liao Dynasty](https://commons.wikimedia.org/wiki/File:Funeral_Epitaph_in_Khitan_Script_and_Its_Cover_of_Emperor_Daozong_of_Liao_Dynasty.jpg), Wikimedia Commons, photograph by 红烧腰果, 2019 | the Daozong seal-script cover | CC BY 4.0 |
+| [Epitaph of Empress Xuanyi of Liao](https://commons.wikimedia.org/wiki/File:Epitaph_of_Empress_Xuanyi_of_Liao.jpg), Wikimedia Commons, photograph by Tonyxy1992, 2015 | the Xuanyi seal-script cover | CC BY-SA 4.0 |
+| 王靜如 (1931), 「遼道宗及宣懿皇后契丹國字哀冊初釋」, 《中央研究院歷史語言研究所集刊》第三本第四分, 467–478, plates 1–4. [PDF](https://www1.ihp.sinica.edu.tw/storage/w2_file/5017YcdiByr.pdf) | inscriptions, dates and plates of the two seal covers | no reuse licence stated |
 
 Otake's fonts, `KhitanSmall` and `KSS-Gengokenkyu`, identify glyphs during extraction and are never
 written out. Font revisions between the papers changed some outlines; `data/otake_papers/` records how each
@@ -32,6 +35,11 @@ such glyph was identified, and five stay unidentified.
 
 大竹昌巳 (2018) 「日本契丹学小史」 gives the history of the field and no data. 大竹昌巳 (2013) is the
 predecessor of the 2015 paper; its text layer is OCR and has lost the Khitan.
+
+`data/seal/` records the two seal-script covers of the Qingling 哀册: 30 blocks on the Daozong cover
+and 16 on the Xuanyi cover. Wang 1931 identifies the inscriptions and reads the first line of each
+epitaph text; no block of either cover is assigned a reading here, so every record is marked
+`unidentified`. See [`data/seal/README.md`](../data/seal/README.md).
 
 大竹昌巳 (2015c) locates 10 or more Chinese classical works behind quotations in Khitan inscriptions and adds
 白居易「祭微之文」, 『後漢書』江革伝 and 『孟子』告子上. The dissertation cites it for mɵɵr (TAY 26) and
