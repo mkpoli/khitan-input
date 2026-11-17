@@ -21,6 +21,7 @@
   import Sentences from './pages/Sentences.svelte'
   import Blocks from './pages/Blocks.svelte'
   import Large from './pages/Large.svelte'
+  import Jurchen from './pages/Jurchen.svelte'
   import Seal from './pages/Seal.svelte'
   import Codes from './pages/Codes.svelte'
   import Documents from './pages/Documents.svelte'
@@ -31,7 +32,7 @@
 
   let settingsOpen = $state(false)
   let sponsorOpen = $state(false)
-  const FULL = new Set(['about', 'documents', 'large', 'seal', 'codes'])
+  const FULL = new Set(['about', 'documents', 'large', 'jurchen', 'seal', 'codes'])
 
   $effect(() => {
     const entry = PAGES.find(p => p.path === route.page)
@@ -120,6 +121,7 @@
         {:else if route.page === 'sentences'}<Sentences />
         {:else if route.page === 'blocks'}<Blocks />
         {:else if route.page === 'large'}<Large />
+        {:else if route.page === 'jurchen'}<Jurchen />
         {:else if route.page === 'seal'}<Seal />
         {:else if route.page === 'codes'}<Codes />
         {:else if route.page === 'documents'}<Documents />

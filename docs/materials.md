@@ -24,6 +24,10 @@ Citations and terms are in `data/sources.tsv`.
 | Róna-Tas (2026), [vol. 2](https://konfuciuszintezet.hu/downloads/monographs/Rona-Tas_Gaoshi_VOL-2.pdf) 19.1, the Höhhot list revised | values and CWJ (2017) numbers for 452 graphemes, 444 with a code point | free download; no licence stated |
 | [Liu and Wang 2004 list](https://babelstone.co.uk/Khitan/LiuWang2004.html), transcribed by West | 189 large-script reconstructions | none stated |
 | [BabelStone Khitan Large Glyphs](https://www.babelstone.co.uk/Fonts/KhitanLarge.html) v1.012, 2023 | the face of the Large script page; 1,469 Private Use glyphs, unordered and experimental | redistributable, not for sale alone |
+| Kiyose Gizaburō Norifu 清瀬義三郎則府, 「女真文字」, [地球ことば村](https://www.chikyukotobamura.org/muse/wr_easia_9.html), updated 2022-06-18 | the nine Jurchen characters with a Khitan large-script form, and the four directions written with a stem and a suffix | cited |
+| T. A. Kane, *The Sino-Jurchen Vocabulary of the Bureau of Interpreters*, 1989, tables 7–8, pp. 22–23 ([scan](https://archive.org/details/Khitan-et-Jurchen-languages)) | Jurchen characters derived from Chinese through the Khitan large script (天 年 月 日), and from distorted Chinese characters (東 西 南 北) | cited, not redistributed |
+| Jin Guangping 金光平 and Jin Qizong 金啓孮, 《女真語言文字研究》, 1980, pp. 56–57 ([PDF](https://archive.org/download/Khitan-et-Jurchen-languages/%E5%A5%B3%E7%9C%9F%E8%AF%AD%E8%A8%80%E6%96%87%E5%AD%97%E7%A0%94%E7%A9%B6.pdf#page=67)) | Chinese-based characters on p. 56; characters shared with, or altered from, Jinxi Khitan characters on p. 57 | cited |
+| Alari Xuwasun Jurchen, `AlariXuwasunJurchen-Regular.woff2`, by Sulfa, Dooran and Raxon7, [朝花·夕拾 電子藏書閣](https://dorontu.com/#/cloud), folder 女真文资料/女真文字体 | the Jurchen face on the comparison page; 914 characters and 51 radicals | SIL OFL 1.1, stated in the font's name table |
 | [Noto Serif Khitan Small Script](https://github.com/notofonts/khitan-small-script) | shapes compared by eye; 470 of the block, plus the filler, without U+18CD6–18CDA and U+18CFF | OFL 1.1 |
 | [Funeral Epitaph in Khitan Script and Its Cover of Emperor Daozong of Liao Dynasty](https://commons.wikimedia.org/wiki/File:Funeral_Epitaph_in_Khitan_Script_and_Its_Cover_of_Emperor_Daozong_of_Liao_Dynasty.jpg), Wikimedia Commons, photograph by 红烧腰果, 2019 | the Daozong seal-script cover | CC BY 4.0 |
 | [Epitaph of Empress Xuanyi of Liao](https://commons.wikimedia.org/wiki/File:Epitaph_of_Empress_Xuanyi_of_Liao.jpg), Wikimedia Commons, photograph by Tonyxy1992, 2015 | the Xuanyi seal-script cover | CC BY-SA 4.0 |
@@ -44,6 +48,28 @@ epitaph text; no block of either cover is assigned a reading here, so every reco
 大竹昌巳 (2015c) locates 10 or more Chinese classical works behind quotations in Khitan inscriptions and adds
 白居易「祭微之文」, 『後漢書』江革伝 and 『孟子』告子上. The dissertation cites it for mɵɵr (TAY 26) and
 yaw- (YER 17); its 31 quotations are not transcribed here.
+
+## The Jurchen comparison
+
+Nine characters of the comparison page come from Kiyose's figure. Each Khitan form was drawn from
+BabelStone's Private Use font and matched to the figure by shape; the match is this site's work, and
+every pair was checked side by side. The codes are BabelStone's order, not a stable encoding:
+
+| Gloss | Khitan | Jurchen |
+| --- | --- | --- |
+| 天 | U+E000 | U+18E16 |
+| 年 | U+E018 | U+19012 |
+| 日 | U+E0C9 | U+18F7A |
+| 月 | U+E0C6 | U+190FA |
+| 龍 | U+E0FF | U+18F65 |
+| 人 | U+E00A | U+1906F |
+| 聽 | U+E47C | U+1907C |
+| 中 | U+E345 | U+190FB |
+| 福 | U+E034 | U+19182 |
+
+Liu and Wang 2004 gloss U+E00A as 人 and U+E018 as 年, which agrees with the matches. The four
+directions are not among the nine; Kiyose gives them only in Jurchen, and the sources place them with
+Chinese rather than Khitan. Jurchen readings follow Jin Qizong's dictionary (1984).
 
 ## How the script is encoded
 
