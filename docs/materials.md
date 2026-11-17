@@ -1,6 +1,6 @@
 # Materials
 
-Every source used, every one found while looking, and what is still missing. Retrieved 2026-11-06.
+Every source used, every one found while looking, and what is still missing. Retrieved 2026-11-06; seal sources 2026-11-17.
 "Opened" means the file or page was read here; the rest comes from search results or citations.
 
 ## In use
