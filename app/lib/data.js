@@ -82,3 +82,42 @@ export const wordsWith = id => ix.words.filter(w => w.sp && w.sp.replace(/~/g, '
 
 /** The primary reading of a character, for transcription. @param {string} ch */
 export const readingOf = ch => ix.byChar.get(ch)?.v ?? ''
+
+// Liu and Wang mark a character's job inside a word after the word: "建 initial", "建, 勸 final".
+const ROLE = /\b(initial|final|medial)\b/g
+
+/**
+ * The words a large-script character helps spell, with its job in each.
+ * @param {string} [c] the Chinese transcription as printed
+ * @returns {{ role: string, word: string }[]}
+ */
+export function largeUses(c) {
+  /** @type {{ role: string, word: string }[]} */
+  const uses = []
+  if (!c) return uses
+  let last = 0
+  ROLE.lastIndex = 0
+  for (let m; (m = ROLE.exec(c)); ) {
+    for (const word of c.slice(last, m.index).split(/[,，、\s]+/)) if (word) uses.push({ role: m[1], word })
+    last = ROLE.lastIndex
+  }
+  return uses
+}
+
+/**
+ * The large-script readings pivoted by word: which character spells the word's
+ * initial, final or medial. Only readings the source marks for a job appear.
+ * @param {any[]} rows
+ */
+export function phoneticTable(rows) {
+  /** @type {Map<string, any>} */
+  const byWord = new Map()
+  for (const r of rows) {
+    for (const { role, word } of largeUses(r.c)) {
+      let row = byWord.get(word)
+      if (!row) byWord.set(word, row = { word, initial: [], final: [], medial: [] })
+      row[role].push(r)
+    }
+  }
+  return [...byWord.values()]
+}
