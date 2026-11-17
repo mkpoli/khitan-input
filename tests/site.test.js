@@ -131,6 +131,27 @@ describe('drawing search', () => {
   })
 })
 
+describe('large drawing search', () => {
+  const index = indexShapes(parseShapes(new Uint8Array(readFileSync('app/public/data/shapes-large.bin'))))
+
+  test('covers the large face on Private Use code points', () => {
+    expect(index.chars.length).toBeGreaterThan(1400)
+    for (const char of index.chars) expect(char.codePointAt(0)).toBeGreaterThanOrEqual(0xE000)
+  })
+
+  test('a glyph drawn as its own line ranks first', () => {
+    let first = 0
+    const sample = index.chars.filter((_, at) => at % 20 === 0)
+    for (const char of sample) {
+      const at = index.chars.indexOf(char)
+      const drawn = new Uint8Array(SIZE * SIZE)
+      for (const cell of index.inks[at]) drawn[cell] = 1
+      if (rankShapes(index, drawn, { limit: 1 })[0].char === char) first++
+    }
+    expect(first / sample.length).toBeGreaterThan(0.95)
+  })
+})
+
 describe('the reading a search matched', () => {
   const g = { v: 'ard', rs: [{ v: 'ard', k: 'phonetic' }, { v: 'aard', k: 'phonetic' }, { v: 'ABOVE', k: 'semantic' }] }
 

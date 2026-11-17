@@ -11,7 +11,8 @@ Grapheme values follow 大竹昌巳 (2020, 2025). Other scholars' values sit bes
 - **Find**: one box for pasted Khitan, a reading, a catalogue number, a code point, a meaning or a Chinese word.
 - **Syllabary**: Otake's values, vowels across and codas down.
 - **Graphemes**: every grapheme, by Unicode group or catalogue number.
-- **Draw**: a drawing pad ranked by shape against Noto Serif Khitan Small Script.
+- **Draw**: a drawing pad ranked by shape against Noto Serif Khitan Small Script, or against
+  BabelStone's large-script glyphs.
 - **Reading**: an input method over readings, with phonetic letters or plain ones.
 - **Words** and **Sentences**: attested words with their evidence, and interlinear sentences.
 - **Blocks**: the text being written, set as blocks in columns running right to left.
@@ -38,7 +39,7 @@ bun install
 bun run dev
 ```
 
-`scripts/build_shapes.py` builds the pen lines the drawing pad compares with. `scripts/messages.py` writes the five interface languages to `messages/`.
+`scripts/build_shapes.py` builds the pen lines the drawing pad compares with, for both faces (`--large` for the large script). `scripts/messages.py` writes the five interface languages to `messages/`.
 
 The tables are described in [`docs/database.md`](docs/database.md) and the sources in
 [`docs/materials.md`](docs/materials.md). `data/sources.tsv` states every source's terms.
