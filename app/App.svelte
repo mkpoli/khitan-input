@@ -21,6 +21,7 @@
   import Sentences from './pages/Sentences.svelte'
   import Blocks from './pages/Blocks.svelte'
   import Large from './pages/Large.svelte'
+  import Seal from './pages/Seal.svelte'
   import Codes from './pages/Codes.svelte'
   import Documents from './pages/Documents.svelte'
   import About from './pages/About.svelte'
@@ -30,12 +31,14 @@
 
   let settingsOpen = $state(false)
   let sponsorOpen = $state(false)
-  const FULL = new Set(['about', 'documents', 'large', 'codes'])
+  const FULL = new Set(['about', 'documents', 'large', 'seal', 'codes'])
 
   $effect(() => {
     const entry = PAGES.find(p => p.path === route.page)
     document.title = entry && entry.path ? `${t(entry.label)} · ${t('app.name')}` : t('app.name')
     applyCanonical(route.page)
+    const tab = document.querySelector('.tabs a.on')
+    if (tab) tab.scrollIntoView({ block: 'nearest', inline: 'center' })
   })
 
   /** @param {MouseEvent} event @param {string} page */
@@ -117,6 +120,7 @@
         {:else if route.page === 'sentences'}<Sentences />
         {:else if route.page === 'blocks'}<Blocks />
         {:else if route.page === 'large'}<Large />
+        {:else if route.page === 'seal'}<Seal />
         {:else if route.page === 'codes'}<Codes />
         {:else if route.page === 'documents'}<Documents />
         {:else}<About />{/if}
