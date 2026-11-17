@@ -29,9 +29,14 @@ Citations and terms are in `data/sources.tsv`.
 | Jin Guangping 金光平 and Jin Qizong 金啓孮, 《女真語言文字研究》, 1980, pp. 56–57 ([PDF](https://archive.org/download/Khitan-et-Jurchen-languages/%E5%A5%B3%E7%9C%9F%E8%AF%AD%E8%A8%80%E6%96%87%E5%AD%97%E7%A0%94%E7%A9%B6.pdf#page=67)) | Chinese-based characters on p. 56; characters shared with, or altered from, Jinxi Khitan characters on p. 57 | cited |
 | Alari Xuwasun Jurchen, `AlariXuwasunJurchen-Regular.woff2`, by Sulfa, Dooran and Raxon7, [朝花·夕拾 電子藏書閣](https://dorontu.com/#/cloud), folder 女真文资料/女真文字体 | the Jurchen face on the comparison page; 914 characters and 51 radicals | SIL OFL 1.1, stated in the font's name table |
 | [Noto Serif Khitan Small Script](https://github.com/notofonts/khitan-small-script) | the small-script drawing search; shapes compared by eye; 470 of the block, plus the filler, without U+18CD6–18CDA and U+18CFF | OFL 1.1 |
+| [Nova N 176 folio 9](https://commons.wikimedia.org/wiki/File:Nova_N_176_folio_9.jpg), Wikimedia Commons, from V. P. Zaytsev (2011), fig. 4 | the photograph the running-script forms are cut from | PD-scan (PD-old-100) |
 | [Funeral Epitaph in Khitan Script and Its Cover of Emperor Daozong of Liao Dynasty](https://commons.wikimedia.org/wiki/File:Funeral_Epitaph_in_Khitan_Script_and_Its_Cover_of_Emperor_Daozong_of_Liao_Dynasty.jpg), Wikimedia Commons, photograph by 红烧腰果, 2019 | the Daozong seal-script cover | CC BY 4.0 |
 | [Epitaph of Empress Xuanyi of Liao](https://commons.wikimedia.org/wiki/File:Epitaph_of_Empress_Xuanyi_of_Liao.jpg), Wikimedia Commons, photograph by Tonyxy1992, 2015 | the Xuanyi seal-script cover | CC BY-SA 4.0 |
 | 王靜如 (1931), 「遼道宗及宣懿皇后契丹國字哀冊初釋」, 《中央研究院歷史語言研究所集刊》第三本第四分, 467–478, plates 1–4. [PDF](https://www1.ihp.sinica.edu.tw/storage/w2_file/5017YcdiByr.pdf) | inscriptions, dates and plates of the two seal covers | no reuse licence stated |
+
+`data/running/` cuts 96 forms from folio 9 of Nova N 176 (IOM RAS, Nova N 176, inv. 1055). Zaytsev
+identifies the manuscript and the state name at the head of column 6; the rest of the page is
+undeciphered, so the face keeps page-local code points. See [`data/running/README.md`](../data/running/README.md).
 
 Otake's fonts, `KhitanSmall` and `KSS-Gengokenkyu`, identify glyphs during extraction and are never
 written out. Font revisions between the papers changed some outlines; `data/otake_papers/` records how each
