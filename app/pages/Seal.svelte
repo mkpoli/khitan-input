@@ -5,8 +5,6 @@
 
   /** @param {string} id */
   const blocks = id => seal.forms.filter(form => form.inscription === id)
-  /** @param {string} id */
-  const source = id => seal.sources.find(item => item.id === id)
 </script>
 
 <div class="ui-page" data-width="wide">
@@ -24,7 +22,7 @@
           alt={`${inscription.title} (${inscription.plate})`} decoding="async" />
         <figcaption class="ui-hint">
           {inscription.plate} · {inscription.object} · {inscription.date}
-          · {t('seal.figure', { source: source(inscription.source)?.citation ?? '' })}
+          · {t('seal.figure', { source: `${inscription.source_record.author} · ${inscription.source_record.licence}` })}
         </figcaption>
       </figure>
 
