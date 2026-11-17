@@ -21,8 +21,8 @@
         <img src={inscription.image} width={inscription.image_width} height={inscription.image_height}
           alt={`${inscription.title} (${inscription.plate})`} decoding="async" />
         <figcaption class="ui-hint">
-          {inscription.plate} · {inscription.object} · {inscription.date}
-          · {t('seal.figure')} <span class="credit">{inscription.source_record.author} · {inscription.source_record.licence}</span>
+          <span>{inscription.plate} · {inscription.object} · {inscription.date}</span><br />
+          {t('seal.figure')} <span class="credit">{inscription.source_record.author} · {inscription.source_record.licence}</span>
         </figcaption>
       </figure>
 
