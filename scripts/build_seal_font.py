@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 import pathlib
 
 import numpy as np
@@ -39,6 +40,7 @@ from fontTools.ttLib.tables._g_l_y_f import flagOverlapSimple
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 REFERENCE = ROOT / 'data/seal/font/reference.png'
+OVERRIDES = ROOT / 'data/seal/font/overrides.json'
 FORMS = ROOT / 'data/seal/font/forms.json'
 TTF = ROOT / 'fonts/QinglingSeal-Regular.ttf'
 WOFF2 = ROOT / 'fonts/QinglingSeal-Regular.woff2'
@@ -170,6 +172,42 @@ def glyph(paths: list[list[list[float]]]):
     return result
 
 
+def load_overrides() -> dict[str, list[list[list[float]]]]:
+    """Parse the manual M/L/Q redraws into font-unit paths."""
+    if not OVERRIDES.exists():
+        return {}
+    data = json.loads(OVERRIDES.read_text(encoding='utf-8'))
+    out = {}
+    for name, strokes in data['glyphs'].items():
+        paths = []
+        for stroke in strokes:
+            tokens = re.sub(r'([MLQ])', r' \1 ', stroke).replace(',', ' ').split()
+            points = []
+            current = (0.0, 0.0)
+            i = 0
+            while i < len(tokens):
+                command = tokens[i]
+                if command in ('M', 'L'):
+                    current = (float(tokens[i + 1]), float(tokens[i + 2]))
+                    points.append(current)
+                    i += 3
+                elif command == 'Q':
+                    control = (float(tokens[i + 1]), float(tokens[i + 2]))
+                    end = (float(tokens[i + 3]), float(tokens[i + 4]))
+                    for step in range(1, 11):
+                        t = step / 10
+                        points.append((
+                            (1 - t) ** 2 * current[0] + 2 * (1 - t) * t * control[0] + t * t * end[0],
+                            (1 - t) ** 2 * current[1] + 2 * (1 - t) * t * control[1] + t * t * end[1]))
+                    current = end
+                    i += 5
+                else:
+                    raise SystemExit(f'{name}: unknown command {command}')
+            paths.append([[round(132 + x * 7.6, 2), round(820 - y * 7.6, 2)] for x, y in points])
+        out[name] = paths
+    return out
+
+
 def build(record: dict) -> None:
     """Write the font, the WOFF2 copies and the specimen."""
     order = ['.notdef']
@@ -251,14 +289,16 @@ def draw_specimen(record: dict) -> None:
 def main() -> None:
     reference = Image.open(REFERENCE).convert('L')
     width, height = reference.size
+    overrides = load_overrides()
     forms = []
     for index in range(16):
         column, row = index % 4, index // 4
         left, right = round(column * width / 4), round((column + 1) * width / 4)
         top, bottom = round(row * height / 4), round((row + 1) * height / 4)
         cell = reference.crop((left, top, right, bottom))
-        forms.append({'id': f'XY-{index + 1:02d}', 'col': column + 1, 'row': row + 1,
-                      'paths': normalise(trace(cell))})
+        name = f'XY-{index + 1:02d}'
+        paths = overrides.get(name) or normalise(trace(cell))
+        forms.append({'id': name, 'col': column + 1, 'row': row + 1, 'paths': paths})
     record = {
         'source': {
             'drawing': 'reference.png',

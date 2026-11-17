@@ -1,0 +1,17 @@
+{
+ "note": "Manual redraws for blocks whose traced skeleton left a junction artefact. Coordinates are 0-100, y down; M/L/Q strokes.",
+ "glyphs": {
+  "XY-08": [
+   "M9,20 L60,20",
+   "M37,20 L37,33",
+   "M16,82 L16,52 Q16,33 37,33 Q58,33 58,52 L58,82",
+   "M26,56 L46,56"
+  ],
+  "XY-11": [
+   "M42,12 L42,86",
+   "M18,27 L55,27 Q65,27 65,40 L65,82",
+   "M42,36 L15,66",
+   "M42,36 L65,60"
+  ]
+ }
+}
