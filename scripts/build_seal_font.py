@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["brotli==1.2.1", "fonttools==4.68.0", "pillow==13.0.0"]
+# dependencies = ["brotli==1.2.1", "fonttools==4.68.0", "pillow==13.0.0", "shapely==2.1.2"]
 # ///
 """Build the pilot seal typeface and its gallery.
 
@@ -20,6 +20,8 @@ from PIL import Image, ImageDraw, ImageFont
 from fontTools.fontBuilder import FontBuilder
 from fontTools.pens.ttGlyphPen import TTGlyphPen
 from fontTools.ttLib.tables._g_l_y_f import flagOverlapSimple
+from shapely.geometry import LineString
+from shapely.ops import unary_union
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 FORMS = ROOT / 'data/seal/font/forms.json'
@@ -62,18 +64,54 @@ def _disk(pen: TTGlyphPen, centre, radius: float) -> None:
     pen.closePath()
 
 
+def _area(points: list[tuple[float, float]]) -> float:
+    return sum(a[0] * b[1] - b[0] * a[1] for a, b in zip(points, points[1:] + points[:1])) / 2
+
+
 def glyph(paths: list[list[list[float]]]):
-    """Expand centreline polylines into a TrueType glyph with a round pen."""
-    pen = TTGlyphPen(None)
+    """Union the round-pen strokes into one clean outline per glyph."""
+    shapes = []
     for path in paths:
-        for start, end in zip(path, path[1:]):
-            _rectangle(pen, start, end, RADIUS)
-        for point in path:
-            _disk(pen, point, RADIUS)
+        points = [tuple(point) for point in path]
+        if len(points) < 2:
+            continue
+        shapes.append(LineString(points).buffer(RADIUS, cap_style='round', join_style='round', resolution=12))
+    shape = unary_union(shapes)
+    polygons = list(shape.geoms) if hasattr(shape, 'geoms') else [shape]
+    pen = TTGlyphPen(None)
+    for polygon in polygons:
+        rings = [polygon.exterior] + list(polygon.interiors)
+        for index, ring in enumerate(rings):
+            points = list(ring.coords)
+            if len(points) < 3:
+                continue
+            # TrueType fills clockwise exteriors, counter-clockwise holes.
+            clockwise = _area(points) < 0
+            if (index == 0) != clockwise:
+                points.reverse()
+            pen.moveTo(points[0])
+            for point in points[1:]:
+                pen.lineTo(point)
+            pen.closePath()
     result = pen.glyph()
     if result.numberOfContours:
         result.flags[0] |= flagOverlapSimple
     return result
+
+
+def fit(record: dict) -> None:
+    """Put every glyph on one baseline at one height, centred in the em."""
+    for form in record['forms']:
+        points = [point for path in form['paths'] for point in path]
+        xs = [point[0] for point in points]
+        ys = [point[1] for point in points]
+        width = max(xs) - min(xs)
+        height = max(ys) - min(ys)
+        scale = min(700 / max(height, 1), 860 / max(width, 1))
+        cx = (min(xs) + max(xs)) / 2
+        bottom = min(ys)
+        form['paths'] = [[[round(512 + (x - cx) * scale, 2), round(80 + (y - bottom) * scale, 2)]
+                          for x, y in path] for path in form['paths']]
 
 
 def build(record: dict) -> None:
@@ -155,6 +193,7 @@ def main() -> None:
     record = json.loads(FORMS.read_text(encoding='utf-8'))
     if len(record['forms']) != 16:
         raise SystemExit(f"expected 16 forms, read {len(record['forms'])}")
+    fit(record)
     build(record)
 
 

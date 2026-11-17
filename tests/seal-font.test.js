@@ -35,7 +35,7 @@ test('the built faces and the specimen are in the repository', () => {
   expect([0x00010000, 0x74727565]).toContain(ttf.readUInt32BE(0))
   expect(woff2.subarray(0, 4).toString('latin1')).toBe('wOF2')
   expect(web.equals(woff2)).toBe(true)
-  expect(ttf.length).toBeGreaterThan(100_000)
+  expect(ttf.length).toBeGreaterThan(10_000)
   expect(existsSync(new URL('../docs/seal-gallery.png', import.meta.url))).toBe(true)
   expect(existsSync(new URL('../data/seal/font/README.md', import.meta.url))).toBe(true)
 })
