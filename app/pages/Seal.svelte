@@ -5,6 +5,7 @@
 
   /** @param {string} id */
   const blocks = id => seal.forms.filter(form => form.inscription === id)
+  const glyphs = Array.from({ length: 16 }, (_, index) => String.fromCodePoint(0xE700 + index))
 </script>
 
 <div class="ui-page" data-width="wide">
@@ -56,6 +57,26 @@
     </section>
   {/each}
 
+  <section class="ui-section typeface">
+    <div class="ui-section-head">
+      <h2 class="ui-label">{t('seal.typeface')}</h2>
+      <span class="ui-count">U+E700–U+E70F</span>
+    </div>
+    <p class="typeface-note">{t('seal.typeface.note')}</p>
+    <div class="typeface-grid">
+      {#each glyphs as glyph, index (glyph)}
+        <span class="typeface-cell">
+          <span class="typeface-glyph">{glyph}</span>
+          <span class="typeface-code">U+{ (0xE700 + index).toString(16).toUpperCase() }</span>
+        </span>
+      {/each}
+    </div>
+    <p class="ui-hint">
+      <a href="/fonts/QinglingSeal-Regular.ttf" download>{t('seal.typeface.download')}</a> · CC BY-SA 4.0
+      · <a href="https://github.com/iebb/sealie">Sealie</a> (OFL 1.1)
+    </p>
+  </section>
+
   <section class="ui-section">
     <h2 class="ui-label">{t('seal.sources')}</h2>
     <ul class="sources">
@@ -88,11 +109,17 @@
   .block{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:5px 7px;border:1px solid var(--ui-color-border);border-radius:var(--ui-radius-xs);background:var(--ui-color-surface)}
   .block .id{color:var(--ui-color-ink-muted);font-size:10px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
   .block .pos{font-size:15px;font-weight:var(--ui-weight-semibold);font-variant-numeric:tabular-nums;line-height:1}
+  .typeface-note{max-inline-size:66ch;font-size:var(--ui-text-sm);line-height:var(--ui-leading-normal)}
+  .typeface-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;max-inline-size:720px}
+  .typeface-cell{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;border:1px solid var(--ui-color-border);border-radius:var(--ui-radius-xs)}
+  .typeface-glyph{font-family:'Qingling Seal';font-size:38px;line-height:1}
+  .typeface-code{color:var(--ui-color-ink-muted);font-size:9px;font-variant-numeric:tabular-nums}
   .sources{display:grid;gap:var(--ui-space-md);margin:0;padding:0;list-style:none;font-size:var(--ui-text-sm)}
   .sources p{overflow-wrap:anywhere}
   .sources p + p{margin-block-start:2px;color:var(--ui-color-ink-soft)}
   @media (max-width:900px){
     .cover-section{grid-template-columns:minmax(0,1fr)}
     .blocks{grid-auto-rows:56px}
+    .typeface-grid{grid-template-columns:repeat(8,minmax(0,1fr))}
   }
 </style>
