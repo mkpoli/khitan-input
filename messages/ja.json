@@ -140,6 +140,7 @@
  "seal.columns": "{count}列",
  "seal.rows": "{count}行",
  "seal.unidentified": "未詳",
+ "seal.identified": "同定",
  "seal.order": "列は右から左へ、行は上から下へ。各枠が蓋の一ブロックにあたる。",
  "seal.figure": "写真：",
  "seal.typeface": "書体（試作）",

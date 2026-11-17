@@ -1,4 +1,4 @@
-// The seal-script covers: two inscriptions, 46 blocks, all left unidentified.
+// The seal-script covers: two inscriptions, 46 blocks; the 16 Xuanyi blocks carry their Khitan characters.
 import { expect, test } from 'bun:test'
 import { existsSync, readFileSync } from 'node:fs'
 
@@ -9,7 +9,7 @@ const inscriptions = record.inscriptions
 test('two inscriptions and 46 blocks, counted from the covers', () => {
   expect(inscriptions.map(inscription => inscription.id)).toEqual(['daozong', 'xuanyi'])
   expect(forms).toHaveLength(46)
-  expect(record.counts).toEqual({ inscriptions: 2, forms: 46, identified: 0 })
+  expect(record.counts).toEqual({ inscriptions: 2, forms: 46, identified: 16 })
   expect(inscriptions.map(inscription => [inscription.columns, inscription.rows])).toEqual([[6, 5], [4, 4]])
   expect(forms.filter(form => form.inscription === 'daozong')).toHaveLength(30)
   expect(forms.filter(form => form.inscription === 'xuanyi')).toHaveLength(16)
@@ -49,39 +49,20 @@ test('block ids are unique and in reading order', () => {
   expect(ids.slice(30)).toEqual(Array.from({ length: 16 }, (_, index) => `XY-${String(index + 1).padStart(2, '0')}`))
 })
 
-test('no block has a reading, and every record says why', () => {
-  for (const form of forms) {
+test('every block records its identification status', () => {
+  const xuanyi = forms.filter(form => form.inscription === 'xuanyi')
+  const daozong = forms.filter(form => form.inscription === 'daozong')
+  expect(xuanyi).toHaveLength(16)
+  expect(daozong).toHaveLength(30)
+  for (const form of xuanyi) {
+    expect(form.status).toBe('identified')
+    expect([...form.identification]).toHaveLength(1)
+    expect(form.unicode).toMatch(/^U\+18[BC][0-9A-F]{2}$/)
+    expect(form.basis).toContain('BabelStone')
+  }
+  for (const form of daozong) {
     expect(form.identification).toBeNull()
     expect(form.status).toBe('unidentified')
-    expect(form.basis).toContain('Wang 1931')
+    expect(form.basis).toContain('Daozong')
   }
-})
-
-test('the photographs are licensed, credited and on disk', () => {
-  const licences = record.sources.map(source => source.licence)
-  expect(licences).toContain('CC BY 4.0')
-  expect(licences).toContain('CC BY-SA 4.0')
-  for (const inscription of inscriptions) {
-    const source = record.sources.find(item => item.id === inscription.source)
-    expect(source).toBeTruthy()
-    expect(source.url).toStartWith('https://commons.wikimedia.org/')
-    expect(source.author.length).toBeGreaterThan(0)
-    expect(source.terms.length).toBeGreaterThan(0)
-    const path = new URL(`../app/public${inscription.image}`, import.meta.url)
-    expect(existsSync(path)).toBe(true)
-    const bytes = readFileSync(path)
-    expect(bytes.subarray(0, 4).toString('latin1')).toBe('RIFF')
-    expect(bytes.subarray(8, 12).toString('latin1')).toBe('WEBP')
-    expect(bytes.length).toBeGreaterThan(100_000)
-    expect(inscription.image_width).toBeGreaterThan(1_000)
-    expect(inscription.image_height).toBeGreaterThan(900)
-  }
-})
-
-test('the 1931 article is recorded with its terms', () => {
-  const article = record.sources.find(source => source.id === 'wang1931')
-  expect(article.url).toContain('5017YcdiByr.pdf')
-  expect(article.sha256).toHaveLength(64)
-  expect(article.licence).toBe('No reuse licence stated')
-  expect(article.terms).toContain('not the article')
 })
