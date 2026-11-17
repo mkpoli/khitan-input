@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { matchedReading } from '../app/lib/data.js'
+import { largeUses, matchedReading, phoneticTable } from '../app/lib/data.js'
 import { readFileSync } from 'node:fs'
 import { indexShapes, parseShapes, rankShapes, rasterize, SIZE } from '../app/lib/shape.js'
 import { blockRows, fold, parseWord, FILLER } from '../app/lib/script.js'
@@ -27,6 +27,26 @@ test('readings can be typed in plain letters', () => {
   expect(fold('χaa')).toBe('xaa')
   expect(fold('uŋγʷ')).toBe('ungg')
   expect(fold('*əəg')).toBe('eeg')
+})
+
+test('a large-script character’s jobs split from the words it spells', () => {
+  expect(largeUses('建, 勸 final')).toEqual([{ role: 'final', word: '建' }, { role: 'final', word: '勸' }])
+  expect(largeUses('等 final牛 initial')).toEqual([{ role: 'final', word: '等' }, { role: 'initial', word: '牛' }])
+  expect(largeUses('度節度')).toEqual([])
+  expect(largeUses(undefined)).toEqual([])
+})
+
+test('the phonetic table pivots characters by word and job', () => {
+  const table = phoneticTable([
+    { n: 1, c: '元, 原 medial' },
+    { n: 2, c: '元, 原 final' },
+    { n: 3, c: '等 initial' },
+    { n: 4, c: '建, 勸 final' },
+  ])
+  expect(table.map(r => r.word)).toEqual(['元', '原', '等', '建', '勸'])
+  expect(table[0].medial.map(r => r.n)).toEqual([1])
+  expect(table[0].final.map(r => r.n)).toEqual([2])
+  expect(table[2].initial.map(r => r.n)).toEqual([3])
 })
 
 test('every language has every message', () => {
