@@ -10,6 +10,7 @@ export const ix = {
   /** @type {any[]} */ documents: [],
   /** @type {any[]} */ sources: [],
   /** @type {any[]} */ large: [],
+  /** @type {Map<string, any>} */ largeByPua: new Map(),
   /** @type {Map<string, any>} */ source: new Map(),
   /** @type {{ key: string, g: any, rank: number }[]} */ readings: [],
 }
@@ -30,6 +31,11 @@ export function fill(data) {
     ix.byId.set(g.id, g)
     if (g.char) ix.byChar.set(g.char, g)
     for (const r of g.rs ?? []) if (r.k !== 'semantic' && r.k !== 'mnemonic') ix.readings.push({ key: fold(r.v), g, rank: rankOf(r) })
+  }
+  for (const r of ix.large) {
+    const parts = /** @type {string[]} */ ((r.pua ?? '').split(' ').filter(Boolean))
+    r.char = parts.map(hex => String.fromCodePoint(parseInt(hex, 16))).join('')
+    for (const hex of parts) ix.largeByPua.set(String.fromCodePoint(parseInt(hex, 16)), r)
   }
   for (const s of ix.sources) ix.source.set(s.id, s)
   for (const w of ix.words) w.search = [w.f, w.f && fold(w.f), w.g, w.h, w.sg].filter(Boolean).join(' ').toLowerCase()

@@ -5,7 +5,8 @@
   import { db } from '../lib/db.svelte.js'
   import { ix } from '../lib/data.js'
   import { parseShapes, indexShapes, rasterize, rankShapes, SIZE } from '../lib/shape.js'
-  import { put, ui } from '../lib/ui.svelte.js'
+  import { go } from '../lib/route.svelte.js'
+  import { copy, put, ui } from '../lib/ui.svelte.js'
   import { t } from '../lib/i18n.svelte.js'
   import Tile from '../ui/Tile.svelte'
 
@@ -19,16 +20,43 @@
   let pen = null
   /** @type {'loading' | 'ready' | 'failed'} */
   let status = $state('loading')
+  /** @type {'small' | 'large'} */
+  let script = $state('small')
   /** @type {import('../lib/shape.js').ShapeIndex | null} */
   let index = $state.raw(null)
+  /** @type {Map<'small' | 'large', import('../lib/shape.js').ShapeIndex>} */
+  const shapes = new Map()
   /** @type {Uint8Array} */
   let mask = $state.raw(new Uint8Array(SIZE * SIZE))
 
+  /** @param {'small' | 'large'} mode */
+  async function load(mode) {
+    if (shapes.has(mode)) { index = /** @type {import('../lib/shape.js').ShapeIndex} */ (shapes.get(mode)); status = 'ready'; return }
+    status = 'loading'
+    index = null
+    try {
+      const response = await fetch(mode === 'large' ? '/data/shapes-large.bin' : '/data/shapes.bin')
+      if (!response.ok) throw new Error(String(response.status))
+      const buffer = await response.arrayBuffer()
+      const parsed = indexShapes(parseShapes(new Uint8Array(buffer)))
+      shapes.set(mode, parsed)
+      if (script === mode) { index = parsed; status = 'ready' }
+    } catch {
+      if (script === mode) status = 'failed'
+    }
+  }
+
+  /** @param {'small' | 'large'} mode */
+  function chooseScript(mode) {
+    if (script === mode) return
+    script = mode
+    strokes = []
+    update()
+    void load(mode)
+  }
+
   onMount(() => {
-    fetch('/data/shapes.bin')
-      .then(response => { if (!response.ok) throw new Error(String(response.status)); return response.arrayBuffer() })
-      .then(buffer => { index = indexShapes(parseShapes(new Uint8Array(buffer))); status = 'ready' })
-      .catch(() => { status = 'failed' })
+    void load('small')
     resize()
     // The ink colour comes from the theme, which the system can change too.
     const scheme = matchMedia('(prefers-color-scheme: dark)')
@@ -43,7 +71,17 @@
 
   const hits = $derived.by(() => {
     if (status !== 'ready' || db.status !== 'ready' || !index || !strokes.length) return []
-    return rankShapes(index, mask, { limit: 48 }).map(hit => ix.byChar.get(hit.char)).filter(Boolean)
+    const found = rankShapes(index, mask, { limit: 48 })
+    if (script === 'small') return found.map(hit => ix.byChar.get(hit.char)).filter(Boolean)
+    /** @type {{ char: string, pua: string, row: any }[]} */
+    const rows = []
+    const seen = new Set()
+    for (const hit of found) {
+      if (seen.has(hit.char)) continue
+      seen.add(hit.char)
+      rows.push({ char: hit.char, pua: (hit.char.codePointAt(0) ?? 0).toString(16).toUpperCase(), row: ix.largeByPua.get(hit.char) })
+    }
+    return rows
   })
 
   function resize() {
@@ -127,7 +165,11 @@
     // Something else already took this Escape, such as the settings closing.
     else if (event.key === 'Escape' && !event.defaultPrevented) clear()
     // A focused link, tile or button keeps its own Enter.
-    else if (event.key === 'Enter' && hits[0] && !target.closest('a, button')) { event.preventDefault(); put(hits[0].char); clear() }
+    else if (event.key === 'Enter' && hits[0] && !target.closest('a, button')) {
+      event.preventDefault()
+      if (script === 'large') copy(hits[0].char)
+      else { put(hits[0].char); clear() }
+    }
   }
 </script>
 
@@ -137,7 +179,11 @@
   <section class="pad-column" aria-label={t('draw.canvas')}>
     <header class="ui-page-head">
       <h1 class="ui-page-title">{t('nav.draw')}</h1>
-      <p class="ui-page-intro">{t('draw.intro')}</p>
+      <p class="ui-page-intro">{script === 'large' ? t('draw.introLarge') : t('draw.intro')}</p>
+      <div class="modes" role="group" aria-label={t('draw.script')}>
+        <button type="button" class="ui-button" data-size="sm" data-variant={script === 'small' ? 'primary' : 'quiet'} aria-pressed={script === 'small'} onclick={() => chooseScript('small')}>{t('draw.small')}</button>
+        <button type="button" class="ui-button" data-size="sm" data-variant={script === 'large' ? 'primary' : 'quiet'} aria-pressed={script === 'large'} onclick={() => chooseScript('large')}>{t('draw.large')}</button>
+      </div>
     </header>
     <div class="pad">
       <canvas bind:this={canvas} aria-label={t('draw.canvas')}
@@ -157,17 +203,30 @@
       {#if status === 'loading'}<span class="ui-count">{t('draw.loading')}</span>{:else if status === 'failed'}<span class="ui-count">{t('draw.failed')}</span>{/if}
     </div>
     {#if hits.length}
-      <div class="ui-tiles" style:--ui-tile-size="62px">{#each hits as g (g.id)}<Tile {g} />{/each}</div>
-      <p class="ui-hint keys">{t('draw.keys')}</p>
+      {#if script === 'large'}
+        <div class="ui-tiles" style:--ui-tile-size="62px">
+          {#each hits as hit (hit.char)}
+            <button type="button" class="ui-tile" title={hit.pua} onclick={() => hit.row ? go('large', hit.pua) : copy(hit.char)}>
+              <span class="glyph-large">{hit.char}</span>
+              <span class="ui-tile-note said">{hit.row?.r ?? hit.row?.c ?? hit.pua}</span>
+            </button>
+          {/each}
+        </div>
+      {:else}
+        <div class="ui-tiles" style:--ui-tile-size="62px">{#each hits as g (g.id)}<Tile {g} />{/each}</div>
+      {/if}
+      <p class="ui-hint keys">{script === 'large' ? t('draw.keysLarge') : t('draw.keys')}</p>
     {:else if status === 'ready' && !strokes.length}
       <p class="ui-empty">{t('draw.empty')}</p>
     {/if}
-    <p class="ui-notice note">{t('draw.note')}</p>
+    <p class="ui-notice note">{script === 'large' ? t('draw.noteLarge') : t('draw.note')}</p>
   </section>
 </div>
 
 <style>
   .draw{display:grid;grid-template-columns:minmax(260px,340px) minmax(0,1fr);gap:var(--ui-space-xl) var(--ui-space-3xl);align-items:start}
+  .modes{display:flex;gap:var(--ui-space-2xs)}
+  .glyph-large{display:inline-block;inline-size:2em;margin-inline:-.5em;text-align:center;font-family:'BabelStone Khitan Large',serif;font-size:30px;line-height:1.15}
   .pad-column{display:grid;gap:var(--ui-space-lg)}
   .results{min-inline-size:0}
   .pad{position:relative;aspect-ratio:1;border:1px solid var(--ui-color-border-strong);border-radius:var(--ui-radius-xl);background:var(--ui-color-surface-sunken);overflow:hidden}

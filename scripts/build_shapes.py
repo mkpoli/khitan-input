@@ -4,14 +4,17 @@
 # ///
 """Build the pen lines the drawing pad compares a drawing with.
 
-Every Khitan small-script character Noto Serif Khitan Small Script draws is rendered from its outline at
-96 px, cropped to its ink, fitted to a 32×32 square and thinned to a one-cell line along the pen,
-then packed as 128 bytes of bits. The file is a little-endian u32 header length, the header as UTF-8
-JSON (format, size, font, sha256 and the sequences in order), then the masks back to back. The page
-normalises a drawing the same way.
+Every character a face draws is rendered from its outline at 96 px, cropped to its ink, fitted to a
+32×32 square and thinned to a one-cell line along the pen, then packed as 128 bytes of bits. The file
+is a little-endian u32 header length, the header as UTF-8 JSON (format, size, font, sha256 and the
+sequences in order), then the masks back to back. The page normalises a drawing the same way.
+
+    python3 scripts/build_shapes.py            # the small script, Noto Serif Khitan Small Script
+    python3 scripts/build_shapes.py --large    # the large script, BabelStone's Private Use glyphs
 """
 import hashlib
 import json
+import sys
 from pathlib import Path
 
 from fontTools.pens.basePen import BasePen
@@ -19,8 +22,20 @@ from fontTools.ttLib import TTFont
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
-FONT = ROOT / 'app/public/fonts/NotoSerifKhitanSmallScript-Regular.woff2'
-OUT = ROOT / 'app/public/data/shapes.bin'
+MODES = {
+    'small': {
+        'font': ROOT / 'app/public/fonts/NotoSerifKhitanSmallScript-Regular.woff2',
+        'out': ROOT / 'app/public/data/shapes.bin',
+        'range': (0x18B00, 0x18CFF),
+        'name': 'Noto Serif Khitan Small Script',
+    },
+    'large': {
+        'font': ROOT / 'app/public/fonts/BabelStoneKhitanLargeGlyphs.woff2',
+        'out': ROOT / 'app/public/data/shapes-large.bin',
+        'range': (0xE000, 0xE64F),
+        'name': 'BabelStone Khitan Large',
+    },
+}
 SIZE = 32
 FIT = 30
 THIN_SCALE = 3
@@ -140,15 +155,19 @@ def thinner(ink):
             return ink
 
 
-def main():
-    font = TTFont(FONT)
+def main(mode):
+    config = MODES[mode]
+    font_path = config['font']
+    out = config['out']
+    font = TTFont(font_path)
     glyph_set = font.getGlyphSet()
     scale = RENDER / font['head'].unitsPerEm
     cmap = font.getBestCmap()
     chars = []
     packed = bytearray()
+    low, high = config['range']
     for point in sorted(cmap):
-        if not 0x18B00 <= point <= 0x18CFF:
+        if not low <= point <= high:
             continue
         canvas = render(glyph_set, cmap[point], scale)
         mask = mask_of(canvas) if canvas else None
@@ -156,12 +175,12 @@ def main():
             continue
         chars.append(chr(point))
         packed += mask
-    document = {'format': 'khitan-input/shapes', 'size': SIZE, 'font': 'Noto Serif Khitan Small Script',
-                'fontSha256': hashlib.sha256(FONT.read_bytes()).hexdigest(), 'chars': chars}
+    document = {'format': 'khitan-input/shapes', 'size': SIZE, 'font': config['name'],
+                'fontSha256': hashlib.sha256(font_path.read_bytes()).hexdigest(), 'chars': chars}
     header = json.dumps(document, ensure_ascii=False, separators=(',', ':')).encode()
-    OUT.write_bytes(len(header).to_bytes(4, 'little') + header + bytes(packed))
-    print(f'{len(chars)} glyphs, {OUT.stat().st_size} bytes -> {OUT.relative_to(ROOT)}')
+    out.write_bytes(len(header).to_bytes(4, 'little') + header + bytes(packed))
+    print(f'{len(chars)} glyphs, {out.stat().st_size} bytes -> {out.relative_to(ROOT)}')
 
 
 if __name__ == '__main__':
-    main()
+    main('large' if '--large' in sys.argv else 'small')

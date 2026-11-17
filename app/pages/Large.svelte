@@ -2,10 +2,11 @@
   // The large script has no Unicode encoding yet, so its characters stand on Private Use code points.
   import { db } from '../lib/db.svelte.js'
   import { ix, phoneticTable } from '../lib/data.js'
+  import { route } from '../lib/route.svelte.js'
   import { copy } from '../lib/ui.svelte.js'
   import { t } from '../lib/i18n.svelte.js'
 
-  let query = $state('')
+  let query = $state(route.q)
   let view = $state('list')
   const ready = $derived(db.status === 'ready')
   const rows = $derived(!ready ? [] : ix.large.filter(r => !query.trim() || [r.r, r.c, r.m, r.pua].join(' ').toLowerCase().includes(query.trim().toLowerCase())))
