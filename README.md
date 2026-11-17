@@ -16,6 +16,8 @@ Grapheme values follow 大竹昌巳 (2020, 2025). Other scholars' values sit bes
 - **Words** and **Sentences**: attested words with their evidence, and interlinear sentences.
 - **Blocks**: the text being written, set as blocks in columns running right to left.
 - **Large script**: reconstructions on BabelStone's Private Use code points.
+- **Jurchen**: nine characters a cited figure sets beside a Khitan large-script form, drawn from
+  BabelStone's glyphs and the Jurchen face, with what the sources say of the four directions.
 - **Seal script**: the two seal-script covers of the Qingling 哀册, with a
   [block record](data/seal/README.md) for each.
 - **Code chart**: every mapped character in block order, with the inventory's counts.
