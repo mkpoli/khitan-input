@@ -143,7 +143,7 @@
  "seal.order": "列自右向左，行自上而下。每格是盖上的一个字块。",
  "seal.figure": "照片：",
  "seal.typeface": "字体（试作）",
- "seal.typeface.note": "宣懿皇后盖的16个字块，据一张整理过的参考图描出，用Sealie的30单位圆笔和1024单位em排成。这是试作：道宗盖尚未收录。",
+ "seal.typeface.note": "宣懿皇后盖的16个字块以矢量轮廓绘出，用Sealie的30单位圆笔和1024单位em排成。这是试作：道宗盖尚未收录。",
  "seal.typeface.download": "下载 TTF",
  "seal.ids": "DZ-01 至 XY-16 是引用编号，不是码位。",
  "seal.sources": "来源与许可",

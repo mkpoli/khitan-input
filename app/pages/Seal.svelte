@@ -67,7 +67,7 @@
       {#each glyphs as glyph, index (glyph)}
         <span class="typeface-cell">
           <span class="typeface-glyph">{glyph}</span>
-          <span class="typeface-code">U+{ (0xE700 + index).toString(16).toUpperCase() }</span>
+          <span class="typeface-code">XY-{String(index + 1).padStart(2, '0')} · U+{(0xE700 + index).toString(16).toUpperCase()}</span>
         </span>
       {/each}
     </div>
@@ -110,16 +110,17 @@
   .block .id{color:var(--ui-color-ink-muted);font-size:10px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
   .block .pos{font-size:15px;font-weight:var(--ui-weight-semibold);font-variant-numeric:tabular-nums;line-height:1}
   .typeface-note{max-inline-size:66ch;font-size:var(--ui-text-sm);line-height:var(--ui-leading-normal)}
-  .typeface-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;max-inline-size:720px}
-  .typeface-cell{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;border:1px solid var(--ui-color-border);border-radius:var(--ui-radius-xs)}
-  .typeface-glyph{font-family:'Qingling Seal';font-size:38px;line-height:1}
-  .typeface-code{color:var(--ui-color-ink-muted);font-size:9px;font-variant-numeric:tabular-nums}
+  .typeface-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--ui-space-sm);max-inline-size:760px}
+  .typeface-cell{display:flex;flex-direction:column;align-items:center;gap:var(--ui-space-xs);padding:var(--ui-space-md) 0;border:1px solid var(--ui-color-border);border-radius:var(--ui-radius-xs)}
+  .typeface-glyph{font-family:'Qingling Seal';font-size:76px;line-height:1}
+  .typeface-code{color:var(--ui-color-ink-muted);font-size:11px;font-variant-numeric:tabular-nums}
   .sources{display:grid;gap:var(--ui-space-md);margin:0;padding:0;list-style:none;font-size:var(--ui-text-sm)}
   .sources p{overflow-wrap:anywhere}
   .sources p + p{margin-block-start:2px;color:var(--ui-color-ink-soft)}
   @media (max-width:900px){
     .cover-section{grid-template-columns:minmax(0,1fr)}
     .blocks{grid-auto-rows:56px}
-    .typeface-grid{grid-template-columns:repeat(8,minmax(0,1fr))}
+    .typeface-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .typeface-glyph{font-size:64px}
   }
 </style>

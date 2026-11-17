@@ -36,12 +36,13 @@ test('the built faces and the specimen are in the repository', () => {
   expect(woff2.subarray(0, 4).toString('latin1')).toBe('wOF2')
   expect(web.equals(woff2)).toBe(true)
   expect(ttf.length).toBeGreaterThan(100_000)
-  expect(existsSync(new URL('../docs/seal-font-specimen.png', import.meta.url))).toBe(true)
+  expect(existsSync(new URL('../docs/seal-gallery.png', import.meta.url))).toBe(true)
   expect(existsSync(new URL('../data/seal/font/README.md', import.meta.url))).toBe(true)
 })
 
-test('the reference drawing and its licence are recorded', () => {
-  expect(record.source.basis).toContain('Wikimedia Commons')
+test('the vector source and its licence are recorded', () => {
+  expect(record.source.drawing).toBe('forms.json')
+  expect(record.source.basis).toContain('Vector')
   expect(record.source.licence).toBe('CC BY-SA 4.0')
-  expect(existsSync(new URL('../data/seal/font/reference.png', import.meta.url))).toBe(true)
+  expect(existsSync(new URL('../data/seal/font/forms.json', import.meta.url))).toBe(true)
 })

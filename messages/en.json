@@ -143,7 +143,7 @@
  "seal.order": "Columns run right to left, rows top to bottom. Each cell is one block on the cover.",
  "seal.figure": "Photograph:",
  "seal.typeface": "Typeface (draft)",
- "seal.typeface.note": "Sixteen Xuanyi blocks, traced from one cleaned reference drawing and set with Sealie's 30-unit round pen on a 1024-unit em. A draft: the Daozong cover is not drawn.",
+ "seal.typeface.note": "Sixteen Xuanyi blocks, drawn as vector outlines and set with Sealie's 30-unit round pen on a 1024-unit em. A draft: the Daozong cover is not drawn.",
  "seal.typeface.download": "Download the TTF",
  "seal.ids": "The ids DZ-01 to XY-16 are for citation, not code points.",
  "seal.sources": "Sources and licences",

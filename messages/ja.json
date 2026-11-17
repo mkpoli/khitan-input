@@ -143,7 +143,7 @@
  "seal.order": "列は右から左へ、行は上から下へ。各枠が蓋の一ブロックにあたる。",
  "seal.figure": "写真：",
  "seal.typeface": "書体（試作）",
- "seal.typeface.note": "宣懿皇后蓋の16ブロックを、整理した参考図から起こし、Sealieの30単位の丸ペンと1024単位のemで組んだ。試作で、道宗蓋は未収録。",
+ "seal.typeface.note": "宣懿皇后蓋の16ブロックをベクター輪郭で起こし、Sealieの30単位の丸ペンと1024単位のemで組んだ。試作で、道宗蓋は未収録。",
  "seal.typeface.download": "TTFをダウンロード",
  "seal.ids": "DZ-01 から XY-16 までの番号は引用用で、コードポイントではない。",
  "seal.sources": "出典とライセンス",
