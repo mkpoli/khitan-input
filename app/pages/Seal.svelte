@@ -22,7 +22,7 @@
           alt={`${inscription.title} (${inscription.plate})`} decoding="async" />
         <figcaption class="ui-hint">
           {inscription.plate} · {inscription.object} · {inscription.date}
-          · {t('seal.figure', { source: `${inscription.source_record.author} · ${inscription.source_record.licence}` })}
+          · {t('seal.figure')} <span class="credit">{inscription.source_record.author} · {inscription.source_record.licence}</span>
         </figcaption>
       </figure>
 
@@ -30,6 +30,11 @@
         <h2 class="title">{inscription.title}</h2>
         <p class="meta">
           {inscription.person} · {inscription.plate} · {inscription.date}
+        </p>
+        <p class="reading">
+          <span class="ui-hint">{t('seal.firstLine')}</span>
+          <span class="text">{inscription.reading}</span>
+          <span class="ui-hint">({inscription.reading_source})</span>
         </p>
         <div class="counts">
           <span>{t('seal.blocks', { count: blocks(inscription.id).length })}</span>
@@ -70,9 +75,12 @@
   .cover{margin:0;display:flex;flex-direction:column;gap:var(--ui-space-xs)}
   .cover img{inline-size:100%;block-size:auto;border:1px solid var(--ui-color-border);border-radius:var(--ui-radius-sm);background:#111}
   .cover figcaption{max-inline-size:60ch}
+  .credit{white-space:nowrap}
   .record{display:flex;flex-direction:column;gap:var(--ui-space-sm);min-inline-size:0}
   .title{font-family:var(--ui-font-serif);font-size:var(--ui-text-lg);font-weight:var(--ui-weight-semibold);line-height:var(--ui-leading-tight)}
   .meta{color:var(--ui-color-ink-soft);font-size:var(--ui-text-sm)}
+  .reading{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--ui-space-xs);font-size:var(--ui-text-sm)}
+  .reading .text{font-family:var(--ui-font-serif);font-size:var(--ui-text-md);letter-spacing:.02em}
   .method{max-inline-size:66ch;color:var(--ui-color-ink-soft);font-size:var(--ui-text-sm);line-height:var(--ui-leading-loose)}
   .counts{display:flex;flex-wrap:wrap;gap:var(--ui-space-xs) var(--ui-space-md);color:var(--ui-color-ink-soft);font-size:var(--ui-text-xs);font-variant-numeric:tabular-nums}
   .counts .unknown{color:var(--ui-color-ink-muted)}

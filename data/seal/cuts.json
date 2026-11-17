@@ -60,7 +60,9 @@
    "image": "/seal/daozong-cover.webp",
    "image_width": 1400,
    "image_height": 1123,
-   "note": "Wang 1931 reads the first line of the epitaph text as 仁聖大孝文皇帝哀冊文 and identifies the pair of covers with the Daozong and Xuanyi tombs. The cover blocks themselves are not assigned individually."
+   "note": "Wang 1931 reads the first line of the epitaph text as 仁聖大孝文皇帝哀冊文 and identifies the pair of covers with the Daozong and Xuanyi tombs. The cover blocks themselves are not assigned individually.",
+   "reading": "仁聖大孝文皇帝哀冊文",
+   "reading_source": "Wang 1931, 471"
   },
   {
    "id": "xuanyi",
@@ -81,7 +83,9 @@
    "image": "/seal/xuanyi-cover.webp",
    "image_width": 1200,
    "image_height": 1003,
-   "note": "Wang 1931 reads the first line of the epitaph text as 宣懿皇后哀冊文 and identifies the pair of covers with the Daozong and Xuanyi tombs. The cover blocks themselves are not assigned individually."
+   "note": "Wang 1931 reads the first line of the epitaph text as 宣懿皇后哀冊文 and identifies the pair of covers with the Daozong and Xuanyi tombs. The cover blocks themselves are not assigned individually.",
+   "reading": "宣懿皇后哀冊文",
+   "reading_source": "Wang 1931, 471"
   }
  ],
  "forms": [

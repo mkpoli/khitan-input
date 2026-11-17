@@ -15,6 +15,11 @@ test('two inscriptions and 46 blocks, counted from the covers', () => {
   expect(forms.filter(form => form.inscription === 'xuanyi')).toHaveLength(16)
 })
 
+test('each inscription carries the first line of its epitaph text', () => {
+  expect(inscriptions.map(inscription => inscription.reading)).toEqual(['仁聖大孝文皇帝哀冊文', '宣懿皇后哀冊文'])
+  expect(inscriptions.every(inscription => inscription.reading_source === 'Wang 1931, 471')).toBe(true)
+})
+
 test('the blocks are numbered in reading order, columns right to left and rows top to bottom', () => {
   for (const inscription of inscriptions) {
     const own = forms.filter(form => form.inscription === inscription.id)

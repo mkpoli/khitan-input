@@ -61,6 +61,8 @@
    "image_width": 1400,
    "image_height": 1123,
    "note": "Wang 1931 reads the first line of the epitaph text as 仁聖大孝文皇帝哀冊文 and identifies the pair of covers with the Daozong and Xuanyi tombs. The cover blocks themselves are not assigned individually.",
+   "reading": "仁聖大孝文皇帝哀冊文",
+   "reading_source": "Wang 1931, 471",
    "source_record": {
     "id": "commons_daozong",
     "citation": "Funeral Epitaph in Khitan Script and Its Cover of Emperor Daozong of Liao Dynasty",
@@ -97,6 +99,8 @@
    "image_width": 1200,
    "image_height": 1003,
    "note": "Wang 1931 reads the first line of the epitaph text as 宣懿皇后哀冊文 and identifies the pair of covers with the Daozong and Xuanyi tombs. The cover blocks themselves are not assigned individually.",
+   "reading": "宣懿皇后哀冊文",
+   "reading_source": "Wang 1931, 471",
    "source_record": {
     "id": "commons_xuanyi",
     "citation": "Epitaph of Empress Xuanyi of Liao",
