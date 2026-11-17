@@ -57,6 +57,18 @@ test('every language has every message', () => {
 const codeData = JSON.parse(readFileSync('app/public/data/khitan.json', 'utf8'))
 const chart = codeChart(codeData.graphemes)
 
+test('the phonetic table covers the words the source marks', () => {
+  const table = phoneticTable(codeData.large)
+  expect(table).toHaveLength(37)
+  expect(table[0].word).toBe('建')
+  for (const row of table) {
+    for (const role of ['initial', 'final', 'medial']) for (const r of row[role]) expect(r.c).toContain(row.word)
+  }
+  const yuan = table.find(r => r.word === '元')
+  expect(yuan.medial.map(r => r.r)).toEqual(['wo'])
+  expect(yuan.final.map(r => r.r)).toEqual(['ɑn'])
+})
+
 test('the code chart pages the block in runs of sixteen', () => {
   expect(chart.pages).toHaveLength(2)
   for (const page of chart.pages) expect(page.cells).toHaveLength(PAGE_SIZE)
