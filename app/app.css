@@ -9,6 +9,13 @@
 }
 
 @font-face {
+  font-family: 'Alari Xuwasun Jurchen';
+  src: url('/fonts/AlariXuwasunJurchen-Regular.woff2') format('woff2');
+  font-display: swap;
+  unicode-range: U+18E00-191FF;
+}
+
+@font-face {
   font-family: 'BabelStone Khitan Large';
   src: url('/fonts/BabelStoneKhitanLargeGlyphs.woff2') format('woff2');
   font-display: swap;
