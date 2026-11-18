@@ -8,6 +8,8 @@ share one code point. The `ss01` feature selects XY-05, the joined diagonal of X
 `scripts/build_seal_font.py` expands them with the round pen and writes the TTF, WOFF2 and the full
 gallery. The glyphs are redrawn after the photographs.
 
+The regular outlines are centred 320 units above the baseline, matching the vertical centre of the sixteen Sealie comparisons. Full-height glyphs occupy 768 of the 1024 units at weight 400. Wider forms retain their proportions and stay horizontally centred.
+
 The pen, the em and the fixed advance follow [Sealie](https://github.com/iebb/sealie), the Small
 Seal typeface by ieb (SIL OFL 1.1).
 
