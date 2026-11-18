@@ -3,9 +3,12 @@
 # dependencies = ["brotli==1.2.1", "fonttools==4.68.0", "pillow==13.0.0"]
 # ///
 """Check the shipped variable faces for lost apertures at specimen sizes."""
+import json
+from statistics import median
 from io import BytesIO
 from pathlib import Path
 
+from fontTools.pens.boundsPen import BoundsPen
 from fontTools.ttLib import TTFont
 from PIL import Image, ImageDraw, ImageFont
 
@@ -24,6 +27,32 @@ def topology(image):
                 regions[value] += 1
                 ImageDraw.floodfill(mask, (x, y), 128)
     return regions[255], regions[0] - 1  # Exclude the white margin.
+
+
+def ink_bounds(face, code):
+    glyphs = face.getGlyphSet()
+    pen = BoundsPen(glyphs)
+    glyphs[face.getBestCmap()[int(code[2:], 16)]].draw(pen)
+    return pen.bounds
+
+
+def check_mixed_size(path):
+    rows = json.loads((ROOT / 'data/seal/font/analogues.json').read_text())
+    with TTFont(path) as qingling, TTFont(ROOT / 'app/public/fonts/ComparisonSealie.woff2') as sealie:
+        reference_heights = []
+        heights = []
+        for row in rows:
+            _, low, _, high = ink_bounds(qingling, row['unicode'])
+            _, ref_low, _, ref_high = ink_bounds(sealie, row['smallSeal'])
+            em = qingling['head'].unitsPerEm
+            ref_em = sealie['head'].unitsPerEm
+            if abs((low + high) / (2 * em) - (ref_low + ref_high) / (2 * ref_em)) > .002:
+                raise AssertionError(f"{path.name} {row['unicode']}: mixed-script centre mismatch")
+            heights.append((high - low) / em)
+            reference_heights.append((ref_high - ref_low) / ref_em)
+        full_height = max(reference_heights)
+        if abs(median(heights) - full_height) > .003 or max(heights) > full_height + .003:
+            raise AssertionError(f'{path.name}: proposed forms do not match full-height Sealie ink')
 
 
 def check_left_bars(face):
@@ -72,6 +101,7 @@ def check(path, size, *, aperture_detail=False):
 
 if __name__ == '__main__':
     for name in ('QinglingSeal-Regular.ttf', 'QinglingSeal-Regular.woff2'):
+        check_mixed_size(ROOT / 'fonts' / name)
         check(ROOT / 'fonts' / name, 48, aperture_detail=True)
         for size in (64, 76, 128):
             check(ROOT / 'fonts' / name, size)

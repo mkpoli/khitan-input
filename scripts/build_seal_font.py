@@ -36,6 +36,9 @@ ASCENT = 832
 DESCENT = -192
 ADVANCE = 1024
 RADIUS = 15
+# Sealie’s representative full-height ink box is 768 units around y=320.
+INK_HEIGHT = 768
+INK_CENTER_Y = 320
 
 
 # Each segment has a clockwise contour with two semicircular caps. Keeping these
@@ -109,17 +112,17 @@ def weight_variations(paths, regular, terminals):
 
 
 def fit(record: dict) -> None:
-    """Put every glyph on one baseline at one height, centred in the em."""
+    """Fit regular ink to the Sealie vertical centre, preserving each skeleton’s proportions."""
     for form in record['forms']:
         points = [point for path in form['paths'] for point in path]
         xs = [point[0] for point in points]
         ys = [point[1] for point in points]
         width = max(xs) - min(xs)
         height = max(ys) - min(ys)
-        scale = min(700 / max(height, 1), 860 / max(width, 1))
+        scale = min((INK_HEIGHT - 2 * RADIUS) / max(height, 1), 908 / max(width, 1))
         cx = (min(xs) + max(xs)) / 2
-        bottom = min(ys)
-        form['paths'] = [[[round(512 + (x - cx) * scale, 2), round(80 + (y - bottom) * scale, 2)]
+        cy = (min(ys) + max(ys)) / 2
+        form['paths'] = [[[round(512 + (x - cx) * scale, 2), round(INK_CENTER_Y + (y - cy) * scale, 2)]
                           for x, y in path] for path in form['paths']]
 
 
@@ -150,7 +153,7 @@ def build(record: dict) -> None:
         cmap[int(alias[2:], 16)] = cmap[int(primary[2:], 16)]
 
     builder = FontBuilder(EM, isTTF=True)
-    builder.font['head'].fontRevision = 3.4
+    builder.font['head'].fontRevision = 3.5
     builder.setupGlyphOrder(order)
     builder.setupCharacterMap(cmap)
     outlines = {name: glyph(strokes, RADIUS) for name, strokes in paths.items()}
@@ -167,9 +170,9 @@ def build(record: dict) -> None:
                      'pen and 1024-unit em follow Sealie (SIL OFL 1.1).',
         'familyName': 'Qingling Seal',
         'styleName': 'Regular',
-        'uniqueFontIdentifier': 'QinglingSeal-Regular;3.400;2026',
+        'uniqueFontIdentifier': 'QinglingSeal-Regular;3.500;2026',
         'fullName': 'Qingling Seal Regular',
-        'version': 'Version 3.400',
+        'version': 'Version 3.500',
         'psName': 'QinglingSeal-Regular',
         'designer': 'Drawn for the Khitan Input project',
         'description': 'Seal-script forms from the Daozong and Xuanyi Qingling covers, '
