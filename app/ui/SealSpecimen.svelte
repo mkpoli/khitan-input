@@ -63,7 +63,9 @@
   .presets button[aria-pressed="true"]{background:var(--ui-color-accent-soft);color:var(--ui-color-accent-ink)}
   .editor{display:grid;gap:.4rem;margin:0 clamp(1rem,3vw,2rem) 1rem}
   .editor span,.proof h3,.axis label{font-size:var(--ui-text-sm);font-weight:600}
-  textarea{box-sizing:border-box;width:100%;min-height:2.8rem;resize:vertical;padding:.5rem .8rem;border:1px solid var(--ui-color-control-border);border-radius:var(--ui-radius-sm);background:var(--ui-color-canvas);color:var(--ui-color-ink);font:1.3rem/1.45 'Noto Serif Khitan Small Script',serif}
+  textarea{box-sizing:border-box;width:100%;min-height:2.8rem;resize:vertical;padding:.5rem .8rem;border:1px solid var(--ui-color-control-border);border-radius:var(--ui-radius-sm);background:var(--ui-color-canvas);color:var(--ui-color-ink);font:1.3rem/1.45 'Noto Serif Khitan Small Script',serif;
+    /* Show individual graphemes while editing the cover transcription. */
+    font-feature-settings:'rclt' 0;field-sizing:content;max-block-size:12rem}
   .proofs{display:grid;grid-template-columns:1fr 1fr;border-block:1px solid var(--ui-color-border)}
   .proof{min-width:0;padding:1rem clamp(1rem,3vw,2rem) 1.5rem}
   .proof+.proof{border-inline-start:1px solid var(--ui-color-border)}
