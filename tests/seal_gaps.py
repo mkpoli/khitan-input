@@ -26,17 +26,20 @@ def topology(image):
     return regions[255], regions[0] - 1  # Exclude the white margin.
 
 
-def check(path, size):
+def check(path, size, *, aperture_detail=False):
     font = TTFont(path)
     glyphs = [(chr(code), False) for code in font.getBestCmap()]
     glyphs.append((chr(0x18C64), True))
+    if aperture_detail:
+        # At 48 px, sample each corrected split in 25-unit increments.
+        glyphs = [(chr(code), False) for code in (0x18C57, 0x18C39, 0x18C7F)]
     font.flavor = None  # FreeType in Pillow accepts sfnt input for both formats.
     data = BytesIO()
     font.save(data)
     data.seek(0)
     face = ImageFont.truetype(data, size)
     regular = {}
-    for weight in (400, 500, 600, 700, 750, 800):
+    for weight in (range(400, 801, 25) if aperture_detail else (400, 500, 600, 700, 750, 800)):
         face.set_variation_by_axes([weight])
         for char, alternate in glyphs:
             image = Image.new('L', (size + 20, size + 20))
@@ -53,6 +56,7 @@ def check(path, size):
 
 if __name__ == '__main__':
     for name in ('QinglingSeal-Regular.ttf', 'QinglingSeal-Regular.woff2'):
-        for size in (76, 128):
+        check(ROOT / 'fonts' / name, 48, aperture_detail=True)
+        for size in (64, 76, 128):
             check(ROOT / 'fonts' / name, size)
-        print(f'{name}: apertures verified at six weights and two sizes')
+        print(f'{name}: apertures verified from 48 to 128 px')
