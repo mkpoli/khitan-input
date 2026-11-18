@@ -13,6 +13,8 @@ Seal typeface by ieb (SIL OFL 1.1).
 
 The 36 distinct characters on the covers use 38 Unicode code points in the font. The `unicode_aliases` table in `correspondences.json` follows West’s two alternative identifications: U+18C04 shares the roof form at U+18C39, and U+18C32 shares the form at U+18C7F. The Daozong drawings use the first occurrence of each of the 21 additional characters. Repeated characters share an outline.
 
+At heavier weights, the inner legs of XY-06 and XY-14 shorten under the crossbar, and the two ends of the DZ-07 canopy draw apart. DZ-14 and DZ-29 also have extra clearance beside their uprights. The offsets in `heavy_terminals` are in fitted font units at weight 800. They taper along each stroke and interpolate from zero at 400.
+
 ## Proposed forms
 
 Four additional Unicode characters bring the font to 42 code points. These modern designs preserve the stroke count and joins of the regular Khitan glyphs in Noto Serif Khitan Small Script. DZ-27 supplies the projecting central stem and DZ-28 the flush join. Their crossbars, pen widths and fixed advance carry through to the proposed forms.
@@ -45,4 +47,5 @@ The Han columns illustrate changes of stroke treatment. Their pairings use `kSEA
 
 ```sh
 uv run scripts/build_seal_font.py
+uv run tests/seal_gaps.py
 ```
