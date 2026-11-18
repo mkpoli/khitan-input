@@ -6,7 +6,8 @@ const forms = record.forms
 const correspondences = JSON.parse(readFileSync(new URL('../data/seal/correspondences.json', import.meta.url), 'utf8'))
 
 test('the font covers both inscriptions and preserves the Xuanyi alternate', () => {
-  expect(forms).toHaveLength(37)
+  expect(forms).toHaveLength(39)
+  expect(correspondences.font_alternates).toEqual(['XY-05', 'XY-11', 'XY-12'])
   expect(forms.slice(0, 16).map(form => form.id)).toEqual(Array.from({ length: 16 }, (_, index) => `XY-${String(index + 1).padStart(2, '0')}`))
   expect(record.font).toMatchObject({ family: 'Qingling Seal', em: 1024, ascent: 832, descent: -192, advance: 1024, stroke_radius: 15 })
   expect(record.font.licence).toBe('CC BY-SA 4.0')

@@ -1,6 +1,7 @@
 <script>
   import SealAnalogues from '../ui/SealAnalogues.svelte'
   import SealSpecimen from '../ui/SealSpecimen.svelte'
+  import mappings from '../../data/seal/correspondences.json' with { type: 'json' }
   import seal from '../../data/seal/records.json' with { type: 'json' }
   import { t } from '../lib/i18n.svelte.js'
 
@@ -76,7 +77,7 @@
     <div class="typeface-grid" style:--seal-weight={weight}>
       {#each seal.forms as form (form.id)}
         <span class="typeface-cell">
-          <span class="typeface-glyph" style={form.id === 'XY-05' ? 'font-feature-settings:"ss01" 1' : ''}>{form.identification}</span>
+          <span class="typeface-glyph" style={mappings.font_alternates.includes(form.id) ? 'font-feature-settings:"ss01" 1' : ''}>{form.identification}</span>
           <span class="typeface-code">{form.id} · {form.unicode}</span>
           <span class="typeface-normal">{form.identification}</span>
         </span>

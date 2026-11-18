@@ -2,9 +2,9 @@
 
 A pilot typeface for the seal-script titles of the Daozong and Xuanyi 哀册 covers, at their Khitan
 small-script code points on a 1024-unit em with a variable round pen. The OpenType `wght` axis runs from 200 to 800. Regular (400) has a 30-unit stroke, with 18-unit strokes at 200 and 56-unit strokes at 800. The two Xuanyi blocks for U+18C64
-share one code point; the second carving is the `ss01` alternate.
+share one code point. The `ss01` feature selects XY-05, the joined diagonal of XY-11, and the stepped, unbranched XY-12. The default forms for U+18CA6 and U+18C9C follow DZ-31 and DZ-17 respectively.
 
-`forms.json` is the vector source: 37 drawings, each a list of centreline paths in font units.
+`forms.json` is the vector source: 39 drawings, each a list of centreline paths in font units.
 `scripts/build_seal_font.py` expands them with the round pen and writes the TTF, WOFF2 and the full
 gallery. The glyphs are redrawn after the photographs.
 
@@ -17,7 +17,7 @@ At heavier weights, the inner legs of XY-06 and XY-14 shorten under the crossbar
 
 ## Proposed forms
 
-Four additional Unicode characters bring the font to 42 code points. These modern designs preserve the stroke count and joins of the regular Khitan glyphs in Noto Serif Khitan Small Script. DZ-27 supplies the projecting central stem and DZ-28 the flush join. Their crossbars, pen widths and fixed advance carry through to the proposed forms.
+Four additional Unicode characters bring the font to 42 code points. These modern designs preserve the stroke count and joins of the regular Khitan glyphs in Noto Serif Khitan Small Script. DZ-27 supplies the projecting central stem and DZ-28 the stacked crossbars with a detached upper bar. The flush joins in the proposed designs follow the regular Khitan forms. Their crossbars, pen widths and fixed advance carry through to the proposed forms.
 
 | Khitan | Daozong model | Zhuque Fangsong | Sealie | Construction |
 | --- | --- | --- | --- | --- |

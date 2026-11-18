@@ -26,10 +26,23 @@ def topology(image):
     return regions[255], regions[0] - 1  # Exclude the white margin.
 
 
+def check_left_bars(face):
+    """DZ-05 has three bars crossing the left edge of its upright (West U+18B2D)."""
+    size = face.size
+    image = Image.new('L', (size + 20, size + 20))
+    ImageDraw.Draw(image).text((8, 8 + .83 * size), '𘬭', anchor='ls', font=face, fill=255)
+    left, top, right, bottom = image.getbbox()
+    x = left + round((right - left) * .08)
+    column = [image.getpixel((x, y)) >= 128 for y in range(top, bottom)]
+    bars = sum(on and (i == 0 or not column[i - 1]) for i, on in enumerate(column))
+    if bars != 3:
+        raise AssertionError(f'DZ-05: expected three left crossbars, found {bars}')
+
+
 def check(path, size, *, aperture_detail=False):
     font = TTFont(path)
     glyphs = [(chr(code), False) for code in font.getBestCmap()]
-    glyphs.append((chr(0x18C64), True))
+    glyphs.extend((chr(code), True) for code in (0x18C64, 0x18CA6, 0x18C9C))
     if aperture_detail:
         # At 48 px, sample each corrected split in 25-unit increments.
         glyphs = [(chr(code), False) for code in (0x18C57, 0x18C39, 0x18C7F)]
@@ -38,6 +51,9 @@ def check(path, size, *, aperture_detail=False):
     font.save(data)
     data.seek(0)
     face = ImageFont.truetype(data, size)
+    for weight in (200, 400, 600, 800):
+        face.set_variation_by_axes([weight])
+        check_left_bars(face)
     regular = {}
     for weight in (range(400, 801, 25) if aperture_detail else (400, 500, 600, 700, 750, 800)):
         face.set_variation_by_axes([weight])

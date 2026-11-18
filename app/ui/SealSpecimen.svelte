@@ -10,7 +10,7 @@
     text: seal.forms.filter(form => form.inscription === cover.id).map(form => form.identification).join('')
   }))
   const xuanyi = covers.find(cover => cover.id === 'xuanyi')?.text ?? ''
-  const alternateIndex = seal.forms.filter(form => form.inscription === 'xuanyi').findIndex(form => form.id === 'XY-05')
+  const xuanyiForms = seal.forms.filter(form => form.inscription === 'xuanyi')
   let sample = $state(xuanyi)
   const covered = new Set([
     ...Object.values(mappings.blocks).map(block => block.character),
@@ -43,7 +43,7 @@
   <div class="proofs">
     <section class="proof">
       <h3>Qingling Seal</h3>
-      <p class="qingling" style:font-weight={weight}>{#if sample === xuanyi}{#each Array.from(sample) as char, i}<span class:alternate={i === alternateIndex}>{char}</span>{/each}{:else}{proof}{/if}</p>
+      <p class="qingling" style:font-weight={weight}>{#if sample === xuanyi}{#each Array.from(sample) as char, i}<span class:alternate={mappings.font_alternates.includes(xuanyiForms[i].id)}>{char}</span>{/each}{:else}{proof}{/if}</p>
     </section>
     <section class="proof">
       <h3><a href="https://www.babelstone.co.uk/Fonts/KhitanSmallSeal.html">BabelStone Khitan Small Seal</a></h3>
