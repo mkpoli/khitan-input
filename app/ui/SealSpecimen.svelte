@@ -1,4 +1,5 @@
 <script>
+  import designs from '../../data/seal/font/analogues.json' with { type: 'json' }
   import seal from '../../data/seal/records.json' with { type: 'json' }
   import mappings from '../../data/seal/correspondences.json' with { type: 'json' }
   import { t } from '../lib/i18n.svelte.js'
@@ -15,7 +16,14 @@
     ...Object.values(mappings.blocks).map(block => block.character),
     ...Object.keys(mappings.unicode_aliases).map(code => String.fromCodePoint(parseInt(code.slice(2), 16)))
   ])
-  let comparison = $derived(Array.from(sample, c => covered.has(c) || /\s/u.test(c) ? c : '□').join(''))
+  const proposed = designs.map(design => String.fromCodePoint(parseInt(design.unicode.slice(2), 16))).join('')
+  const qingling = new Set([...covered, ...proposed])
+  /** @param {Set<string>} repertoire @param {string} text */
+  function render(repertoire, text) {
+    return Array.from(text, c => repertoire.has(c) || /\s/u.test(c) ? c : '□').join('')
+  }
+  let comparison = $derived(render(covered, sample))
+  let proof = $derived(render(qingling, sample))
 </script>
 
 <section class="specimen" aria-labelledby="specimen-title">
@@ -25,6 +33,7 @@
       {#each covers as cover (cover.id)}
         <button type="button" aria-pressed={sample === cover.text} onclick={() => sample = cover.text}>{t(cover.id === 'xuanyi' ? 'seal.xuanyi' : 'seal.daozong')}</button>
       {/each}
+      <button type="button" aria-pressed={sample === proposed} onclick={() => sample = proposed}>{t('seal.proposed')}</button>
     </div>
   </div>
   <label class="editor">
@@ -34,7 +43,7 @@
   <div class="proofs">
     <section class="proof">
       <h3>Qingling Seal</h3>
-      <p class="qingling" style:font-weight={weight}>{#if sample === xuanyi}{#each Array.from(sample) as char, i}<span class:alternate={i === alternateIndex}>{char}</span>{/each}{:else}{comparison}{/if}</p>
+      <p class="qingling" style:font-weight={weight}>{#if sample === xuanyi}{#each Array.from(sample) as char, i}<span class:alternate={i === alternateIndex}>{char}</span>{/each}{:else}{proof}{/if}</p>
     </section>
     <section class="proof">
       <h3><a href="https://www.babelstone.co.uk/Fonts/KhitanSmallSeal.html">BabelStone Khitan Small Seal</a></h3>

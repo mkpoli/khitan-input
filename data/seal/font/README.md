@@ -13,6 +13,19 @@ Seal typeface by ieb (SIL OFL 1.1).
 
 The 36 distinct characters on the covers use 38 Unicode code points in the font. The `unicode_aliases` table in `correspondences.json` follows West’s two alternative identifications: U+18C04 shares the roof form at U+18C39, and U+18C32 shares the form at U+18C7F. The Daozong drawings use the first occurrence of each of the 21 additional characters. Repeated characters share an outline.
 
+## Proposed forms
+
+Four additional Unicode characters bring the font to 42 code points. These modern designs preserve the stroke count and joins of the regular Khitan glyphs in Noto Serif Khitan Small Script. DZ-27 supplies the projecting central stem and DZ-28 the flush join. Their crossbars, pen widths and fixed advance carry through to the proposed forms.
+
+| Khitan | Daozong model | Zhuque Fangsong | Sealie | Construction |
+| --- | --- | --- | --- | --- |
+| U+18B03 | DZ-28 | 干 | U+3D664 | Open lower stem and horizontal head. The Chinese seal head forks. |
+| U+18B04 | DZ-28 | 王 | U+3D068 | Three bars with a flush stem. |
+| U+18B36 | DZ-27 | 十 | U+3D67E | A single crossbar on a projecting upright. |
+| U+18B54 | DZ-27 | 土 | U+3F859 | One crossbar and a wider foot. |
+
+The Han columns illustrate changes of stroke treatment. Their pairings use `kSEAL_MCJK` in the [ids-input SealSources data](https://github.com/mkpoli/ids-input/blob/dbb49a933f301ee710dc88d580d77aee3456785d/data/seal-sources.txt.gz). The Han comparison uses [Zhuque Fangsong](https://github.com/mkpoli/ids-input/blob/dbb49a933f301ee710dc88d580d77aee3456785d/fonts/ZhuqueFangsong-Regular.woff2) and [Sealie](https://github.com/iebb/sealie/tree/303bf0b3c506bb3f1c39a868fe63d1e422a91d24/fonts). Each web subset contains the four comparison characters. The Khitan drawings use independent centrelines in `analogues.json`.
+
 ## Record
 
 - `forms.json` — the vector centrelines in font units.

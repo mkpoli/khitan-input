@@ -1,0 +1,22 @@
+[
+  {
+    "unicode": "U+18B03", "han": "干", "smallSeal": "U+3D664", "model": "DZ-28",
+    "design": "Flush top bar, long crossbar and open lower stem. Retain the Khitan horizontal head where the Han seal model forks.",
+    "paths": [[[302,752],[722,752]],[[512,752],[512,94]],[[253,498],[771,498]]]
+  },
+  {
+    "unicode": "U+18B04", "han": "王", "smallSeal": "U+3D068", "model": "DZ-28",
+    "design": "Three horizontal bars joined to a stem flush with the head and foot. Omit the upper interior bar of DZ-28.",
+    "paths": [[[302,752],[722,752]],[[512,752],[512,94]],[[316,435],[708,435]],[[260,94],[764,94]]]
+  },
+  {
+    "unicode": "U+18B36", "han": "十", "smallSeal": "U+3D67E", "model": "DZ-27",
+    "design": "One crossbar on a projecting upright, with the free lower end visible in regular Khitan.",
+    "paths": [[[512,766],[512,94]],[[253,454],[778,454]]]
+  },
+  {
+    "unicode": "U+18B54", "han": "土", "smallSeal": "U+3F859", "model": "DZ-27",
+    "design": "Keep the projecting upright and wide foot of DZ-27, with just one crossbar above the foot.",
+    "paths": [[[512,766],[512,94]],[[274,483],[750,483]],[[253,94],[778,94]]]
+  }
+]
