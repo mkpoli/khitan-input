@@ -75,10 +75,30 @@ def glyph(paths: list[list[list[float]]], radius: float):
     return result
 
 
-def weight_variations(paths, regular):
+def heavy_paths(paths, terminals):
+    """Move facing tips apart at weight 800, holding the far ends in place."""
+    adjusted = paths.copy()
+    for terminal in terminals:
+        index = terminal['path']
+        points = paths[index]
+        distances = [0.0]
+        for start, end in zip(points, points[1:]):
+            distances.append(distances[-1] + math.dist(start, end))
+        dx, dy = terminal['offset']
+        moved = []
+        for (x, y), distance in zip(points, distances):
+            fraction = distance / distances[-1]
+            if terminal['terminal'] == 'start':
+                fraction = 1 - fraction
+            moved.append((x + dx * fraction ** 2, y + dy * fraction ** 2))
+        adjusted[index] = moved
+    return adjusted
+
+
+def weight_variations(paths, regular, terminals):
     variations = []
     for support, radius in (((-1, -1, 0), 9), ((0, 1, 1), 28)):
-        extreme = glyph(paths, radius)
+        extreme = glyph(heavy_paths(paths, terminals) if radius > RADIUS else paths, radius)
         if extreme.endPtsOfContours != regular.endPtsOfContours:
             raise ValueError('Weight masters must have matching contour endpoints')
         deltas = [(x - a, y - b) for (x, y), (a, b) in
@@ -110,6 +130,7 @@ def build(record: dict) -> None:
     paths = {'.notdef': [[[80, 0], [944, 0], [944, 760], [80, 760], [80, 0]]]}
     cmap = {}
     alternates = []
+    terminals = {}
     for form in record['forms']:
         code = int(form['unicode'][2:], 16)
         name = f'uni{code:04X}'
@@ -117,17 +138,19 @@ def build(record: dict) -> None:
             alternate = f'{name}.alt'
             order.append(alternate)
             paths[alternate] = form['paths']
+            terminals[alternate] = form.get('heavy_terminals', [])
             alternates.append((name, alternate))
             continue
         order.append(name)
         paths[name] = form['paths']
+        terminals[name] = form.get('heavy_terminals', [])
         cmap[code] = name
 
     for alias, primary in mapping['unicode_aliases'].items():
         cmap[int(alias[2:], 16)] = cmap[int(primary[2:], 16)]
 
     builder = FontBuilder(EM, isTTF=True)
-    builder.font['head'].fontRevision = 3.1
+    builder.font['head'].fontRevision = 3.2
     builder.setupGlyphOrder(order)
     builder.setupCharacterMap(cmap)
     outlines = {name: glyph(strokes, RADIUS) for name, strokes in paths.items()}
@@ -144,9 +167,9 @@ def build(record: dict) -> None:
                      'pen and 1024-unit em follow Sealie (SIL OFL 1.1).',
         'familyName': 'Qingling Seal',
         'styleName': 'Regular',
-        'uniqueFontIdentifier': 'QinglingSeal-Regular;3.100;2026',
+        'uniqueFontIdentifier': 'QinglingSeal-Regular;3.200;2026',
         'fullName': 'Qingling Seal Regular',
-        'version': 'Version 3.100',
+        'version': 'Version 3.200',
         'psName': 'QinglingSeal-Regular',
         'designer': 'Drawn for the Khitan Input project',
         'description': 'Seal-script forms from the Daozong and Xuanyi Qingling covers, '
@@ -170,7 +193,7 @@ def build(record: dict) -> None:
         {'value': weight, 'name': name, 'flags': 2 if weight == 400 else 0}
         for weight, name in weights
     ]}])
-    builder.setupGvar({name: weight_variations(strokes, outlines[name])
+    builder.setupGvar({name: weight_variations(strokes, outlines[name], terminals.get(name, []))
                        for name, strokes in paths.items()})
     TTF.parent.mkdir(parents=True, exist_ok=True)
     builder.save(TTF)

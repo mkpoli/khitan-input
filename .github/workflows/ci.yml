@@ -13,3 +13,4 @@ jobs:
       - run: bun run test
       - run: bun run check
       - run: bun run build
+      - run: pipx run --spec uv uv run tests/seal_gaps.py
