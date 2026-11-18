@@ -1,4 +1,5 @@
 <script>
+  import SealSpecimen from '../ui/SealSpecimen.svelte'
   import seal from '../../data/seal/records.json' with { type: 'json' }
   import { t } from '../lib/i18n.svelte.js'
 
@@ -17,6 +18,8 @@
     <p class="method">{t('seal.method')}</p>
     <p class="ui-hint">{t('seal.ids')}</p>
   </header>
+
+  <SealSpecimen bind:weight />
 
   {#each seal.inscriptions as inscription (inscription.id)}
     <section class="ui-section cover-section">
@@ -69,11 +72,6 @@
       <span class="ui-count">U+18B00–U+18CFF</span>
     </div>
     <p class="typeface-note">{t('seal.typeface.note')}</p>
-    <label class="weight">
-      {t('seal.weight')}
-      <input type="range" min="200" max="800" bind:value={weight} />
-      <span>{weight}</span>
-    </label>
     <div class="typeface-grid" style:--seal-weight={weight}>
       {#each seal.forms as form (form.id)}
         <span class="typeface-cell">
@@ -123,7 +121,6 @@
   .block .id{color:var(--ui-color-ink-muted);font-size:10px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
   .block .pos{font-size:15px;font-weight:var(--ui-weight-semibold);font-variant-numeric:tabular-nums;line-height:1}
   .typeface-note{max-inline-size:66ch;font-size:var(--ui-text-sm);line-height:var(--ui-leading-normal)}
-  .weight{display:flex;align-items:center;gap:var(--ui-space-sm);font-variant-numeric:tabular-nums}
   .typeface-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--ui-space-sm);max-inline-size:760px}
   .typeface-cell{display:flex;flex-direction:column;align-items:center;gap:var(--ui-space-xs);padding:var(--ui-space-md) 0;border:1px solid var(--ui-color-border);border-radius:var(--ui-radius-xs)}
   .typeface-glyph{font-family:'Qingling Seal';font-weight:var(--seal-weight);font-size:76px;line-height:1}

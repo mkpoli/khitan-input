@@ -2,6 +2,13 @@
 @import '../design/index.css';
 
 @font-face {
+  font-family: 'BabelStone Khitan Small Seal';
+  src: url('/fonts/BabelStoneKhitanSmallSeal.woff2') format('woff2');
+  font-display: swap;
+  unicode-range: U+18B00-18CFF;
+}
+
+@font-face {
   font-family: 'Noto Serif Khitan Small Script';
   src: url('/fonts/NotoSerifKhitanSmallScript-Regular.woff2') format('woff2');
   font-display: swap;
