@@ -41,6 +41,10 @@
     <textarea rows="1" spellcheck="false" bind:value={sample}></textarea>
   </label>
   <div class="proofs">
+    <section class="proof regular-proof">
+      <h3>{t('seal.regular')} · Noto Serif Khitan Small Script</h3>
+      <p class="regular">{sample}</p>
+    </section>
     <section class="proof">
       <h3>Qingling Seal</h3>
       <p class="qingling" style:font-weight={weight}>{#if sample === xuanyi}{#each Array.from(sample) as char, i}<span class:alternate={mappings.font_alternates.includes(xuanyiForms[i].id)}>{char}</span>{/each}{:else}{proof}{/if}</p>
@@ -77,7 +81,9 @@
     font-feature-settings:'rclt' 0;field-sizing:content;max-block-size:12rem}
   .proofs{display:grid;grid-template-columns:1fr 1fr;border-block:1px solid var(--ui-color-border)}
   .proof{min-width:0;padding:1rem clamp(1rem,3vw,2rem) 1.5rem}
-  .proof+.proof{border-inline-start:1px solid var(--ui-color-border)}
+  .regular-proof{grid-column:1/-1;border-block-end:1px solid var(--ui-color-border)}
+  .regular{font-family:'Noto Serif Khitan Small Script',serif;font-feature-settings:'rclt' 0}
+  .proof:last-child{border-inline-start:1px solid var(--ui-color-border)}
   .proof h3{margin:0 0 .75rem;color:var(--ui-color-ink-soft)}
   .proof p{margin:0;min-height:1.3em;white-space:pre-wrap;overflow-wrap:anywhere;font-size:clamp(2.25rem,4.4vw,4rem);line-height:1.35}
   .qingling{font-family:'Qingling Seal',serif}
@@ -92,6 +98,6 @@
   input::-moz-range-track{height:6px;background:var(--rail);border-radius:9px}
   input::-webkit-slider-thumb{appearance:none;box-sizing:border-box;width:22px;height:22px;margin-top:-8px;background:var(--ui-color-surface);border:5px solid var(--ui-color-accent);border-radius:50%;box-shadow:var(--ui-shadow-1)}
   input::-moz-range-thumb{box-sizing:border-box;width:22px;height:22px;background:var(--ui-color-surface);border:5px solid var(--ui-color-accent);border-radius:50%;box-shadow:var(--ui-shadow-1)}
-  @media(max-width:640px){.proofs{grid-template-columns:1fr}.proof+.proof{border-inline-start:0;border-block-start:1px solid var(--ui-color-border)}.axis{gap:.6rem}.control{gap:.45rem}}
+  @media(max-width:640px){.proofs{grid-template-columns:1fr}.proof:last-child{border-inline-start:0;border-block-start:1px solid var(--ui-color-border)}.axis{gap:.6rem}.control{gap:.45rem}}
   @media(forced-colors:active){input[type=range]{appearance:auto}input::-webkit-slider-thumb{appearance:auto}}
 </style>

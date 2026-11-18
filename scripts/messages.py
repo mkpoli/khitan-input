@@ -152,6 +152,7 @@ T = {
  "seal.figure": ("Photograph:","写真：","照片：","照片：","사진:"),
  "seal.typeface": ("Typeface (draft)","書体（試作）","字体（试作）","字體（試作）","서체(시작품)"),
  "seal.typeface.note": ("36 distinct characters on the covers","哀冊蓋に刻まれた36字","哀册盖上的 36 个字","哀冊蓋上的 36 個字","애책 뚜껑에 새긴 36자"),
+ "seal.regular": ("Regular Khitan","契丹小字の通常字形","契丹小字常规字形","契丹小字常規字形","거란 소자 정자"),
  "seal.sample": ("Sample text","見本文字列","样本文字","樣本文字","견본 문구"),
  "seal.xuanyi": ("Xuanyi","宣懿皇后","宣懿皇后","宣懿皇后","선의황후"),
  "seal.daozong": ("Daozong","道宗","道宗","道宗","도종"),
