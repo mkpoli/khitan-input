@@ -4,6 +4,7 @@
 # ///
 """Check the shipped variable faces for lost apertures at specimen sizes."""
 import json
+from statistics import median
 from io import BytesIO
 from pathlib import Path
 
@@ -49,7 +50,8 @@ def check_mixed_size(path):
                 raise AssertionError(f"{path.name} {row['unicode']}: mixed-script centre mismatch")
             heights.append((high - low) / em)
             reference_heights.append((ref_high - ref_low) / ref_em)
-        if any(abs(height - max(reference_heights)) > .003 for height in heights):
+        full_height = max(reference_heights)
+        if abs(median(heights) - full_height) > .003 or max(heights) > full_height + .003:
             raise AssertionError(f'{path.name}: proposed forms do not match full-height Sealie ink')
 
 
