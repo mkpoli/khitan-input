@@ -152,6 +152,7 @@ T = {
  "seal.figure": ("Photograph:","写真：","照片：","照片：","사진:"),
  "seal.typeface": ("Typeface (draft)","書体（試作）","字体（试作）","字體（試作）","서체(시작품)"),
  "seal.typeface.note": ("Qingling Seal · 36 characters, 38 Unicode code points","慶陵篆書体 · 36字、Unicode 38符号位置","庆陵篆书 · 36 字，38 个 Unicode 码位","慶陵篆書 · 36 字，38 個 Unicode 碼位","경릉 전서체 · 36자, 유니코드 코드 포인트 38개"),
+ "seal.weight": ("Weight","ウェイト","字重","字重","굵기"),
  "seal.typeface.download": ("Download the TTF","TTFをダウンロード","下载 TTF","下載 TTF","TTF 내려받기"),
  "seal.ids": ("The ids DZ-01 to XY-16 are for citation, not code points.","DZ-01 から XY-16 までの番号は引用用で、コードポイントではない。","DZ-01 至 XY-16 是引用编号，不是码位。","DZ-01 至 XY-16 是引用編號，不是碼位。","DZ-01부터 XY-16까지는 인용용 번호이며 코드 포인트가 아니다."),
  "seal.sources": ("Sources and licences","出典とライセンス","来源与许可","來源與授權","출처와 라이선스"),

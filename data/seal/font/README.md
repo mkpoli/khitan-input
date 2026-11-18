@@ -1,7 +1,7 @@
 # Qingling Seal (draft)
 
 A pilot typeface for the seal-script titles of the Daozong and Xuanyi 哀册 covers, at their Khitan
-small-script code points on a 1024-unit em with a 30-unit round pen. The two Xuanyi blocks for U+18C64
+small-script code points on a 1024-unit em with a variable round pen. The OpenType `wght` axis runs from 200 to 800. Regular (400) has a 30-unit stroke, with 18-unit strokes at 200 and 56-unit strokes at 800. The two Xuanyi blocks for U+18C64
 share one code point; the second carving is the `ss01` alternate.
 
 `forms.json` is the vector source: 37 drawings, each a list of centreline paths in font units.

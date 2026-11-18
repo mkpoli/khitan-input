@@ -1,11 +1,11 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["brotli==1.2.1", "fonttools==4.68.0", "pillow==13.0.0", "shapely==2.1.2"]
+# dependencies = ["brotli==1.2.1", "fonttools==4.68.0", "pillow==13.0.0"]
 # ///
 """Build the pilot seal typeface and its gallery.
 
 `data/seal/font/forms.json` is the vector source: the drawn forms, each a list of centreline paths
-in font units. This script expands them with a 30-unit round pen on a 1024-unit em, writes the TTF
+in font units. This script expands them with a variable round pen (30 units at regular weight) on a 1024-unit em, writes the TTF
 and WOFF2, and draws `docs/seal-gallery.png`.
 
     uv run scripts/build_seal_font.py
@@ -21,8 +21,7 @@ from fontTools.feaLib.builder import addOpenTypeFeaturesFromString
 from fontTools.fontBuilder import FontBuilder
 from fontTools.pens.ttGlyphPen import TTGlyphPen
 from fontTools.ttLib.tables._g_l_y_f import flagOverlapSimple
-from shapely.geometry import LineString
-from shapely.ops import unary_union
+from fontTools.ttLib.tables.TupleVariation import TupleVariation
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 FORMS = ROOT / 'data/seal/font/forms.json'
@@ -39,66 +38,54 @@ ADVANCE = 1024
 RADIUS = 15
 
 
-def _rectangle(pen: TTGlyphPen, start, end, radius: float) -> None:
-    dx, dy = end[0] - start[0], end[1] - start[1]
-    length = math.hypot(dx, dy)
-    if length < 1e-9:
-        return
-    nx, ny = -dy / length * radius, dx / length * radius
-    pen.moveTo((start[0] + nx, start[1] + ny))
-    pen.lineTo((end[0] + nx, end[1] + ny))
-    pen.lineTo((end[0] - nx, end[1] - ny))
-    pen.lineTo((start[0] - nx, start[1] - ny))
-    pen.closePath()
-
-
-def _disk(pen: TTGlyphPen, centre, radius: float) -> None:
-    """Sixteen quadratic arcs approximate a round cap."""
-    cx, cy = centre
-    control = radius / math.cos(math.pi / 16)
-    pen.moveTo((cx + radius, cy))
-    for index in range(16):
-        middle = -(index + 0.5) * math.pi / 8
-        end = -(index + 1) * math.pi / 8
-        endpoint = (cx + radius, cy) if index == 15 else (
-            cx + radius * math.cos(end), cy + radius * math.sin(end))
-        pen.qCurveTo((cx + control * math.cos(middle), cy + control * math.sin(middle)), endpoint)
-    pen.closePath()
-
-
-def _area(points: list[tuple[float, float]]) -> float:
-    return sum(a[0] * b[1] - b[0] * a[1] for a, b in zip(points, points[1:] + points[:1])) / 2
-
-
-def glyph(paths: list[list[list[float]]]):
-    """Union the round-pen strokes into one clean outline per glyph."""
-    shapes = []
-    for path in paths:
-        points = [tuple(point) for point in path]
-        if len(points) < 2:
-            continue
-        shapes.append(LineString(points).buffer(RADIUS, cap_style='round', join_style='round', resolution=12))
-    shape = unary_union(shapes)
-    polygons = list(shape.geoms) if hasattr(shape, 'geoms') else [shape]
+# Each segment has a clockwise contour with two semicircular caps. Keeping these
+# contours separate preserves point correspondence as strokes meet at heavier weights.
+def glyph(paths: list[list[list[float]]], radius: float):
     pen = TTGlyphPen(None)
-    for polygon in polygons:
-        rings = [polygon.exterior] + list(polygon.interiors)
-        for index, ring in enumerate(rings):
-            points = list(ring.coords)
-            if len(points) < 3:
+    for path in paths:
+        for start, end in zip(path, path[1:]):
+            dx, dy = end[0] - start[0], end[1] - start[1]
+            length = math.hypot(dx, dy)
+            if not length:
                 continue
-            # TrueType fills clockwise exteriors, counter-clockwise holes.
-            clockwise = _area(points) < 0
-            if (index == 0) != clockwise:
-                points.reverse()
-            pen.moveTo(points[0])
-            for point in points[1:]:
-                pen.lineTo(point)
+            tx, ty = radius * dx / length, radius * dy / length
+            nx, ny = -ty, tx
+            pen.moveTo((start[0] + nx, start[1] + ny))
+            pen.lineTo((end[0] + nx, end[1] + ny))
+            # TrueType quadratic arcs, four per semicircle.
+            for centre, sign in ((end, 1), (start, -1)):
+                x, y = centre
+                if sign == -1:
+                    pen.lineTo((x - nx, y - ny))
+                for i in range(4):
+                    angle = (i + 1) * math.pi / 4
+                    mid = angle - math.pi / 8
+                    scale = sign / math.cos(math.pi / 8)
+                    endpoint = (x + sign * (nx * math.cos(angle) + tx * math.sin(angle)),
+                                y + sign * (ny * math.cos(angle) + ty * math.sin(angle)))
+                    if i == 3:
+                        endpoint = (x - sign * nx, y - sign * ny)
+                    pen.qCurveTo(
+                        (x + scale * (nx * math.cos(mid) + tx * math.sin(mid)),
+                         y + scale * (ny * math.cos(mid) + ty * math.sin(mid))),
+                        endpoint)
             pen.closePath()
     result = pen.glyph()
-    if result.numberOfContours:
-        result.flags[0] |= flagOverlapSimple
+    result.flags[0] |= flagOverlapSimple
     return result
+
+
+def weight_variations(paths, regular):
+    variations = []
+    for support, radius in (((-1, -1, 0), 9), ((0, 1, 1), 28)):
+        extreme = glyph(paths, radius)
+        if extreme.endPtsOfContours != regular.endPtsOfContours:
+            raise ValueError('Weight masters must have matching contour endpoints')
+        deltas = [(x - a, y - b) for (x, y), (a, b) in
+                  zip(extreme.coordinates, regular.coordinates, strict=True)]
+        # Four phantom points keep the origin and fixed advance constant.
+        variations.append(TupleVariation({'wght': support}, deltas + [(0, 0)] * 4))
+    return variations
 
 
 def fit(record: dict) -> None:
@@ -121,8 +108,7 @@ def build(record: dict) -> None:
     mapping = json.loads(CORRESPONDENCES.read_text(encoding='utf-8'))
     correspondences = mapping['blocks']
     order = ['.notdef']
-    outlines = {'.notdef': glyph([[[80, 0], [944, 0], [944, 760], [80, 760], [80, 0]]])}
-    widths = {'.notdef': (ADVANCE, 60)}
+    paths = {'.notdef': [[[80, 0], [944, 0], [944, 760], [80, 760], [80, 0]]]}
     cmap = {}
     alternates = []
     for form in record['forms']:
@@ -131,27 +117,27 @@ def build(record: dict) -> None:
         if code in cmap:
             alternate = f'{name}.alt'
             order.append(alternate)
-            outlines[alternate] = glyph(form['paths'])
-            widths[alternate] = (ADVANCE, 0)
+            paths[alternate] = form['paths']
             alternates.append((name, alternate))
             continue
         order.append(name)
-        outlines[name] = glyph(form['paths'])
-        widths[name] = (ADVANCE, 0)
+        paths[name] = form['paths']
         cmap[code] = name
 
     for alias, primary in mapping['unicode_aliases'].items():
         cmap[int(alias[2:], 16)] = cmap[int(primary[2:], 16)]
 
     builder = FontBuilder(EM, isTTF=True)
-    builder.font['head'].fontRevision = 2.1
+    builder.font['head'].fontRevision = 3.0
     builder.setupGlyphOrder(order)
     builder.setupCharacterMap(cmap)
+    outlines = {name: glyph(strokes, RADIUS) for name, strokes in paths.items()}
     builder.setupGlyf(outlines)
     if alternates:
         rules = ' '.join(f'sub {base} by {alt};' for base, alt in alternates)
         addOpenTypeFeaturesFromString(builder.font, f'feature ss01 {{ {rules} }} ss01;')
-    builder.setupHorizontalMetrics(widths)
+    builder.setupHorizontalMetrics({name: (ADVANCE, outline.xMin) for name, outline in outlines.items()})
+    builder.font['head'].flags |= 2
     builder.setupHorizontalHeader(ascent=ASCENT, descent=DESCENT, lineGap=0)
     builder.setupNameTable({
         'copyright': 'Vector glyphs drawn for the Khitan Input project after the Qingling cover '
@@ -159,9 +145,9 @@ def build(record: dict) -> None:
                      'pen and 1024-unit em follow Sealie (SIL OFL 1.1).',
         'familyName': 'Qingling Seal',
         'styleName': 'Regular',
-        'uniqueFontIdentifier': 'QinglingSeal-Regular;2.100;2026',
+        'uniqueFontIdentifier': 'QinglingSeal-Regular;3.000;2026',
         'fullName': 'Qingling Seal Regular',
-        'version': 'Version 2.100',
+        'version': 'Version 3.000',
         'psName': 'QinglingSeal-Regular',
         'designer': 'Drawn for the Khitan Input project',
         'description': 'Seal-script forms from the Daozong and Xuanyi Qingling covers, '
@@ -177,6 +163,16 @@ def build(record: dict) -> None:
         usWinAscent=ASCENT, usWinDescent=-DESCENT,
         sxHeight=512, sCapHeight=700, achVendID='MKPO', fsType=0)
     builder.setupPost()
+    weights = [(200, 'ExtraLight'), (400, 'Regular'), (700, 'Bold'), (800, 'ExtraBold')]
+    builder.setupFvar([('wght', 200, 400, 800, 'Weight')], [
+        {'location': {'wght': weight}, 'stylename': name} for weight, name in weights
+    ])
+    builder.setupStat([{'tag': 'wght', 'name': 'Weight', 'values': [
+        {'value': weight, 'name': name, 'flags': 2 if weight == 400 else 0}
+        for weight, name in weights
+    ]}])
+    builder.setupGvar({name: weight_variations(strokes, outlines[name])
+                       for name, strokes in paths.items()})
     TTF.parent.mkdir(parents=True, exist_ok=True)
     builder.save(TTF)
     builder.font.flavor = 'woff2'

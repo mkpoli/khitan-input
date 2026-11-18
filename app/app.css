@@ -17,7 +17,8 @@
 
 @font-face {
   font-family: 'Qingling Seal';
-  src: url('/fonts/QinglingSeal-Regular.woff2?v=12') format('woff2');
+  font-weight: 200 800;
+  src: url('/fonts/QinglingSeal-Regular.woff2?v=13') format('woff2');
   font-display: swap;
   unicode-range: U+18B00-18CFF;
 }
