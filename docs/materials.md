@@ -43,10 +43,9 @@ such glyph was identified, and five stay unidentified.
 大竹昌巳 (2018) 「日本契丹学小史」 gives the history of the field and no data. 大竹昌巳 (2013) is the
 predecessor of the 2015 paper; its text layer is OCR and has lost the Khitan.
 
-`data/seal/` records the two seal-script covers of the Qingling 哀册: 30 blocks on the Daozong cover
+`data/seal/` records the two seal-script covers of the Qingling 哀册: 36 blocks on the Daozong cover
 and 16 on the Xuanyi cover. Wang 1931 identifies the inscriptions and reads the first line of each
-epitaph text; no block of either cover is assigned a reading here, so every record is marked
-`unidentified`. See [`data/seal/README.md`](../data/seal/README.md).
+epitaph text. The catalog records probable Unicode correspondences by shape. See [`data/seal/README.md`](../data/seal/README.md).
 
 大竹昌巳 (2015c) locates 10 or more Chinese classical works behind quotations in Khitan inscriptions and adds
 白居易「祭微之文」, 『後漢書』江革伝 and 『孟子』告子上. The dissertation cites it for mɵɵr (TAY 26) and

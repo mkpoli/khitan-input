@@ -4,7 +4,7 @@
 # ///
 """Build the pilot seal typeface and its gallery.
 
-`data/seal/font/forms.json` is the vector source: sixteen blocks, each a list of centreline paths
+`data/seal/font/forms.json` is the vector source: the drawn forms, each a list of centreline paths
 in font units. This script expands them with a 30-unit round pen on a 1024-unit em, writes the TTF
 and WOFF2, and draws `docs/seal-gallery.png`.
 
@@ -118,7 +118,8 @@ def fit(record: dict) -> None:
 
 def build(record: dict) -> None:
     """Write the font at the Khitan code points, plus the WOFF2 copies and gallery."""
-    correspondences = json.loads(CORRESPONDENCES.read_text(encoding='utf-8'))['blocks']
+    mapping = json.loads(CORRESPONDENCES.read_text(encoding='utf-8'))
+    correspondences = mapping['blocks']
     order = ['.notdef']
     outlines = {'.notdef': glyph([[[80, 0], [944, 0], [944, 760], [80, 760], [80, 0]]])}
     widths = {'.notdef': (ADVANCE, 60)}
@@ -139,7 +140,11 @@ def build(record: dict) -> None:
         widths[name] = (ADVANCE, 0)
         cmap[code] = name
 
+    for alias, primary in mapping['unicode_aliases'].items():
+        cmap[int(alias[2:], 16)] = cmap[int(primary[2:], 16)]
+
     builder = FontBuilder(EM, isTTF=True)
+    builder.font['head'].fontRevision = 2.1
     builder.setupGlyphOrder(order)
     builder.setupCharacterMap(cmap)
     builder.setupGlyf(outlines)
@@ -149,19 +154,19 @@ def build(record: dict) -> None:
     builder.setupHorizontalMetrics(widths)
     builder.setupHorizontalHeader(ascent=ASCENT, descent=DESCENT, lineGap=0)
     builder.setupNameTable({
-        'copyright': 'Vector glyphs drawn for the Khitan Input project after the Xuanyi cover '
-                     'photograph (Tonyxy1992, Wikimedia Commons, CC BY-SA 4.0). The 30-unit round '
+        'copyright': 'Vector glyphs drawn for the Khitan Input project after the Qingling cover '
+                     'photographs (Tonyxy1992, CC BY-SA 4.0 and 红烧腰果, CC BY 4.0). The 30-unit round '
                      'pen and 1024-unit em follow Sealie (SIL OFL 1.1).',
         'familyName': 'Qingling Seal',
         'styleName': 'Regular',
-        'uniqueFontIdentifier': 'QinglingSeal-Regular;2.000;2026',
+        'uniqueFontIdentifier': 'QinglingSeal-Regular;2.100;2026',
         'fullName': 'Qingling Seal Regular',
-        'version': 'Version 2.000',
+        'version': 'Version 2.100',
         'psName': 'QinglingSeal-Regular',
         'designer': 'Drawn for the Khitan Input project',
-        'description': '16 seal-script blocks from the cover of Empress Xuanyi\'s Qingling 哀册, '
+        'description': 'Seal-script forms from the Daozong and Xuanyi Qingling covers, '
                        'at their Khitan small-script code points.',
-        'licenseDescription': 'The glyphs derive from a CC BY-SA 4.0 photograph and are offered '
+        'licenseDescription': 'The glyphs derive from CC BY and CC BY-SA 4.0 photographs and are offered '
                               'under CC BY-SA 4.0. The stroke system follows Sealie, SIL OFL 1.1.',
         'licenseInfoURL': 'https://github.com/mkpoli/khitan-input/blob/main/data/seal/font/README.md',
         'vendorURL': 'https://commons.wikimedia.org/wiki/File:Epitaph_of_Empress_Xuanyi_of_Liao.jpg',
@@ -191,15 +196,16 @@ def draw_gallery(record: dict) -> None:
     small = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 13)
     glyph_font = ImageFont.truetype(str(TTF), 168)
     correspondences = json.loads(CORRESPONDENCES.read_text(encoding='utf-8'))['blocks']
-    canvas = Image.new('RGB', (1100, 1050), 'white')
+    canvas = Image.new('RGB', (1100, 150 + math.ceil(len(record['forms']) / 4) * 225), 'white')
     draw = ImageDraw.Draw(canvas)
-    draw.text((40, 28), 'Qingling Seal · 16 vector glyphs', font=title, fill='black')
+    draw.text((40, 28), f"Qingling Seal · {len(record['forms'])} vector glyphs", font=title, fill='black')
     draw.text((42, 68), 'Khitan Small Script · 1024-unit em · 30-unit round pen', font=small, fill=(90, 90, 90))
     for index, form in enumerate(record['forms']):
         column, row = index % 4, index // 4
         x = 40 + column * 265
         y = 110 + row * 225
-        draw.text((x, y), chr(int(correspondences[form['id']]['unicode'][2:], 16)), font=glyph_font, fill='black')
+        draw.text((x, y), chr(int(correspondences[form['id']]['unicode'][2:], 16)), font=glyph_font, fill='black',
+                  features=['ss01'] if form['id'] == 'XY-05' else [])
         draw.text((x, y + 170), f"{form['id']}  {correspondences[form['id']]['unicode']}", font=label, fill=(90, 90, 90))
     canvas.save(GALLERY, optimize=True)
     print(f'{GALLERY.relative_to(ROOT)}: {canvas.width}x{canvas.height}')
@@ -207,8 +213,6 @@ def draw_gallery(record: dict) -> None:
 
 def main() -> None:
     record = json.loads(FORMS.read_text(encoding='utf-8'))
-    if len(record['forms']) != 16:
-        raise SystemExit(f"expected 16 forms, read {len(record['forms'])}")
     fit(record)
     build(record)
 

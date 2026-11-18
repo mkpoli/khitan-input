@@ -9,8 +9,7 @@ locator box for each block. This script fetches each photograph once into `cache
 its digest, crops the cover, writes the WebP the page displays, and stores the locator boxes as
 fractions of that crop in `data/seal/records.json`.
 
-The boxes place a block on the cover; they are not traced outlines. Xuanyi blocks carry the Unicode
-correspondence from `data/seal/correspondences.json`; Daozong blocks remain unidentified.
+Each block carries its Unicode correspondence from `data/seal/correspondences.json` when available.
 
     uv run scripts/build_seal_images.py
 """
@@ -126,8 +125,7 @@ def main() -> None:
                 'identification': None,
                 'unicode': None,
                 'status': 'unidentified',
-                'basis': 'No block of the Daozong cover has been assigned a reading here. '
-                         'The Xuanyi blocks are matched to BabelStone Khitan Small Seal.',
+                'basis': 'No shape correspondence recorded for this block.',
             })
 
     record = {

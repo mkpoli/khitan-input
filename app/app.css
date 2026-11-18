@@ -17,9 +17,9 @@
 
 @font-face {
   font-family: 'Qingling Seal';
-  src: url('/fonts/QinglingSeal-Regular.woff2?v=11') format('woff2');
+  src: url('/fonts/QinglingSeal-Regular.woff2?v=12') format('woff2');
   font-display: swap;
-  unicode-range: U+18B1D, U+18B58, U+18B68, U+18BD0, U+18C04, U+18C2D, U+18C37, U+18C39, U+18C5A, U+18C64, U+18C6E, U+18C8C, U+18C9C, U+18CA6, U+18CD5;
+  unicode-range: U+18B00-18CFF;
 }
 
 @font-face {

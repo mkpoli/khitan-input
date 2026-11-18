@@ -1,4 +1,3 @@
-// The seal-script covers: two inscriptions, 46 blocks; the 16 Xuanyi blocks carry their Khitan characters.
 import { expect, test } from 'bun:test'
 import { existsSync, readFileSync } from 'node:fs'
 
@@ -6,12 +5,12 @@ const record = JSON.parse(readFileSync(new URL('../data/seal/records.json', impo
 const forms = record.forms
 const inscriptions = record.inscriptions
 
-test('two inscriptions and 46 blocks, counted from the covers', () => {
+test('two inscriptions and 52 blocks, counted from the covers', () => {
   expect(inscriptions.map(inscription => inscription.id)).toEqual(['daozong', 'xuanyi'])
-  expect(forms).toHaveLength(46)
-  expect(record.counts).toEqual({ inscriptions: 2, forms: 46, identified: 16 })
-  expect(inscriptions.map(inscription => [inscription.columns, inscription.rows])).toEqual([[6, 5], [4, 4]])
-  expect(forms.filter(form => form.inscription === 'daozong')).toHaveLength(30)
+  expect(forms).toHaveLength(52)
+  expect(record.counts).toEqual({ inscriptions: 2, forms: 52, identified: 52 })
+  expect(inscriptions.map(inscription => [inscription.columns, inscription.rows])).toEqual([[6, 6], [4, 4]])
+  expect(forms.filter(form => form.inscription === 'daozong')).toHaveLength(36)
   expect(forms.filter(form => form.inscription === 'xuanyi')).toHaveLength(16)
 })
 
@@ -45,24 +44,15 @@ test('the blocks are numbered in reading order, columns right to left and rows t
 test('block ids are unique and in reading order', () => {
   expect(new Set(forms.map(form => form.id)).size).toBe(forms.length)
   const ids = forms.map(form => form.id)
-  expect(ids.slice(0, 30)).toEqual(Array.from({ length: 30 }, (_, index) => `DZ-${String(index + 1).padStart(2, '0')}`))
-  expect(ids.slice(30)).toEqual(Array.from({ length: 16 }, (_, index) => `XY-${String(index + 1).padStart(2, '0')}`))
+  expect(ids.slice(0, 36)).toEqual(Array.from({ length: 36 }, (_, index) => `DZ-${String(index + 1).padStart(2, '0')}`))
+  expect(ids.slice(36)).toEqual(Array.from({ length: 16 }, (_, index) => `XY-${String(index + 1).padStart(2, '0')}`))
 })
 
 test('every block records its identification status', () => {
-  const xuanyi = forms.filter(form => form.inscription === 'xuanyi')
-  const daozong = forms.filter(form => form.inscription === 'daozong')
-  expect(xuanyi).toHaveLength(16)
-  expect(daozong).toHaveLength(30)
-  for (const form of xuanyi) {
+  for (const form of forms) {
     expect(form.status).toBe('identified')
-    expect([...form.identification]).toHaveLength(1)
-    expect(form.unicode).toMatch(/^U\+18[BC][0-9A-F]{2}$/)
+    expect(form.confidence).toBe('probable')
+    expect(form.identification).toBe(String.fromCodePoint(parseInt(form.unicode.slice(2), 16)))
     expect(form.basis).toContain('BabelStone')
-  }
-  for (const form of daozong) {
-    expect(form.identification).toBeNull()
-    expect(form.status).toBe('unidentified')
-    expect(form.basis).toContain('Daozong')
   }
 })

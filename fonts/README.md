@@ -1,6 +1,6 @@
 # Fonts
 
-- `QinglingSeal-Regular.ttf`, `.woff2`: Qingling Seal, a 16-glyph pilot of the Xuanyi seal-script
-  cover at the Khitan small-script code points. The glyphs redraw the CC BY-SA 4.0 photograph of
-  the stone and are offered under CC BY-SA 4.0; the 30-unit round pen, 1024-unit em and fixed
-  advance follow Sealie (SIL OFL 1.1). See [data/seal/font/README.md](../data/seal/font/README.md).
+Qingling Seal encodes the 36 distinct characters on the Daozong and Xuanyi covers at 38 Unicode code points.
+The TTF and WOFF2 include the alternate Xuanyi carving of U+18C64 under `ss01`.
+The vector drawings are licensed under CC BY-SA 4.0.
+[Photograph credits and build instructions](../data/seal/font/README.md).
