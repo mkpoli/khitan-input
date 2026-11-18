@@ -1,4 +1,5 @@
 <script>
+  import SealAnalogues from '../ui/SealAnalogues.svelte'
   import SealSpecimen from '../ui/SealSpecimen.svelte'
   import seal from '../../data/seal/records.json' with { type: 'json' }
   import { t } from '../lib/i18n.svelte.js'
@@ -87,6 +88,8 @@
       · <a href="https://www.babelstone.co.uk/Fonts/KhitanSmallSeal.html">BabelStone Khitan Small Seal</a>
     </p>
   </section>
+
+  <SealAnalogues {weight} />
 
   <section class="ui-section">
     <h2 class="ui-label">{t('seal.sources')}</h2>

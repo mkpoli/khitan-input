@@ -6,3 +6,6 @@
 - `QinglingSeal-Regular.ttf`, `.woff2`: Qingling Seal, seal-script forms redrawn after the cover photographs by Tonyxy1992 (Xuanyi, CC BY-SA 4.0) and 红烧腰果 (Daozong, CC BY 4.0). The glyphs are offered under CC BY-SA 4.0; the 30-unit round pen follows Sealie (SIL OFL 1.1). <https://github.com/mkpoli/khitan-input/blob/main/data/seal/font/README.md>
 
 - `BabelStoneKhitanSmallSeal.woff2` (13.000), Andrew West. Web-hosting edition. Redistribution permitted, including commercial packages. Selling the font on its own is excluded. [Source and terms](https://www.babelstone.co.uk/Fonts/KhitanSmallSeal.html).
+
+- `ComparisonZhuque.woff2`: four-glyph subset of Zhuque Fangsong (JadeFoci), SIL OFL 1.1. [Licence](OFL-Zhuque.txt).
+- `ComparisonSealie.woff2`: four-glyph subset of Sealie (ieb and Sealie contributors), SIL OFL 1.1. [Licence](OFL-Sealie.txt).
