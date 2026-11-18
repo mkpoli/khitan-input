@@ -19,6 +19,17 @@ test('the font covers both inscriptions and preserves the Xuanyi alternate', () 
   for (const block of Object.values(correspondences.blocks)) expect(block.unicode).toMatch(/^U\+18[BC][0-9A-F]{2}$/)
 })
 
+test('the Xuanyi and Daozong plates distinguish the upper bar and the hooked upright', () => {
+  const { blocks, unicode_aliases: aliases } = correspondences
+  expect(blocks['XY-06'].unicode).toBe('U+18C57')
+  expect(blocks['DZ-02'].unicode).toBe('U+18C8C')
+  expect([blocks['XY-13'], blocks['DZ-19'], blocks['DZ-33']].map(block => block.unicode))
+    .toEqual(Array(3).fill('U+18CBD'))
+  expect(aliases).toEqual({ 'U+18C04': blocks['XY-14'].unicode, 'U+18C32': blocks['DZ-07'].unicode })
+  const primary = new Set(Object.values(blocks).map(block => block.unicode))
+  expect(new Set([...primary, ...Object.keys(aliases)]).size).toBe(38)
+})
+
 test('every block has centre lines inside the em box', () => {
   for (const form of forms) {
     expect(form.paths.length).toBeGreaterThanOrEqual(2)

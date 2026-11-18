@@ -10,6 +10,10 @@
   "text": "宣懿皇后哀冊",
   "source": "Shimunek 2017, 254–255"
  },
+ "unicode_aliases": {
+  "U+18C04": "U+18C39",
+  "U+18C32": "U+18C7F"
+ },
  "blocks": {
   "XY-01": {
    "character": "𘰷",
@@ -47,11 +51,11 @@
    "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
   },
   "XY-06": {
-   "character": "𘲌",
-   "unicode": "U+18C8C",
+   "character": "𘱗",
+   "unicode": "U+18C57",
    "status": "identified",
    "confidence": "probable",
-   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+   "basis": "The Xuanyi photograph and plate 139B show a separate horizontal stroke above the partial enclosure, matching U+18C57 in BabelStone Khitan Small Seal. DZ-02 lacks that upper stroke."
   },
   "XY-07": {
    "character": "𘱮",
@@ -96,18 +100,18 @@
    "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
   },
   "XY-13": {
-   "character": "𘰄",
-   "unicode": "U+18C04",
+   "character": "𘲽",
+   "unicode": "U+18CBD",
    "status": "identified",
    "confidence": "probable",
-   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+   "basis": "The Xuanyi photograph and plate 139B show the hooked crossbar, central upright and two curved legs of U+18CBD in BabelStone Khitan Small Seal. DZ-19 and DZ-33 have the same form."
   },
   "XY-14": {
    "character": "𘰹",
    "unicode": "U+18C39",
    "status": "identified",
    "confidence": "probable",
-   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+   "basis": "The roof-shaped top and three lower strokes match U+18C39 in BabelStone Khitan Small Seal and DZ-34 on the Daozong cover. West also encodes the shape at U+18C04, his preferred identification."
   },
   "XY-15": {
    "character": "𘭘",

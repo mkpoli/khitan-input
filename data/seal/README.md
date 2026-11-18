@@ -29,6 +29,12 @@ the Daozong correspondences follow the forms on the stone and in West’s repert
 into `records.json`. Earlier versions counted only five Daozong rows. To convert an old DZ citation,
 use its column and row: the current number is `6 × (col − 1) + row`.
 
+The two plates distinguish the detached bar over XY-06 (U+18C57) from DZ-02 (U+18C8C).
+The hooked upright at XY-13, DZ-19 and DZ-33 is U+18CBD. The neighboring XY-14 has the roof
+also seen in DZ-34. The `unicode_aliases` table records both scholarly readings of this roof
+and of the form at DZ-07. These aliases give the 36 primary identifications 38 font mappings.
+[West’s plate reproductions and seal-script repertoire](https://www.babelstone.co.uk/Fonts/KhitanSmallSeal.html).
+
 Each inscription also carries its title, object, person, date, plate number, photograph source and
 display image. `sources` holds the two Commons photographs and the 1931 article, with author, date,
 licence and terms.

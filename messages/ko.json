@@ -144,7 +144,7 @@
  "seal.order": "열은 오른쪽에서 왼쪽으로, 행은 위에서 아래로. 각 칸이 뚜껑의 한 블록이다.",
  "seal.figure": "사진:",
  "seal.typeface": "서체(시작품)",
- "seal.typeface.note": "경릉 전서체 · 유니코드 36자",
+ "seal.typeface.note": "경릉 전서체 · 36자, 유니코드 코드 포인트 38개",
  "seal.typeface.download": "TTF 내려받기",
  "seal.ids": "DZ-01부터 XY-16까지는 인용용 번호이며 코드 포인트가 아니다.",
  "seal.sources": "출처와 라이선스",

@@ -118,7 +118,8 @@ def fit(record: dict) -> None:
 
 def build(record: dict) -> None:
     """Write the font at the Khitan code points, plus the WOFF2 copies and gallery."""
-    correspondences = json.loads(CORRESPONDENCES.read_text(encoding='utf-8'))['blocks']
+    mapping = json.loads(CORRESPONDENCES.read_text(encoding='utf-8'))
+    correspondences = mapping['blocks']
     order = ['.notdef']
     outlines = {'.notdef': glyph([[[80, 0], [944, 0], [944, 760], [80, 760], [80, 0]]])}
     widths = {'.notdef': (ADVANCE, 60)}
@@ -138,6 +139,9 @@ def build(record: dict) -> None:
         outlines[name] = glyph(form['paths'])
         widths[name] = (ADVANCE, 0)
         cmap[code] = name
+
+    for alias, primary in mapping['unicode_aliases'].items():
+        cmap[int(alias[2:], 16)] = cmap[int(primary[2:], 16)]
 
     builder = FontBuilder(EM, isTTF=True)
     builder.font['head'].fontRevision = 2.1

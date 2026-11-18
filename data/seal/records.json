@@ -658,12 +658,12 @@
    "n": 6,
    "col": 2,
    "row": 2,
-   "character": "𘲌",
-   "unicode": "U+18C8C",
+   "character": "𘱗",
+   "unicode": "U+18C57",
    "status": "identified",
    "confidence": "probable",
-   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017.",
-   "identification": "𘲌"
+   "basis": "The Xuanyi photograph and plate 139B show a separate horizontal stroke above the partial enclosure, matching U+18C57 in BabelStone Khitan Small Seal. DZ-02 lacks that upper stroke.",
+   "identification": "𘱗"
   },
   {
    "id": "XY-07",
@@ -749,12 +749,12 @@
    "n": 13,
    "col": 4,
    "row": 1,
-   "character": "𘰄",
-   "unicode": "U+18C04",
+   "character": "𘲽",
+   "unicode": "U+18CBD",
    "status": "identified",
    "confidence": "probable",
-   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017.",
-   "identification": "𘰄"
+   "basis": "The Xuanyi photograph and plate 139B show the hooked crossbar, central upright and two curved legs of U+18CBD in BabelStone Khitan Small Seal. DZ-19 and DZ-33 have the same form.",
+   "identification": "𘲽"
   },
   {
    "id": "XY-14",
@@ -766,7 +766,7 @@
    "unicode": "U+18C39",
    "status": "identified",
    "confidence": "probable",
-   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017.",
+   "basis": "The roof-shaped top and three lower strokes match U+18C39 in BabelStone Khitan Small Seal and DZ-34 on the Daozong cover. West also encodes the shape at U+18C04, his preferred identification.",
    "identification": "𘰹"
   },
   {

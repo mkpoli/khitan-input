@@ -11,7 +11,7 @@ gallery. The glyphs are redrawn after the photographs.
 The pen, the em and the fixed advance follow [Sealie](https://github.com/iebb/sealie), the Small
 Seal typeface by ieb (SIL OFL 1.1).
 
-The font covers 36 Unicode characters. The Daozong drawings use the first occurrence of each of the 21 additional characters. Repeated characters share an outline.
+The 36 distinct characters on the covers use 38 Unicode code points in the font. The `unicode_aliases` table in `correspondences.json` follows West’s two alternative identifications: U+18C04 shares the roof form at U+18C39, and U+18C32 shares the form at U+18C7F. The Daozong drawings use the first occurrence of each of the 21 additional characters. Repeated characters share an outline.
 
 ## Record
 

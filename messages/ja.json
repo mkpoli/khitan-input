@@ -144,7 +144,7 @@
  "seal.order": "列は右から左へ、行は上から下へ。各枠が蓋の一ブロックにあたる。",
  "seal.figure": "写真：",
  "seal.typeface": "書体（試作）",
- "seal.typeface.note": "慶陵篆書体 · Unicode 36字",
+ "seal.typeface.note": "慶陵篆書体 · 36字、Unicode 38符号位置",
  "seal.typeface.download": "TTFをダウンロード",
  "seal.ids": "DZ-01 から XY-16 までの番号は引用用で、コードポイントではない。",
  "seal.sources": "出典とライセンス",
