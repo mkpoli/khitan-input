@@ -25,6 +25,8 @@ Grapheme values follow 大竹昌巳 (2020, 2025). Other scholars' values sit bes
 
 ## Build
 
+The [family guide to checkboxes, radios and switches](https://github.com/mkpoli/tangut-input/blob/main/design/README.md#which-control) gives the markup for the controls in this app’s [design stylesheets](design/).
+
 ```sh
 mkdir -p cache/web    # downloads listed in docs/materials.md
 scripts/extract_otake2020.py <dissertation.pdf>
