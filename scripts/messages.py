@@ -158,7 +158,7 @@ T = {
  "seal.daozong": ("Daozong","道宗","道宗","道宗","도종"),
  "seal.missing": ("□ = outside this panel’s Khitan repertoire","□ はこの欄に収録されていない文字","□ 表示本栏未收录的字符","□ 表示本欄未收錄的字元","□는 해당 칸에 없는 글자입니다"),
  "seal.proposed": ("Proposed forms","試作字形","拟作字形","擬作字形","제안 자형"),
- "seal.analogy": ("Modern designs based on Daozong forms DZ-27 and DZ-28. The Han pair provides a comparison of strokes.","道宗哀冊蓋の DZ-27・DZ-28 をもとにした試作。漢字二書体で筆画の対応を示す。","据道宗哀册盖 DZ-27、DZ-28 拟作。两列汉字供笔画比较。","據道宗哀冊蓋 DZ-27、DZ-28 擬作。兩列漢字供筆畫比較。","도종 애책의 DZ-27과 DZ-28을 바탕으로 새로 그린 자형. 두 한자 서체는 획 비교용이다."),
+ "seal.analogy": ("Modern designs based on strokes from the Daozong cover. The Han pair provides a comparison of strokes.","道宗哀冊蓋の筆画をもとにした試作。漢字二書体で筆画の対応を示す。","据道宗哀册盖的笔画拟作。两列汉字供笔画比较。","據道宗哀冊蓋的筆畫擬作。兩列漢字供筆畫比較。","도종 애책 뚜껑의 획을 바탕으로 새로 그린 자형. 두 한자 서체는 획 비교용이다."),
  "seal.weight": ("Weight","ウェイト","字重","字重","굵기"),
  "seal.typeface.download": ("Download the TTF","TTFをダウンロード","下载 TTF","下載 TTF","TTF 내려받기"),
  "seal.ids": ("The ids DZ-01 to XY-16 are for citation, not code points.","DZ-01 から XY-16 までの番号は引用用で、コードポイントではない。","DZ-01 至 XY-16 是引用编号，不是码位。","DZ-01 至 XY-16 是引用編號，不是碼位。","DZ-01부터 XY-16까지는 인용용 번호이며 코드 포인트가 아니다."),
