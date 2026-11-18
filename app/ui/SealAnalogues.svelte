@@ -12,13 +12,22 @@
 <section class="ui-section">
   <h2 class="ui-label">{t('seal.proposed')}</h2>
   <p class="ui-hint">{t('seal.analogy')}</p>
-  <div class="views">
-    <label><input type="radio" name="seal-comparison" bind:group={mixed} value={false} /> {t('seal.table')}</label>
-    <label><input type="radio" name="seal-comparison" bind:group={mixed} value={true} /> {t('seal.mixed')}</label>
+  <div class="views" role="radiogroup" aria-label={t('seal.proposed')}>
+    <label class="ui-check-row">
+      <input class="ui-radio" type="radio" name="seal-comparison" bind:group={mixed} value={false} />
+      <span class="ui-check-text">{t('seal.table')}</span>
+    </label>
+    <label class="ui-check-row">
+      <input class="ui-radio" type="radio" name="seal-comparison" bind:group={mixed} value={true} />
+      <span class="ui-check-text">{t('seal.mixed')}</span>
+    </label>
   </div>
   {#if mixed}
     <div class="legend"><span>Qingling Seal · Sealie</span>
-      <label><input type="checkbox" bind:checked={baseline} /> {t('seal.baseline')}</label>
+      <label class="ui-check-row">
+        <input class="ui-checkbox" type="checkbox" bind:checked={baseline} />
+        <span class="ui-check-text">{t('seal.baseline')}</span>
+      </label>
     </div>
     <div class="mixed" class:baseline>
       {#each designs as design (design.unicode)}
@@ -46,7 +55,6 @@
   @font-face{font-family:'Comparison Zhuque';src:url('/fonts/ComparisonZhuque.woff2?v=2') format('woff2');font-display:swap}
   @font-face{font-family:'Comparison Sealie';src:url('/fonts/ComparisonSealie.woff2?v=2') format('woff2');font-display:swap}
   .views,.legend{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;font-size:var(--ui-text-sm)}
-  .views label,.legend label{cursor:pointer}
   .legend{justify-content:space-between;max-width:54rem;color:var(--ui-color-ink-soft)}
   .mixed{max-width:54rem;font-size:clamp(2rem,5vw,3.8rem);line-height:1.55;font-synthesis:none;border-block:1px solid var(--ui-color-border);padding-block:.2em}
   .pair{display:inline-block;white-space:nowrap}
