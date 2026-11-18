@@ -155,7 +155,7 @@ T = {
  "seal.sample": ("Sample text","見本文字列","样本文字","樣本文字","견본 문구"),
  "seal.xuanyi": ("Xuanyi","宣懿皇后","宣懿皇后","宣懿皇后","선의황후"),
  "seal.daozong": ("Daozong","道宗","道宗","道宗","도종"),
- "seal.missing": ("□ = character unavailable in this face","□ は書体に未収録の文字","□ 表示该字体未收录","□ 表示該字體未收錄","□는 서체에 없는 글자입니다"),
+ "seal.missing": ("□ = outside this specimen’s repertoire","□ は見本に含まれない文字","□ 表示样本未收录的字符","□ 表示樣本未收錄的字元","□는 견본에 없는 글자입니다"),
  "seal.weight": ("Weight","ウェイト","字重","字重","굵기"),
  "seal.typeface.download": ("Download the TTF","TTFをダウンロード","下载 TTF","下載 TTF","TTF 내려받기"),
  "seal.ids": ("The ids DZ-01 to XY-16 are for citation, not code points.","DZ-01 から XY-16 までの番号は引用用で、コードポイントではない。","DZ-01 至 XY-16 是引用编号，不是码位。","DZ-01 至 XY-16 是引用編號，不是碼位。","DZ-01부터 XY-16까지는 인용용 번호이며 코드 포인트가 아니다."),

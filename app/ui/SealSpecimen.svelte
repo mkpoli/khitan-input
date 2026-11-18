@@ -8,7 +8,9 @@
     id: cover.id,
     text: seal.forms.filter(form => form.inscription === cover.id).map(form => form.identification).join('')
   }))
-  let sample = $state(covers.find(cover => cover.id === 'xuanyi')?.text ?? '')
+  const xuanyi = covers.find(cover => cover.id === 'xuanyi')?.text ?? ''
+  const alternateIndex = seal.forms.filter(form => form.inscription === 'xuanyi').findIndex(form => form.id === 'XY-05')
+  let sample = $state(xuanyi)
   const covered = new Set([
     ...Object.values(mappings.blocks).map(block => block.character),
     ...Object.keys(mappings.unicode_aliases).map(code => String.fromCodePoint(parseInt(code.slice(2), 16)))
@@ -32,7 +34,7 @@
   <div class="proofs">
     <section class="proof">
       <h3>Qingling Seal</h3>
-      <p class="qingling" style:font-weight={weight}>{comparison}</p>
+      <p class="qingling" style:font-weight={weight}>{#if sample === xuanyi}{#each Array.from(sample) as char, i}<span class:alternate={i === alternateIndex}>{char}</span>{/each}{:else}{comparison}{/if}</p>
     </section>
     <section class="proof">
       <h3><a href="https://www.babelstone.co.uk/Fonts/KhitanSmallSeal.html">BabelStone Khitan Small Seal</a></h3>
@@ -68,6 +70,7 @@
   .proof h3{margin:0 0 .75rem;color:var(--ui-color-ink-soft)}
   .proof p{margin:0;min-height:1.3em;white-space:pre-wrap;overflow-wrap:anywhere;font-size:clamp(2.25rem,4.4vw,4rem);line-height:1.35}
   .qingling{font-family:'Qingling Seal',serif}
+  .alternate{font-feature-settings:'ss01'}
   .babelstone{font-family:'BabelStone Khitan Small Seal',serif}
   .missing{padding-inline:1rem;color:var(--ui-color-ink-soft);font-size:var(--ui-text-sm)}
   .axis{display:grid;grid-template-columns:auto minmax(0,1fr) 3.4rem;background:var(--ui-color-surface-sunken)}
