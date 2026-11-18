@@ -379,5 +379,10 @@
    "confidence": "probable",
    "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
   }
- }
+ },
+ "font_alternates": [
+  "XY-05",
+  "XY-11",
+  "XY-12"
+ ]
 }

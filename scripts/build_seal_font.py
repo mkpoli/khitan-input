@@ -134,7 +134,7 @@ def build(record: dict) -> None:
     for form in record['forms']:
         code = int(form['unicode'][2:], 16)
         name = f'uni{code:04X}'
-        if code in cmap:
+        if form.get('alternate'):
             alternate = f'{name}.alt'
             order.append(alternate)
             paths[alternate] = form['paths']
@@ -150,7 +150,7 @@ def build(record: dict) -> None:
         cmap[int(alias[2:], 16)] = cmap[int(primary[2:], 16)]
 
     builder = FontBuilder(EM, isTTF=True)
-    builder.font['head'].fontRevision = 3.2
+    builder.font['head'].fontRevision = 3.3
     builder.setupGlyphOrder(order)
     builder.setupCharacterMap(cmap)
     outlines = {name: glyph(strokes, RADIUS) for name, strokes in paths.items()}
@@ -167,9 +167,9 @@ def build(record: dict) -> None:
                      'pen and 1024-unit em follow Sealie (SIL OFL 1.1).',
         'familyName': 'Qingling Seal',
         'styleName': 'Regular',
-        'uniqueFontIdentifier': 'QinglingSeal-Regular;3.200;2026',
+        'uniqueFontIdentifier': 'QinglingSeal-Regular;3.300;2026',
         'fullName': 'Qingling Seal Regular',
-        'version': 'Version 3.200',
+        'version': 'Version 3.300',
         'psName': 'QinglingSeal-Regular',
         'designer': 'Drawn for the Khitan Input project',
         'description': 'Seal-script forms from the Daozong and Xuanyi Qingling covers, '
@@ -222,7 +222,7 @@ def draw_gallery(record: dict) -> None:
         x = 40 + column * 265
         y = 110 + row * 225
         draw.text((x, y), chr(int(form['unicode'][2:], 16)), font=glyph_font, fill='black',
-                  features=['ss01'] if form['id'] == 'XY-05' else [])
+                  features=['ss01'] if form.get('alternate') else [])
         draw.text((x, y + 170), f"{form['id']}  {form['unicode']}", font=label, fill=(90, 90, 90))
     canvas.save(GALLERY, optimize=True)
     print(f'{GALLERY.relative_to(ROOT)}: {canvas.width}x{canvas.height}')
@@ -230,9 +230,11 @@ def draw_gallery(record: dict) -> None:
 
 def main() -> None:
     record = json.loads(FORMS.read_text(encoding='utf-8'))
-    blocks = json.loads(CORRESPONDENCES.read_text(encoding='utf-8'))['blocks']
+    mapping = json.loads(CORRESPONDENCES.read_text(encoding='utf-8'))
+    blocks = mapping['blocks']
     for form in record['forms']:
         form['unicode'] = blocks[form['id']]['unicode']
+        form['alternate'] = form['id'] in mapping['font_alternates']
     designs = json.loads((FORMS.parent / 'analogues.json').read_text(encoding='utf-8'))
     record['forms'].extend({**design, 'id': 'Design'} for design in designs)
     fit(record)
