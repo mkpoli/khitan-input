@@ -5,7 +5,6 @@
 
   /** @param {string} id */
   const blocks = id => seal.forms.filter(form => form.inscription === id)
-  const glyphs = Array.from({ length: 16 }, (_, index) => String.fromCodePoint(0xE700 + index))
   const xuanyi = seal.forms.filter(form => form.inscription === 'xuanyi')
   /** @param {string} id */
   const identified = id => blocks(id).filter(block => block.identification).length
@@ -67,15 +66,15 @@
   <section class="ui-section typeface">
     <div class="ui-section-head">
       <h2 class="ui-label">{t('seal.typeface')}</h2>
-      <span class="ui-count">U+E700–U+E70F</span>
+      <span class="ui-count">U+18B00–U+18CFF</span>
     </div>
     <p class="typeface-note">{t('seal.typeface.note')}</p>
     <div class="typeface-grid">
-      {#each glyphs as glyph, index (glyph)}
+      {#each xuanyi as form (form.id)}
         <span class="typeface-cell">
-          <span class="typeface-glyph">{glyph}</span>
-          <span class="typeface-code">XY-{String(index + 1).padStart(2, '0')} · U+{(0xE700 + index).toString(16).toUpperCase()}</span>
-          <span class="typeface-normal">{xuanyi[index]?.identification} <span>{xuanyi[index]?.unicode}</span></span>
+          <span class="typeface-glyph" style={form.id === 'XY-05' ? 'font-feature-settings:"ss01" 1' : ''}>{form.identification}</span>
+          <span class="typeface-code">{form.id} · {form.unicode}</span>
+          <span class="typeface-normal">{form.identification}</span>
         </span>
       {/each}
     </div>
@@ -124,7 +123,6 @@
   .typeface-glyph{font-family:'Qingling Seal';font-size:76px;line-height:1}
   .typeface-code{color:var(--ui-color-ink-muted);font-size:11px;font-variant-numeric:tabular-nums}
   .typeface-normal{display:flex;align-items:baseline;gap:4px;font-family:'Noto Serif Khitan Small Script';font-size:22px;line-height:1}
-  .typeface-normal span{font-family:var(--ui-font-sans);font-size:10px;color:var(--ui-color-ink-muted)}
   .sources{display:grid;gap:var(--ui-space-md);margin:0;padding:0;list-style:none;font-size:var(--ui-text-sm)}
   .sources p{overflow-wrap:anywhere}
   .sources p + p{margin-block-start:2px;color:var(--ui-color-ink-soft)}

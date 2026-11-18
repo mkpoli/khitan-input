@@ -17,6 +17,7 @@ import math
 import pathlib
 
 from PIL import Image, ImageDraw, ImageFont
+from fontTools.feaLib.builder import addOpenTypeFeaturesFromString
 from fontTools.fontBuilder import FontBuilder
 from fontTools.pens.ttGlyphPen import TTGlyphPen
 from fontTools.ttLib.tables._g_l_y_f import flagOverlapSimple
@@ -25,6 +26,7 @@ from shapely.ops import unary_union
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 FORMS = ROOT / 'data/seal/font/forms.json'
+CORRESPONDENCES = ROOT / 'data/seal/correspondences.json'
 TTF = ROOT / 'fonts/QinglingSeal-Regular.ttf'
 WOFF2 = ROOT / 'fonts/QinglingSeal-Regular.woff2'
 WEB = ROOT / 'app/public/fonts/QinglingSeal-Regular.woff2'
@@ -115,22 +117,35 @@ def fit(record: dict) -> None:
 
 
 def build(record: dict) -> None:
-    """Write the font, the WOFF2 copies and the gallery."""
+    """Write the font at the Khitan code points, plus the WOFF2 copies and gallery."""
+    correspondences = json.loads(CORRESPONDENCES.read_text(encoding='utf-8'))['blocks']
     order = ['.notdef']
     outlines = {'.notdef': glyph([[[80, 0], [944, 0], [944, 760], [80, 760], [80, 0]]])}
     widths = {'.notdef': (ADVANCE, 60)}
     cmap = {}
-    for index, form in enumerate(record['forms']):
-        name = f"uE7{index:02X}"
+    alternates = []
+    for form in record['forms']:
+        code = int(correspondences[form['id']]['unicode'][2:], 16)
+        name = f'uni{code:04X}'
+        if code in cmap:
+            alternate = f'{name}.alt'
+            order.append(alternate)
+            outlines[alternate] = glyph(form['paths'])
+            widths[alternate] = (ADVANCE, 0)
+            alternates.append((name, alternate))
+            continue
         order.append(name)
         outlines[name] = glyph(form['paths'])
         widths[name] = (ADVANCE, 0)
-        cmap[0xE700 + index] = name
+        cmap[code] = name
 
     builder = FontBuilder(EM, isTTF=True)
     builder.setupGlyphOrder(order)
     builder.setupCharacterMap(cmap)
     builder.setupGlyf(outlines)
+    if alternates:
+        rules = ' '.join(f'sub {base} by {alt};' for base, alt in alternates)
+        addOpenTypeFeaturesFromString(builder.font, f'feature ss01 {{ {rules} }} ss01;')
     builder.setupHorizontalMetrics(widths)
     builder.setupHorizontalHeader(ascent=ASCENT, descent=DESCENT, lineGap=0)
     builder.setupNameTable({
@@ -139,13 +154,13 @@ def build(record: dict) -> None:
                      'pen and 1024-unit em follow Sealie (SIL OFL 1.1).',
         'familyName': 'Qingling Seal',
         'styleName': 'Regular',
-        'uniqueFontIdentifier': 'QinglingSeal-Regular;1.200;2026',
+        'uniqueFontIdentifier': 'QinglingSeal-Regular;2.000;2026',
         'fullName': 'Qingling Seal Regular',
-        'version': 'Version 1.200',
+        'version': 'Version 2.000',
         'psName': 'QinglingSeal-Regular',
         'designer': 'Drawn for the Khitan Input project',
         'description': '16 seal-script blocks from the cover of Empress Xuanyi\'s Qingling 哀册, '
-                       'at page-local code points U+E700-U+E70F.',
+                       'at their Khitan small-script code points.',
         'licenseDescription': 'The glyphs derive from a CC BY-SA 4.0 photograph and are offered '
                               'under CC BY-SA 4.0. The stroke system follows Sealie, SIL OFL 1.1.',
         'licenseInfoURL': 'https://github.com/mkpoli/khitan-input/blob/main/data/seal/font/README.md',
@@ -175,16 +190,17 @@ def draw_gallery(record: dict) -> None:
     title = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf', 28)
     small = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 13)
     glyph_font = ImageFont.truetype(str(TTF), 168)
+    correspondences = json.loads(CORRESPONDENCES.read_text(encoding='utf-8'))['blocks']
     canvas = Image.new('RGB', (1100, 1050), 'white')
     draw = ImageDraw.Draw(canvas)
     draw.text((40, 28), 'Qingling Seal · 16 vector glyphs', font=title, fill='black')
-    draw.text((42, 68), 'U+E700–U+E70F · 1024-unit em · 30-unit round pen', font=small, fill=(90, 90, 90))
+    draw.text((42, 68), 'Khitan Small Script · 1024-unit em · 30-unit round pen', font=small, fill=(90, 90, 90))
     for index, form in enumerate(record['forms']):
         column, row = index % 4, index // 4
         x = 40 + column * 265
         y = 110 + row * 225
-        draw.text((x, y), chr(0xE700 + index), font=glyph_font, fill='black')
-        draw.text((x, y + 170), f"{form['id']}  U+{0xE700 + index:04X}", font=label, fill=(90, 90, 90))
+        draw.text((x, y), chr(int(correspondences[form['id']]['unicode'][2:], 16)), font=glyph_font, fill='black')
+        draw.text((x, y + 170), f"{form['id']}  {correspondences[form['id']]['unicode']}", font=label, fill=(90, 90, 90))
     canvas.save(GALLERY, optimize=True)
     print(f'{GALLERY.relative_to(ROOT)}: {canvas.width}x{canvas.height}')
 

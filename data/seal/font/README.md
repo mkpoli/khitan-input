@@ -1,7 +1,8 @@
 # Qingling Seal (draft)
 
-A pilot typeface for the sixteen seal-script blocks of the Xuanyi 哀册 cover: U+E700–U+E70F on a
-1024-unit em with a 30-unit round pen.
+A pilot typeface for the sixteen seal-script blocks of the Xuanyi 哀册 cover, at their Khitan
+small-script code points on a 1024-unit em with a 30-unit round pen. The two blocks for U+18C64
+share one code point; the second carving is the `ss01` alternate.
 
 `forms.json` is the vector source: sixteen blocks, each a list of centreline paths in font units.
 `scripts/build_seal_font.py` expands them with the round pen and writes the TTF, WOFF2 and the full
@@ -23,6 +24,8 @@ This is a **draft** of the sixteen Xuanyi blocks. The Daozong cover (30 blocks) 
 - **Photograph.** Tonyxy1992, 2015-08-05, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Epitaph_of_Empress_Xuanyi_of_Liao.jpg), CC BY-SA 4.0. The vector glyphs redraw this photograph; they and the font are offered under CC BY-SA 4.0.
 - **Sealie.** ieb, [Sealie](https://github.com/iebb/sealie), SIL OFL 1.1. Model for the 30-unit round pen, the 1024-unit em and the fixed advance.
 - **Inscription.** 王靜如 (1931), 「遼道宗及宣懿皇后契丹國字哀冊初釋」, 《中央研究院歷史語言研究所集刊》第三本第四分, 467–478, plate 3.
+- **Code points.** Andrew West, [BabelStone Khitan Small Seal](https://www.babelstone.co.uk/Fonts/KhitanSmallSeal.html), v13.000, 2023.
+- **Cover reading.** Andrew Shimunek, “Toward a decipherment and linguistic reconstruction of the 1101 A.D. Kitan Eulogy for Empress Xuanyi”, *Acta Orientalia Academiae Scientiarum Hungaricae* 70.2 (2017), 253–272.
 
 ## Rebuilding
 
