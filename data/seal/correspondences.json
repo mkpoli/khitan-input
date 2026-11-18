@@ -4,7 +4,7 @@
   "author": "Andrew West",
   "url": "https://www.babelstone.co.uk/Fonts/KhitanSmallSeal.html",
   "licence": "Free to use and redistribute; not to be sold on its own.",
-  "note": "Maps 38 seal-script characters from the Daozong and Xuanyi covers to Unicode. The Xuanyi blocks were matched by shape."
+  "note": "West maps 36 seal shapes to 38 Unicode characters. Block correspondences are editorial shape matches."
  },
  "reading": {
   "text": "宣懿皇后哀冊",
@@ -122,6 +122,258 @@
    "status": "identified",
    "confidence": "probable",
    "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "DZ-01": {
+   "character": "𘲇",
+   "unicode": "U+18C87",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-02": {
+   "character": "𘲌",
+   "unicode": "U+18C8C",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-03": {
+   "character": "𘮒",
+   "unicode": "U+18B92",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-04": {
+   "character": "𘲫",
+   "unicode": "U+18CAB",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-05": {
+   "character": "𘬭",
+   "unicode": "U+18B2D",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-06": {
+   "character": "𘯤",
+   "unicode": "U+18BE4",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-07": {
+   "character": "𘱿",
+   "unicode": "U+18C7F",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing. West also lists U+18C32 for this shape and prefers U+18C7F."
+  },
+  "DZ-08": {
+   "character": "𘲫",
+   "unicode": "U+18CAB",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-09": {
+   "character": "𘱤",
+   "unicode": "U+18C64",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-10": {
+   "character": "𘬓",
+   "unicode": "U+18B13",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-11": {
+   "character": "𘭲",
+   "unicode": "U+18B72",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-12": {
+   "character": "𘰥",
+   "unicode": "U+18C25",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-13": {
+   "character": "𘮠",
+   "unicode": "U+18BA0",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-14": {
+   "character": "𘰗",
+   "unicode": "U+18C17",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-15": {
+   "character": "𘲚",
+   "unicode": "U+18C9A",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-16": {
+   "character": "𘲴",
+   "unicode": "U+18CB4",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-17": {
+   "character": "𘲜",
+   "unicode": "U+18C9C",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-18": {
+   "character": "𘯶",
+   "unicode": "U+18BF6",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-19": {
+   "character": "𘲽",
+   "unicode": "U+18CBD",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-20": {
+   "character": "𘱤",
+   "unicode": "U+18C64",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-21": {
+   "character": "𘬪",
+   "unicode": "U+18B2A",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-22": {
+   "character": "𘰴",
+   "unicode": "U+18C34",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-23": {
+   "character": "𘮽",
+   "unicode": "U+18BBD",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-24": {
+   "character": "𘲫",
+   "unicode": "U+18CAB",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-25": {
+   "character": "𘭘",
+   "unicode": "U+18B58",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-26": {
+   "character": "𘳕",
+   "unicode": "U+18CD5",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-27": {
+   "character": "𘭝",
+   "unicode": "U+18B5D",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-28": {
+   "character": "𘬮",
+   "unicode": "U+18B2E",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-29": {
+   "character": "𘬚",
+   "unicode": "U+18B1A",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-30": {
+   "character": "𘱚",
+   "unicode": "U+18C5A",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-31": {
+   "character": "𘲦",
+   "unicode": "U+18CA6",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-32": {
+   "character": "𘲫",
+   "unicode": "U+18CAB",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-33": {
+   "character": "𘲽",
+   "unicode": "U+18CBD",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-34": {
+   "character": "𘰹",
+   "unicode": "U+18C39",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against the U+18C39 form in BabelStone Khitan Small Seal v13.000, also drawn at XY-14. West notes that this shape has been read as U+18C39 and proposes U+18C04."
+  },
+  "DZ-35": {
+   "character": "𘭘",
+   "unicode": "U+18B58",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
+  },
+  "DZ-36": {
+   "character": "𘳕",
+   "unicode": "U+18CD5",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape match against BabelStone Khitan Small Seal v13.000, checked on the Daozong photograph and the plate 139A rubbing."
   }
  }
 }

@@ -20,7 +20,7 @@ Grapheme values follow 大竹昌巳 (2020, 2025). Other scholars' values sit bes
 - **Jurchen**: nine characters a cited figure sets beside a Khitan large-script form, drawn from
   BabelStone's glyphs and the Jurchen face, with what the sources say of the four directions.
 - **Seal script**: the two seal-script covers of the Qingling 哀册, with a
-  [block record](data/seal/README.md) for each. A 16-glyph [pilot typeface](data/seal/font/README.md) covers the Xuanyi cover.
+  [block record](data/seal/README.md) for each. The [Qingling Seal typeface](data/seal/font/README.md) covers 36 Unicode characters from the two inscriptions.
 - **Code chart**: every mapped character in block order, with the inventory's counts.
 
 ## Build

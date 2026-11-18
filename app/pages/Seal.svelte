@@ -1,11 +1,9 @@
 <script>
-  // The seal-script covers of the Qingling 哀册: two inscriptions, 46 blocks, no reading assigned.
   import seal from '../../data/seal/records.json' with { type: 'json' }
   import { t } from '../lib/i18n.svelte.js'
 
   /** @param {string} id */
   const blocks = id => seal.forms.filter(form => form.inscription === id)
-  const xuanyi = seal.forms.filter(form => form.inscription === 'xuanyi')
   /** @param {string} id */
   const identified = id => blocks(id).filter(block => block.identification).length
 </script>
@@ -70,7 +68,7 @@
     </div>
     <p class="typeface-note">{t('seal.typeface.note')}</p>
     <div class="typeface-grid">
-      {#each xuanyi as form (form.id)}
+      {#each seal.forms as form (form.id)}
         <span class="typeface-cell">
           <span class="typeface-glyph" style={form.id === 'XY-05' ? 'font-feature-settings:"ss01" 1' : ''}>{form.identification}</span>
           <span class="typeface-code">{form.id} · {form.unicode}</span>
