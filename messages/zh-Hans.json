@@ -140,6 +140,7 @@
  "seal.columns": "{count} 列",
  "seal.rows": "{count} 行",
  "seal.unidentified": "未详",
+ "seal.identified": "已对应",
  "seal.order": "列自右向左，行自上而下。每格是盖上的一个字块。",
  "seal.figure": "照片：",
  "seal.typeface": "字体（试作）",

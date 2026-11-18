@@ -147,6 +147,7 @@ T = {
  "seal.columns": ("{count} columns","{count}列","{count} 列","{count} 列","{count}열"),
  "seal.rows": ("{count} rows","{count}行","{count} 行","{count} 行","{count}행"),
  "seal.unidentified": ("Not identified","未詳","未详","未詳","미상"),
+ "seal.identified": ("identified","同定","已对应","已對應","대응됨"),
  "seal.order": ("Columns run right to left, rows top to bottom. Each cell is one block on the cover.","列は右から左へ、行は上から下へ。各枠が蓋の一ブロックにあたる。","列自右向左，行自上而下。每格是盖上的一个字块。","列自右向左，行自上而下。每格是蓋上的一個字塊。","열은 오른쪽에서 왼쪽으로, 행은 위에서 아래로. 각 칸이 뚜껑의 한 블록이다."),
  "seal.figure": ("Photograph:","写真：","照片：","照片：","사진:"),
  "seal.typeface": ("Typeface (draft)","書体（試作）","字体（试作）","字體（試作）","서체(시작품)"),

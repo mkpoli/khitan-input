@@ -140,6 +140,7 @@
  "seal.columns": "{count}열",
  "seal.rows": "{count}행",
  "seal.unidentified": "미상",
+ "seal.identified": "대응됨",
  "seal.order": "열은 오른쪽에서 왼쪽으로, 행은 위에서 아래로. 각 칸이 뚜껑의 한 블록이다.",
  "seal.figure": "사진:",
  "seal.typeface": "서체(시작품)",

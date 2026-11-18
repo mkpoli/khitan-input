@@ -1,16 +1,20 @@
-// The pilot seal typeface: 16 Xuanyi blocks at U+E700-U+E70F.
+// The pilot seal typeface: 16 Xuanyi blocks at their Khitan code points.
 import { expect, test } from 'bun:test'
 import { existsSync, readFileSync } from 'node:fs'
 
 const record = JSON.parse(readFileSync(new URL('../data/seal/font/forms.json', import.meta.url), 'utf8'))
 const forms = record.forms
+const correspondences = JSON.parse(readFileSync(new URL('../data/seal/correspondences.json', import.meta.url), 'utf8'))
 
-test('the pilot holds the sixteen Xuanyi blocks at U+E700-U+E70F', () => {
+test('the pilot holds the sixteen Xuanyi blocks at Khitan code points', () => {
   expect(forms).toHaveLength(16)
   expect(forms.map(form => form.id)).toEqual(Array.from({ length: 16 }, (_, index) => `XY-${String(index + 1).padStart(2, '0')}`))
   expect(record.font).toMatchObject({ family: 'Qingling Seal', em: 1024, ascent: 832, descent: -192, advance: 1024, stroke_radius: 15 })
   expect(record.font.licence).toBe('CC BY-SA 4.0')
   expect(record.font.stroke_system).toContain('Sealie')
+  expect(Object.keys(correspondences.blocks)).toHaveLength(16)
+  expect(new Set(Object.values(correspondences.blocks).map(block => block.unicode)).size).toBe(15)
+  for (const block of Object.values(correspondences.blocks)) expect(block.unicode).toMatch(/^U\+18[BC][0-9A-F]{2}$/)
 })
 
 test('every block has centre lines inside the em box', () => {

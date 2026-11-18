@@ -1,0 +1,127 @@
+{
+ "source": {
+  "name": "BabelStone Khitan Small Seal",
+  "author": "Andrew West",
+  "url": "https://www.babelstone.co.uk/Fonts/KhitanSmallSeal.html",
+  "licence": "Free to use and redistribute; not to be sold on its own.",
+  "note": "Maps 38 seal-script characters from the Daozong and Xuanyi covers to Unicode. The Xuanyi blocks were matched by shape."
+ },
+ "reading": {
+  "text": "宣懿皇后哀冊",
+  "source": "Shimunek 2017, 254–255"
+ },
+ "blocks": {
+  "XY-01": {
+   "character": "𘰷",
+   "unicode": "U+18C37",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-02": {
+   "character": "𘭨",
+   "unicode": "U+18B68",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-03": {
+   "character": "𘯐",
+   "unicode": "U+18BD0",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-04": {
+   "character": "𘱤",
+   "unicode": "U+18C64",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-05": {
+   "character": "𘱤",
+   "unicode": "U+18C64",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-06": {
+   "character": "𘲌",
+   "unicode": "U+18C8C",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-07": {
+   "character": "𘱮",
+   "unicode": "U+18C6E",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-08": {
+   "character": "𘬝",
+   "unicode": "U+18B1D",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-09": {
+   "character": "𘰭",
+   "unicode": "U+18C2D",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-10": {
+   "character": "𘱚",
+   "unicode": "U+18C5A",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-11": {
+   "character": "𘲦",
+   "unicode": "U+18CA6",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-12": {
+   "character": "𘲜",
+   "unicode": "U+18C9C",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-13": {
+   "character": "𘰄",
+   "unicode": "U+18C04",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-14": {
+   "character": "𘰹",
+   "unicode": "U+18C39",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-15": {
+   "character": "𘭘",
+   "unicode": "U+18B58",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  },
+  "XY-16": {
+   "character": "𘳕",
+   "unicode": "U+18CD5",
+   "status": "identified",
+   "confidence": "probable",
+   "basis": "Shape matches the seal-script glyph for this code point in BabelStone Khitan Small Seal; the sixteen blocks follow the cover title read by Shimunek 2017."
+  }
+ }
+}

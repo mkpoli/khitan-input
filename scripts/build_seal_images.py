@@ -9,8 +9,8 @@ locator box for each block. This script fetches each photograph once into `cache
 its digest, crops the cover, writes the WebP the page displays, and stores the locator boxes as
 fractions of that crop in `data/seal/records.json`.
 
-The boxes place a block on the cover; they are not traced outlines. No block is identified, and
-the record says so.
+The boxes place a block on the cover; they are not traced outlines. Xuanyi blocks carry the Unicode
+correspondence from `data/seal/correspondences.json`; Daozong blocks remain unidentified.
 
     uv run scripts/build_seal_images.py
 """
@@ -26,6 +26,7 @@ from PIL import Image
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CUTS = ROOT / 'data/seal/cuts.json'
 OUT = ROOT / 'data/seal/records.json'
+CORRESPONDENCES = ROOT / 'data/seal/correspondences.json'
 CACHE = ROOT / 'cache/seal'
 PUBLIC = ROOT / 'app/public/seal'
 
@@ -113,16 +114,21 @@ def main() -> None:
             'image_bytes': path.stat().st_size,
         })
 
+    correspondences = json.loads(CORRESPONDENCES.read_text(encoding='utf-8'))['blocks']
     forms = []
     for form in cuts['forms']:
-        inscription = next(i for i in inscriptions if i['id'] == form['inscription'])
-        forms.append({
-            **form,
-            'identification': None,
-            'status': 'unidentified',
-            'basis': 'No block of either cover has been assigned a reading on this page. '
-                     'Wang 1931 reads the first line of the epitaph text, not the cover block by block.',
-        })
+        match = correspondences.get(form['id'])
+        if match:
+            forms.append({**form, **match, 'identification': match['character']})
+        else:
+            forms.append({
+                **form,
+                'identification': None,
+                'unicode': None,
+                'status': 'unidentified',
+                'basis': 'No block of the Daozong cover has been assigned a reading here. '
+                         'The Xuanyi blocks are matched to BabelStone Khitan Small Seal.',
+            })
 
     record = {
         'sources': cuts['sources'],

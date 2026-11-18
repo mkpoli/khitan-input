@@ -5,7 +5,9 @@
 
   /** @param {string} id */
   const blocks = id => seal.forms.filter(form => form.inscription === id)
-  const glyphs = Array.from({ length: 16 }, (_, index) => String.fromCodePoint(0xE700 + index))
+  const xuanyi = seal.forms.filter(form => form.inscription === 'xuanyi')
+  /** @param {string} id */
+  const identified = id => blocks(id).filter(block => block.identification).length
 </script>
 
 <div class="ui-page" data-width="wide">
@@ -41,12 +43,16 @@
           <span>{t('seal.blocks', { count: blocks(inscription.id).length })}</span>
           <span>{t('seal.columns', { count: inscription.columns })}</span>
           <span>{t('seal.rows', { count: inscription.rows })}</span>
-          <span class="unknown">{t('seal.unidentified')}</span>
+          {#if identified(inscription.id)}
+            <span>{identified(inscription.id)} {t('seal.identified')}</span>
+          {:else}
+            <span class="unknown">{t('seal.unidentified')}</span>
+          {/if}
         </div>
         <ol class="blocks" style={`grid-template-columns:repeat(${inscription.columns}, minmax(0, 1fr))`}>
           {#each blocks(inscription.id) as block (block.id)}
             <li class="block" style={`grid-column:${inscription.columns - block.col + 1};grid-row:${block.row}`}
-              title={`${block.id}: ${t('seal.unidentified')}`}>
+              title={`${block.id}: ${block.identification ?? t('seal.unidentified')}${block.unicode ? ` ${block.unicode}` : ''}`}>
               <span class="id">{block.id}</span>
               <span class="pos">{block.col}·{block.row}</span>
             </li>
@@ -60,20 +66,22 @@
   <section class="ui-section typeface">
     <div class="ui-section-head">
       <h2 class="ui-label">{t('seal.typeface')}</h2>
-      <span class="ui-count">U+E700–U+E70F</span>
+      <span class="ui-count">U+18B00–U+18CFF</span>
     </div>
     <p class="typeface-note">{t('seal.typeface.note')}</p>
     <div class="typeface-grid">
-      {#each glyphs as glyph, index (glyph)}
+      {#each xuanyi as form (form.id)}
         <span class="typeface-cell">
-          <span class="typeface-glyph">{glyph}</span>
-          <span class="typeface-code">XY-{String(index + 1).padStart(2, '0')} · U+{(0xE700 + index).toString(16).toUpperCase()}</span>
+          <span class="typeface-glyph" style={form.id === 'XY-05' ? 'font-feature-settings:"ss01" 1' : ''}>{form.identification}</span>
+          <span class="typeface-code">{form.id} · {form.unicode}</span>
+          <span class="typeface-normal">{form.identification}</span>
         </span>
       {/each}
     </div>
     <p class="ui-hint">
       <a href="/fonts/QinglingSeal-Regular.ttf" download>{t('seal.typeface.download')}</a> · CC BY-SA 4.0
       · <a href="https://github.com/iebb/sealie">Sealie</a> (OFL 1.1)
+      · <a href="https://www.babelstone.co.uk/Fonts/KhitanSmallSeal.html">BabelStone Khitan Small Seal</a>
     </p>
   </section>
 
@@ -114,6 +122,7 @@
   .typeface-cell{display:flex;flex-direction:column;align-items:center;gap:var(--ui-space-xs);padding:var(--ui-space-md) 0;border:1px solid var(--ui-color-border);border-radius:var(--ui-radius-xs)}
   .typeface-glyph{font-family:'Qingling Seal';font-size:76px;line-height:1}
   .typeface-code{color:var(--ui-color-ink-muted);font-size:11px;font-variant-numeric:tabular-nums}
+  .typeface-normal{display:flex;align-items:baseline;gap:4px;font-family:'Noto Serif Khitan Small Script';font-size:22px;line-height:1}
   .sources{display:grid;gap:var(--ui-space-md);margin:0;padding:0;list-style:none;font-size:var(--ui-text-sm)}
   .sources p{overflow-wrap:anywhere}
   .sources p + p{margin-block-start:2px;color:var(--ui-color-ink-soft)}

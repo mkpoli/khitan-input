@@ -32,6 +32,8 @@ Citations and terms are in `data/sources.tsv`.
 | [Sealie](https://github.com/iebb/sealie), ieb | the 30-unit round pen, 1024-unit em and fixed advance for the seal typeface | SIL OFL 1.1 |
 | [Funeral Epitaph in Khitan Script and Its Cover of Emperor Daozong of Liao Dynasty](https://commons.wikimedia.org/wiki/File:Funeral_Epitaph_in_Khitan_Script_and_Its_Cover_of_Emperor_Daozong_of_Liao_Dynasty.jpg), Wikimedia Commons, photograph by 红烧腰果, 2019 | the Daozong seal-script cover | CC BY 4.0 |
 | [Epitaph of Empress Xuanyi of Liao](https://commons.wikimedia.org/wiki/File:Epitaph_of_Empress_Xuanyi_of_Liao.jpg), Wikimedia Commons, photograph by Tonyxy1992, 2015 | the Xuanyi seal-script cover | CC BY-SA 4.0 |
+| [BabelStone Khitan Small Seal](https://www.babelstone.co.uk/Fonts/KhitanSmallSeal.html), Andrew West, v13.000, 2023 | seal-script shapes and Unicode code points for the 36 cover characters | free to use and redistribute, not for sale on its own |
+| Shimunek (2017), [PDF](http://real.mtak.hu/56024/1/062.2017.70.2.6.pdf) | the opening title `s.ÿê.n i.i nou.e omo.n g.en.eñ č.ai w.un` = 宣懿皇后哀冊 | cited |
 | 王靜如 (1931), 「遼道宗及宣懿皇后契丹國字哀冊初釋」, 《中央研究院歷史語言研究所集刊》第三本第四分, 467–478, plates 1–4. [PDF](https://www1.ihp.sinica.edu.tw/storage/w2_file/5017YcdiByr.pdf) | inscriptions, dates and plates of the two seal covers | no reuse licence stated |
 
 Otake's fonts, `KhitanSmall` and `KSS-Gengokenkyu`, identify glyphs during extraction and are never

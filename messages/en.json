@@ -140,6 +140,7 @@
  "seal.columns": "{count} columns",
  "seal.rows": "{count} rows",
  "seal.unidentified": "Not identified",
+ "seal.identified": "identified",
  "seal.order": "Columns run right to left, rows top to bottom. Each cell is one block on the cover.",
  "seal.figure": "Photograph:",
  "seal.typeface": "Typeface (draft)",
