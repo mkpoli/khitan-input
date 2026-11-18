@@ -63,3 +63,17 @@ test('the vector source and its licence are recorded', () => {
   expect(record.source.licence).toBe('CC BY-SA 4.0')
   expect(existsSync(new URL('../data/seal/font/forms.json', import.meta.url))).toBe(true)
 })
+
+test('the distributed TTF exposes continuous weight variation with fixed glyph origins', () => {
+  const font = readFileSync(new URL('../fonts/QinglingSeal-Regular.ttf', import.meta.url))
+  const tables = new Map()
+  for (let i = 0; i < font.readUInt16BE(4); i++) {
+    const record = 12 + i * 16
+    tables.set(font.toString('ascii', record, record + 4), font.readUInt32BE(record + 8))
+  }
+  expect(tables.has('gvar')).toBe(true)
+  const axis = tables.get('fvar') + font.readUInt16BE(tables.get('fvar') + 4)
+  expect(font.toString('ascii', axis, axis + 4)).toBe('wght')
+  expect([4, 8, 12].map(offset => font.readInt32BE(axis + offset) / 65536)).toEqual([200, 400, 800])
+  expect(font.readUInt16BE(tables.get('head') + 16) & 2).toBe(2)
+})
