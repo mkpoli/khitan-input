@@ -26,8 +26,8 @@
 </section>
 
 <style>
-  @font-face{font-family:'Comparison Zhuque';src:url('/fonts/ComparisonZhuque.woff2') format('woff2');font-display:swap}
-  @font-face{font-family:'Comparison Sealie';src:url('/fonts/ComparisonSealie.woff2') format('woff2');font-display:swap}
+  @font-face{font-family:'Comparison Zhuque';src:url('/fonts/ComparisonZhuque.woff2?v=2') format('woff2');font-display:swap}
+  @font-face{font-family:'Comparison Sealie';src:url('/fonts/ComparisonSealie.woff2?v=2') format('woff2');font-display:swap}
   table{width:100%;max-width:54rem;border-collapse:collapse;table-layout:fixed;text-align:center}
   th,td{padding:.65rem .25rem;border-bottom:1px solid var(--ui-color-border);vertical-align:middle}
   th{font-size:var(--ui-text-sm);color:var(--ui-color-ink-soft)}

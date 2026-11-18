@@ -150,7 +150,7 @@ def build(record: dict) -> None:
         cmap[int(alias[2:], 16)] = cmap[int(primary[2:], 16)]
 
     builder = FontBuilder(EM, isTTF=True)
-    builder.font['head'].fontRevision = 3.3
+    builder.font['head'].fontRevision = 3.4
     builder.setupGlyphOrder(order)
     builder.setupCharacterMap(cmap)
     outlines = {name: glyph(strokes, RADIUS) for name, strokes in paths.items()}
@@ -167,13 +167,13 @@ def build(record: dict) -> None:
                      'pen and 1024-unit em follow Sealie (SIL OFL 1.1).',
         'familyName': 'Qingling Seal',
         'styleName': 'Regular',
-        'uniqueFontIdentifier': 'QinglingSeal-Regular;3.300;2026',
+        'uniqueFontIdentifier': 'QinglingSeal-Regular;3.400;2026',
         'fullName': 'Qingling Seal Regular',
-        'version': 'Version 3.300',
+        'version': 'Version 3.400',
         'psName': 'QinglingSeal-Regular',
         'designer': 'Drawn for the Khitan Input project',
         'description': 'Seal-script forms from the Daozong and Xuanyi Qingling covers, '
-                       'with four modern designs based on their stroke forms.',
+                       'with modern designs based on their stroke forms.',
         'licenseDescription': 'The glyphs derive from CC BY and CC BY-SA 4.0 photographs and are offered '
                               'under CC BY-SA 4.0. The stroke system follows Sealie, SIL OFL 1.1.',
         'licenseInfoURL': 'https://github.com/mkpoli/khitan-input/blob/main/data/seal/font/README.md',

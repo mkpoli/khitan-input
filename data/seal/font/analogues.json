@@ -18,5 +18,65 @@
     "unicode": "U+18B54", "han": "土", "smallSeal": "U+3F859", "model": "DZ-27",
     "design": "Keep the projecting upright and wide foot of DZ-27, with just one crossbar above the foot.",
     "paths": [[[512,766],[512,94]],[[274,483],[750,483]],[[253,94],[778,94]]]
+  },
+  {
+    "unicode": "U+18B76", "han": "大", "smallSeal": "U+3EDB1", "model": "DZ-07",
+    "design": "Crossbar over the forked legs of DZ-07. The upright projects above the bar.",
+    "paths": [[[232.0,465.0],[792.0,465.0]],[[512.0,682.0],[512.0,479.0],[510.2,452.8],[504.81,425.53],[495.81,397.19],[483.22,367.78],[467.03,337.3],[447.25,305.75],[423.87,273.13],[396.89,239.44],[366.31,204.69],[332.14,168.86],[294.37,131.97],[253.0,94.0]],[[512.0,479.0],[519.19,449.59],[529.11,419.69],[541.75,389.31],[557.11,358.44],[575.19,327.09],[596.0,295.25],[619.53,262.92],[645.78,230.11],[674.75,196.81],[706.44,163.03],[740.86,128.76],[778.0,94.0]]]
+  },
+  {
+    "unicode": "U+18B29", "han": "天", "smallSeal": "U+3D003", "model": "DZ-07",
+    "design": "Cap the upright with a second, shorter bar above the forked legs.",
+    "paths": [[[232.0,465.0],[792.0,465.0]],[[512.0,682.0],[512.0,479.0],[510.2,452.8],[504.81,425.53],[495.81,397.19],[483.22,367.78],[467.03,337.3],[447.25,305.75],[423.87,273.13],[396.89,239.44],[366.31,204.69],[332.14,168.86],[294.37,131.97],[253.0,94.0]],[[512.0,479.0],[519.19,449.59],[529.11,419.69],[541.75,389.31],[557.11,358.44],[575.19,327.09],[596.0,295.25],[619.53,262.92],[645.78,230.11],[674.75,196.81],[706.44,163.03],[740.86,128.76],[778.0,94.0]],[[331,682],[693,682]]]
+  },
+  {
+    "unicode": "U+18B46", "han": "木", "smallSeal": "U+3DFA9", "model": "DZ-31",
+    "design": "Paired oblique limbs join the central upright below a free crossbar.",
+    "paths": [[[512,752],[512,94]],[[245,594],[779,594]],[[512,532],[486,495],[403,384],[323,291],[236,207]],[[512,532],[549,485],[629,389],[714,297],[798,228]]]
+  },
+  {
+    "unicode": "U+18B47", "han": "本", "smallSeal": "U+3E04A", "model": "DZ-31",
+    "design": "Add a short foot flush with the bottom of the upright. The Khitan foot sits below both oblique limbs.",
+    "paths": [[[512,752],[512,94]],[[245,594],[779,594]],[[512,532],[486,495],[403,384],[323,291],[236,207]],[[512,532],[549,485],[629,389],[714,297],[798,228]],[[339,94],[685,94]]]
+  },
+  {
+    "unicode": "U+18B3A", "han": "中", "smallSeal": "U+3D119", "model": "DZ-13",
+    "design": "A projecting upright crosses an open bowl. A separate horizontal passes through the upright above the bowl tips.",
+    "paths": [[[259,544],[259,322],[262,302],[271,288],[285,282],[303,280],[721,280],[739,282],[753,288],[762,302],[765,322],[765,544]],[[512,752],[512,94]],[[231,648],[793,648]]]
+  },
+  {
+    "unicode": "U+18B9D", "han": "山", "smallSeal": "U+3EA5A", "model": "DZ-13",
+    "design": "Two raised side stems turn into a common foot. The central stem ends on the foot.",
+    "paths": [[[268,548],[268,136],[271,116],[280,102],[294,96],[312,94],[712,94],[730,96],[744,102],[753,116],[756,136],[756,548]],[[512,752],[512,94]]]
+  },
+  {
+    "unicode": "U+18BA2", "han": "出", "smallSeal": "U+3E19B", "model": "DZ-13",
+    "design": "Two stacked open bowls share a tall upright. The gap between bowls keeps their four side stems distinct.",
+    "paths": [[[290,705],[290,529],[293,509],[302,495],[316,489],[334,487],[690,487],[708,489],[722,495],[731,509],[734,529],[734,705]],[[244,361],[244,136],[247,116],[256,102],[270,96],[288,94],[736,94],[754,96],[768,102],[777,116],[780,136],[780,361]],[[512,786],[512,94]]]
+  },
+  {
+    "unicode": "U+18BC2", "han": "目", "smallSeal": "U+3D97F", "model": "DZ-10",
+    "design": "A tall rounded enclosure with two interior bars attached to the left wall. Both tips stop short of the right wall.",
+    "paths": [[[288,708],[288,136],[291,116],[300,102],[314,96],[332,94],[692,94],[710,96],[724,102],[733,116],[736,136],[736,708],[734,728],[726,742],[712,750],[692,752],[332,752],[312,750],[298,742],[290,728],[288,708]],[[288,535],[633,535]],[[288,313],[633,313]]]
+  },
+  {
+    "unicode": "U+18BCC", "han": "由", "smallSeal": "U+3F60C", "model": "DZ-10",
+    "design": "One short internal crossbar on a central stem. The stem rises above the enclosure and meets its base.",
+    "paths": [[[271,560],[271,136],[274,116],[283,102],[297,96],[315,94],[709,94],[727,96],[741,102],[750,116],[753,136],[753,560],[751,580],[743,594],[729,602],[709,604],[315,604],[295,602],[281,594],[273,580],[271,560]],[[512,765],[512,94]],[[378,348],[646,348]]]
+  },
+  {
+    "unicode": "U+18C4C", "han": "乂", "smallSeal": "U+3F552", "model": "DZ-01",
+    "design": "Use the crossing curves inside the split canopy of DZ-01, with the left entry lower than the right.",
+    "paths": [[[343,570],[419,504],[482,431],[564,340],[659,237],[754,159]],[[670,724],[650,642],[610,548],[550,451],[472,355],[373,271],[240,190]]]
+  },
+  {
+    "unicode": "U+18C52", "han": "文", "smallSeal": "U+3E9C6", "model": "DZ-01",
+    "design": "A detached slant above a horizontal. Only the descending right-hand entry of the crossing pair meets the horizontal.",
+    "paths": [[[449,778],[517,699]],[[220,596],[804,596]],[[348,463],[422,415],[504,344],[596,260],[695,173],[790,105]],[[619,596],[594,514],[553,425],[491,337],[409,250],[321,176],[231,108]]]
+  },
+  {
+    "unicode": "U+18C28", "han": "八", "smallSeal": "U+3D323", "model": "DZ-07",
+    "design": "Two separate, outward-falling strokes. The right entry rises higher and the inner gap stays open.",
+    "paths": [[[427,636],[410,558],[381,463],[342,369],[292,274],[233,186],[182,125]],[[562,752],[586,657],[621,547],[661,435],[705,331],[761,222],[822,129]]]
   }
 ]
