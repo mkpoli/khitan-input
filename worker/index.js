@@ -1,6 +1,15 @@
-// Serves the built app and writes each page's own head into the HTML it sends, so a crawler that
-// runs no script reads the right title and address for /radicals as well as for /.
-import { pageOf, seoOf } from '../app/lib/seo.js'
+// Serves the built app, answers the app's own paths with index.html, and lets everything else keep
+// its 404 so a mistyped address does not look like the home page. A page's own head is written
+// before it is sent, so a crawler that runs no script reads the right title and address.
+import { SITE, pageOf, seoOf } from '../app/lib/seo.js'
+
+/** @param {URL} url @param {Request} request @returns {Request} */
+const indexAt = (url, request) => {
+  const headers = new Headers(request.headers)
+  headers.delete('if-none-match')
+  headers.delete('if-modified-since')
+  return new Request(new URL('/index.html', url), { method: request.method, headers })
+}
 
 /** @param {string} text */
 const escaped = text => String(text).replace(/[&<>"']/g, char => ({
@@ -26,6 +35,38 @@ export function withSeo(html, page) {
   return head.reduce((out, [pattern, tag]) => out.replace(pattern, () => tag), html)
 }
 
+/**
+ * The app's page for an address no page answers at: the site's name, kept out of the index, with no
+ * address of its own to claim.
+ * @param {string} html the served index.html
+ */
+export function withoutPage(html) {
+  /** @type {[RegExp, string][]} */
+  const head = [
+    [/<title>[\s\S]*?<\/title>/, `<title>${escaped(SITE.name)}</title>`],
+    [/<link rel="canonical"[^>]*>/, '<meta name="robots" content="noindex, nofollow">'],
+    [/<meta property="og:url"[^>]*>\n?/, ''],
+  ]
+  return head.reduce((out, [pattern, tag]) => out.replace(pattern, () => tag), html)
+}
+
+/**
+ * An index page rewritten for the address that asked for it.
+ * @param {Request} request
+ * @param {Response} index
+ * @param {(html: string) => string} rewrite
+ * @param {number} status
+ */
+async function responseFor(request, index, rewrite, status) {
+  const html = await index.text()
+  const headers = new Headers(index.headers)
+  // The rewritten head is a different body, so its original length and tag no longer apply.
+  headers.delete('content-length')
+  headers.delete('content-encoding')
+  headers.delete('etag')
+  return new Response(request.method === 'HEAD' ? null : rewrite(html), { status, headers })
+}
+
 export default {
   /**
    * @param {Request} request
@@ -35,15 +76,15 @@ export default {
   async fetch(request, env) {
     const response = await env.ASSETS.fetch(request)
     const reads = request.method === 'GET' || request.method === 'HEAD'
-    if (!reads || response.status !== 200 || !(response.headers.get('content-type') ?? '').includes('text/html')) return response
-    const page = pageOf(new URL(request.url).pathname)
-    if (page === null) return response
-    const html = await response.text()
-    const headers = new Headers(response.headers)
-    // The rewritten head is a different body, so its original length and tag no longer apply.
-    headers.delete('content-length')
-    headers.delete('content-encoding')
-    headers.delete('etag')
-    return new Response(request.method === 'HEAD' ? null : withSeo(html, page), { status: 200, headers })
+    if (response.status !== 404 || !reads) return response
+    const url = new URL(request.url)
+    const page = pageOf(url.pathname)
+    if (page !== null) {
+      const index = await env.ASSETS.fetch(indexAt(url, request))
+      return responseFor(request, index, html => withSeo(html, page), index.status)
+    }
+    if (!(request.headers.get('accept') ?? '').includes('text/html')) return response
+    const index = await env.ASSETS.fetch(indexAt(url, request))
+    return responseFor(request, index, withoutPage, 404)
   },
 }
