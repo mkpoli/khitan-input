@@ -1,9 +1,11 @@
 {
   "name": "khitan-input",
   "compatibility_date": "2026-10-30",
-  // A static site: the assets are the app, and a miss opens the app so a link can carry a query.
+  // The worker writes each page's head into the app's HTML; a miss opens the app so a link can carry a query.
+  "main": "worker/index.js",
   "assets": {
     "directory": "./dist/site",
+    "binding": "ASSETS",
     "not_found_handling": "single-page-application"
   },
   "routes": [{ "pattern": "khitan.mkpo.li", "custom_domain": true }],
