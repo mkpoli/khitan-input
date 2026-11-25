@@ -36,6 +36,14 @@ describe('page SEO', () => {
   test('covers the pages the app renders and nothing else', () => {
     expect(new Set(SEO_PATHS)).toEqual(new Set([...PAGES.map(page => page.path), ...OTHER]))
   })
+  test('runs the worker first for every page path so navigations get its head', () => {
+    const config = JSON.parse(read('wrangler.jsonc').replace(/^\s*\/\/.*$/gm, ''))
+    const first = new Set(config.assets.run_worker_first)
+    for (const page of SEO_PATHS) {
+      expect(first.has(`/${page}`), `/${page}`).toBe(true)
+      if (page) expect(first.has(`/${page}/`), `/${page}/`).toBe(true)
+    }
+  })
 })
 
 describe('served head', () => {
