@@ -51,7 +51,7 @@ export function pageOf(path) {
  */
 export function seoOf(page, say = english) {
   const url = `${SITE.url}/${page}`
-  const keys = KEYS[page]
+  const keys = Object.hasOwn(KEYS, page) ? KEYS[page] : undefined
   if (!keys) return { title: SITE.name, description: HOME_DESCRIPTION, url }
   return { title: `${say(keys.title)} · ${SITE.name}`, description: say(keys.description), url }
 }
