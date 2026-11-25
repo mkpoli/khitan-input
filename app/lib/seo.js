@@ -65,13 +65,27 @@ export function applySeo(page, say = english) {
   if (typeof document === 'undefined') return
   const { title, description, url } = seoOf(page, say)
   document.title = title
-  /** @param {string} selector @param {string} value @param {string} [attribute] */
-  const set = (selector, value, attribute = 'content') => {
-    document.head.querySelector(selector)?.setAttribute(attribute, value)
+  /** @param {string} selector @param {string} value @param {string} [attribute] @param {() => HTMLElement} [create] */
+  const set = (selector, value, attribute = 'content', create) => {
+    let element = document.head.querySelector(selector)
+    if (!element && create) {
+      element = create()
+      document.head.appendChild(element)
+    }
+    element?.setAttribute(attribute, value)
   }
+  document.head.querySelector('meta[name="robots"]')?.remove()
   set('meta[name="description"]', description)
-  set('link[rel="canonical"]', url, 'href')
+  set('link[rel="canonical"]', url, 'href', () => {
+    const link = document.createElement('link')
+    link.setAttribute('rel', 'canonical')
+    return link
+  })
   set('meta[property="og:title"]', title)
   set('meta[property="og:description"]', description)
-  set('meta[property="og:url"]', url)
+  set('meta[property="og:url"]', url, 'content', () => {
+    const meta = document.createElement('meta')
+    meta.setAttribute('property', 'og:url')
+    return meta
+  })
 }

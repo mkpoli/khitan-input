@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'bun:test'
 import { readFileSync } from 'node:fs'
 import { OTHER, PAGES } from '../app/lib/pages.js'
-import { SEO_PATHS, SITE, pageOf, seoOf } from '../app/lib/seo.js'
+import { SEO_PATHS, SITE, applySeo, pageOf, seoOf } from '../app/lib/seo.js'
 import en from '../messages/en.json'
 import ja from '../messages/ja.json'
 
@@ -42,6 +42,39 @@ describe('page SEO', () => {
     for (const page of SEO_PATHS) {
       expect(first.has(`/${page}`), `/${page}`).toBe(true)
       if (page) expect(first.has(`/${page}/`), `/${page}/`).toBe(true)
+    }
+  })
+  test('restores canonical and og:url and clears noindex after navigating from a 404', () => {
+    const nodes = [
+      { tag: 'meta', attrs: { name: 'robots', content: 'noindex, nofollow' } },
+      { tag: 'meta', attrs: { name: 'description', content: '' } },
+      { tag: 'meta', attrs: { property: 'og:title', content: '' } },
+      { tag: 'meta', attrs: { property: 'og:description', content: '' } },
+    ]
+    const wrap = (/** @type {{ tag: string, attrs: Record<string, string> }} */ node) => ({
+      setAttribute(/** @type {string} */ k, /** @type {string} */ v) { node.attrs[k] = v },
+      remove() { const i = nodes.indexOf(node); if (i >= 0) nodes.splice(i, 1) },
+    })
+    const prev = globalThis.document
+    /** @type {any} */ (globalThis).document = {
+      title: '',
+      createElement: (/** @type {string} */ tag) => { const n = { tag, attrs: {} }; return Object.assign(wrap(n), { _node: n }) },
+      head: {
+        querySelector(/** @type {string} */ sel) {
+          const m = /^(meta|link)\[(\w+)="([^"]+)"\]$/.exec(sel)
+          const found = m && nodes.find(n => n.tag === m[1] && n.attrs[m[2]] === m[3])
+          return found ? wrap(found) : null
+        },
+        appendChild(/** @type {{ _node: { tag: string, attrs: Record<string, string> } }} */ el) { nodes.push(el._node) },
+      },
+    }
+    try {
+      applySeo('syllabary')
+      expect(nodes.some(n => n.attrs.name === 'robots')).toBe(false)
+      expect(nodes.find(n => n.attrs.rel === 'canonical')?.attrs.href).toBe('https://khitan.mkpo.li/syllabary')
+      expect(nodes.find(n => n.attrs.property === 'og:url')?.attrs.content).toBe('https://khitan.mkpo.li/syllabary')
+    } finally {
+      /** @type {any} */ (globalThis).document = prev
     }
   })
 })
