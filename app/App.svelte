@@ -2,8 +2,9 @@
   // The frame: the bar with the finders, the text being written, the finder of the page, and the card
   // of the open grapheme beside it (a sheet over it on a phone).
   import { db, load } from './lib/db.svelte.js'
-  import { route, go, PAGES } from './lib/route.svelte.js'
-  import { applyCanonical } from './lib/seo.js'
+  import { route, go } from './lib/route.svelte.js'
+  import { PAGES } from './lib/pages.js'
+  import { applySeo } from './lib/seo.js'
   import { ui, toast, applyTheme } from './lib/ui.svelte.js'
   import { MARK } from './lib/script.js'
   import { t } from './lib/i18n.svelte.js'
@@ -35,9 +36,7 @@
   const FULL = new Set(['about', 'documents', 'large', 'jurchen', 'seal', 'codes'])
 
   $effect(() => {
-    const entry = PAGES.find(p => p.path === route.page)
-    document.title = entry && entry.path ? `${t(entry.label)} · ${t('app.name')}` : t('app.name')
-    applyCanonical(route.page)
+    applySeo(route.page, t)
     const tab = document.querySelector('.tabs a.on')
     if (tab) tab.scrollIntoView({ block: 'nearest', inline: 'center' })
   })
