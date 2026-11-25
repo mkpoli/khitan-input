@@ -1,7 +1,7 @@
 {
   "name": "khitan-input",
   "compatibility_date": "2026-10-30",
-  // The worker writes each page's head into the app's HTML; a miss opens the app so a link can carry a query.
+  // The worker serves the app for its own paths and keeps a 404 for everything else.
   "main": "worker/index.js",
   "assets": {
     "directory": "./dist/site",
@@ -22,7 +22,7 @@
       "/documents", "/documents/",
       "/about", "/about/"
     ],
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "none"
   },
   "routes": [{ "pattern": "khitan.mkpo.li", "custom_domain": true }],
   "workers_dev": false,
