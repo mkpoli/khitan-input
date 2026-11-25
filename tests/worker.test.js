@@ -16,7 +16,8 @@ const env = {
     /** @param {Request} request */
     async fetch(request) {
       const { pathname } = new URL(request.url)
-      if (pathname === '/index.html') {
+      if (pathname === '/index.html') return new Response(null, { status: 307, headers: { location: '/' } })
+      if (pathname === '/') {
         if (request.headers.get('if-none-match') === '"index"') return new Response(null, { status: 304 })
         return new Response(request.method === 'HEAD' ? null : HTML, { status: 200, headers: { 'content-type': 'text/html', etag: '"index"' } })
       }
@@ -87,7 +88,7 @@ describe('worker', () => {
 
 describe('app paths', () => {
   test('answers the home page from the assets', async () => {
-    expect(await (await fetch('/index.html')).text()).toBe(HTML)
+    expect(await (await fetch('/')).text()).toBe(HTML)
   })
   test('names no page for a path the app does not render', () => {
     for (const path of ['/nope', '/about/extra', '/data/missing.json']) expect(pageOf(path), path).toBeNull()

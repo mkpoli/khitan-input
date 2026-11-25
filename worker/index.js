@@ -8,7 +8,7 @@ const indexAt = (url, request) => {
   const headers = new Headers(request.headers)
   headers.delete('if-none-match')
   headers.delete('if-modified-since')
-  return new Request(new URL('/index.html', url), { method: request.method, headers })
+  return new Request(new URL('/', url), { method: request.method, headers })
 }
 
 /** @param {string} text */
