@@ -17,6 +17,8 @@
   const cited = $derived(ready && view === 'cited' ? ix.documents.filter(d => d.s === chosen) : [])
   /** The row's text in the reader's language, English where the Chinese list has none. @param {any} row @param {string} field */
   const say = (row, field) => (zh && row[field + 'z']) || row[field + 'e'] || ''
+  /** The findspot on a map; the lists give it to a landmark's precision. @param {any} row */
+  const mapOf = row => `https://www.openstreetmap.org/?mlat=${row.la}&mlon=${row.lo}#map=9/${row.la}/${row.lo}`
   /** The language of that text. @param {any} row @param {string} field */
   const tongue = (row, field) => zh && row[field + 'z'] ? 'zh' : 'en'
 </script>
@@ -58,7 +60,7 @@
               {#if r.img}<a class="image" href={COMMONS + encodeURIComponent(r.img.replaceAll(' ', '_'))}>{t('documents.image')}</a>{/if}
             </th>
             <td class="num">{r.d ?? ''}</td>
-            <td lang={tongue(r, 'p')}>{say(r, 'p')}</td>
+            <td lang={tongue(r, 'p')}>{#if r.la != null && say(r, 'p')}<a href={mapOf(r)}>{say(r, 'p')}</a>{:else}{say(r, 'p')}{/if}</td>
             <td class="found" lang={tongue(r, 'f')}>{say(r, 'f')}</td>
             <td lang={tongue(r, 'h')}>{say(r, 'h')}</td>
             <td>
