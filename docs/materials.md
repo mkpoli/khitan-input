@@ -1,6 +1,6 @@
 # Materials
 
-Every source used, every one found while looking, and what is still missing. Retrieved 2026-11-06; seal sources 2026-11-17.
+Every source used, every one found while looking, and what is still missing. Retrieved 2026-11-06; seal sources 2026-11-17; the inscription lists 2026-11-26.
 "Opened" means the file or page was read here; the rest comes from search results or citations.
 
 ## In use
@@ -35,6 +35,7 @@ Citations and terms are in `data/sources.tsv`.
 | [BabelStone Khitan Small Seal](https://www.babelstone.co.uk/Fonts/KhitanSmallSeal.html), Andrew West, v13.000, 2023 | seal-script shapes and Unicode code points for the 36 cover characters | free to use and redistribute, not for sale on its own |
 | Shimunek (2017), [PDF](http://real.mtak.hu/56024/1/062.2017.70.2.6.pdf) | the opening title `s.ÿê.n i.i nou.e omo.n g.en.eñ č.ai w.un` = 宣懿皇后哀冊 | cited |
 | 王靜如 (1931), 「遼道宗及宣懿皇后契丹國字哀冊初釋」, 《中央研究院歷史語言研究所集刊》第三本第四分, 467–478, plates 1–4. [PDF](https://www1.ihp.sinica.edu.tw/storage/w2_file/5017YcdiByr.pdf) | inscriptions, dates and plates of the two seal covers | no reuse licence stated |
+| Wikipedia, [List of Khitan inscriptions](https://en.wikipedia.org/w/index.php?title=List_of_Khitan_inscriptions&oldid=1368329545) and [契丹铭文列表](https://zh.wikipedia.org/w/index.php?title=%E5%A5%91%E4%B8%B9%E9%93%AD%E6%96%87%E5%88%97%E8%A1%A8&oldid=93813755), revisions of 2026-08-08 | the corpus of 102 inscriptions with dates, findspots, holders and cited works; 19 large-script seals and one small-script seal | CC BY-SA 4.0 |
 
 Otake's fonts, `KhitanSmall` and `KSS-Gengokenkyu`, identify glyphs during extraction and are never
 written out. Font revisions between the papers changed some outlines; `data/otake_papers/` records how each
@@ -46,6 +47,10 @@ predecessor of the 2015 paper; its text layer is OCR and has lost the Khitan.
 `data/seal/` records the two seal-script covers of the Qingling 哀册: 36 blocks on the Daozong cover
 and 16 on the Xuanyi cover. Wang 1931 identifies the inscriptions and reads the first line of each
 epitaph text. The catalog records probable Unicode correspondences by shape. See [`data/seal/README.md`](../data/seal/README.md).
+
+`data/inscriptions/inscriptions.tsv` is read from the two Wikipedia lists by `scripts/extract_wikipedia_inscriptions.py`. The rows are joined by position; the Chinese list has no row for the second fish-shaped tally. The two lists disagree in places: the first tally has one line of Khitan in English and two in Chinese, and the Langjun xingji fragment was found in 1980 in English and 1982 in Chinese. Neither list was checked against the works it cites.
+
+The large-script seals are cut in a folded style after the Chinese nine-fold seal script, according to the English list's lead. [West's survey of Khitan seals](https://www.babelstone.co.uk/Blog/2012/10/khitan-seals.html) (2012) was found through a search and not opened; no seal face is transcribed here.
 
 大竹昌巳 (2015c) locates 10 or more Chinese classical works behind quotations in Khitan inscriptions and adds
 白居易「祭微之文」, 『後漢書』江革伝 and 『孟子』告子上. The dissertation cites it for mɵɵr (TAY 26) and

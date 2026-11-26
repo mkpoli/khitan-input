@@ -78,6 +78,16 @@ class Database(unittest.TestCase):
         self.assertEqual(self.one("SELECT citation FROM example WHERE n=2"), "B.CAL 10‒11")
         self.assertEqual(self.one("SELECT transcription FROM example_word WHERE n=2 AND line=1 AND position=1"), "miin")
 
+    def test_inscriptions_follow_the_wikipedia_lists(self):
+        counts = dict(self.db.execute("SELECT script || ' ' || kind, count(*) FROM inscription GROUP BY 1"))
+        self.assertEqual(counts, {"large monument": 18, "large other": 11, "large seal": 19, "small monument": 40, "small other": 13, "small seal": 1})
+        self.assertEqual(self.one("SELECT description_en FROM inscription WHERE id='large-seal-15'"),
+                         'Seal script inscription interpreted as meaning "Seal of the Right Vice Commander of the Marshal of the Army" (元帥右都監印).')
+        self.assertEqual(self.one("SELECT name_zh FROM inscription WHERE id='small-monument-39'"), "大金皇弟都統經略郎君行記")
+        self.assertIsNone(self.one("SELECT name_zh FROM inscription WHERE id='small-other-06'"))
+        self.assertEqual(self.one("SELECT count(*) FROM inscription i WHERE NOT EXISTS (SELECT 1 FROM inscription_reference r WHERE r.inscription=i.id)"), 0)
+        self.assertEqual(self.one("SELECT count(*) FROM inscription WHERE name_en || coalesce(place_en,'') || coalesce(description_en,'') GLOB '*[{}<>]*'"), 0)
+
     def test_spelling_ids_exist(self):
         known = {r[0] for r in self.db.execute("SELECT id FROM grapheme")}
         for table in ("rhyme", "loan_spelling", "form", "cognate"):
