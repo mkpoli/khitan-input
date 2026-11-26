@@ -17,6 +17,8 @@
   const cited = $derived(ready && view === 'cited' ? ix.documents.filter(d => d.s === chosen) : [])
   /** The row's text in the reader's language, English where the Chinese list has none. @param {any} row @param {string} field */
   const say = (row, field) => (zh && row[field + 'z']) || row[field + 'e'] || ''
+  /** The language of that text. @param {any} row @param {string} field */
+  const tongue = (row, field) => zh && row[field + 'z'] ? 'zh' : 'en'
 </script>
 
 <div class="ui-page" data-width="wide">
@@ -56,16 +58,16 @@
               {#if r.img}<a class="image" href={COMMONS + encodeURIComponent(r.img.replaceAll(' ', '_'))}>{t('documents.image')}</a>{/if}
             </th>
             <td class="num">{r.d ?? ''}</td>
-            <td>{say(r, 'p')}</td>
-            <td class="found">{say(r, 'f')}</td>
-            <td>{say(r, 'h')}</td>
+            <td lang={tongue(r, 'p')}>{say(r, 'p')}</td>
+            <td class="found" lang={tongue(r, 'f')}>{say(r, 'f')}</td>
+            <td lang={tongue(r, 'h')}>{say(r, 'h')}</td>
             <td>
-              {#if say(r, 'd')}<p>{say(r, 'd')}</p>{/if}
+              {#if say(r, 'd')}<p lang={tongue(r, 'd')}>{say(r, 'd')}</p>{/if}
               {#if r.note}<p class="ui-hint" lang="en">{r.note}</p>{/if}
-              {#if r.rf}
+              {#if say(r, 'rf')}
                 <details>
-                  <summary>{t('documents.references')} <span class="ui-count">{r.rf.length}</span></summary>
-                  <ul>{#each r.rf as ref (ref.c)}<li>{#if ref.u}<a href={ref.u}>{ref.c}</a>{:else}{ref.c}{/if}</li>{/each}</ul>
+                  <summary>{t('documents.references')} <span class="ui-count">{say(r, 'rf').length}</span></summary>
+                  <ul lang={tongue(r, 'rf')}>{#each say(r, 'rf') as ref (ref.c)}<li>{#if ref.u}<a href={ref.u}>{ref.c}</a>{:else}{ref.c}{/if}</li>{/each}</ul>
                 </details>
               {/if}
             </td>

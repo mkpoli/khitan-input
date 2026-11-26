@@ -97,10 +97,10 @@ def main():
     documents = [compact({"id": d["id"], "s": d["script"], "a": d["abbreviation"], "t": re.sub(r"⟦[^⟧]*⟧", "□", d["title"] or ""), "d": d["date_text"], "y": d["year"], "n": d["khitan_lines"], "p": d["page"]}) for d in rows(db, "SELECT * FROM document")]
     refs = defaultdict(list)
     for r in rows(db, "SELECT * FROM inscription_reference ORDER BY inscription, position"):
-        refs[r["inscription"]].append(compact({"c": r["citation"], "u": r["url"]}))
+        refs[(r["inscription"], r["list"])].append(compact({"c": r["citation"], "u": r["url"]}))
     inscriptions = [compact({"id": r["id"], "s": r["script"], "k": r["kind"], "ne": r["name_en"], "nz": r["name_zh"], "d": r["date_text"],
                              "pe": r["place_en"], "pz": r["place_zh"], "fe": r["found_en"], "fz": r["found_zh"], "he": r["held_en"], "hz": r["held_zh"],
-                             "de": r["description_en"], "dz": r["description_zh"], "img": r["image"], "note": r["note_en"], "rf": refs[r["id"]]})
+                             "de": r["description_en"], "dz": r["description_zh"], "img": r["image"], "note": r["note_en"], "rfe": refs[(r["id"], "en")], "rfz": refs[(r["id"], "zh")]})
                     for r in rows(db, "SELECT * FROM inscription ORDER BY rowid")]
     data = {
         "graphemes": graphemes, "words": words, "examples": examples, "documents": documents, "inscriptions": inscriptions,

@@ -42,7 +42,8 @@ CREATE TABLE inscription (
   image TEXT,                                  -- Wikimedia Commons file name
   note_en TEXT, source TEXT NOT NULL REFERENCES source
 );
-CREATE TABLE inscription_reference (inscription TEXT NOT NULL REFERENCES inscription, position INTEGER NOT NULL, citation TEXT NOT NULL, url TEXT);
+CREATE TABLE inscription_reference (inscription TEXT NOT NULL REFERENCES inscription, list TEXT NOT NULL,  -- en | zh: the list that cites it
+  position INTEGER NOT NULL, citation TEXT NOT NULL, url TEXT);
 CREATE TABLE attestation (kind TEXT NOT NULL, ref INTEGER NOT NULL, document TEXT NOT NULL, line TEXT NOT NULL);
 CREATE INDEX attestation_ref ON attestation(kind, ref);
 

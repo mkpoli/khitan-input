@@ -85,7 +85,9 @@ class Database(unittest.TestCase):
                          'Seal script inscription interpreted as meaning "Seal of the Right Vice Commander of the Marshal of the Army" (元帥右都監印).')
         self.assertEqual(self.one("SELECT name_zh FROM inscription WHERE id='small-monument-39'"), "大金皇弟都統經略郎君行記")
         self.assertIsNone(self.one("SELECT name_zh FROM inscription WHERE id='small-other-06'"))
-        self.assertEqual(self.one("SELECT count(*) FROM inscription i WHERE NOT EXISTS (SELECT 1 FROM inscription_reference r WHERE r.inscription=i.id)"), 0)
+        self.assertEqual(self.one("SELECT count(*) FROM inscription i WHERE NOT EXISTS (SELECT 1 FROM inscription_reference r WHERE r.inscription=i.id AND r.list='en')"), 0)
+        self.assertEqual(self.one("SELECT count(*) FROM inscription_reference WHERE inscription='large-monument-16' AND list='zh' AND citation LIKE '董新林%: 78'"), 1)
+        self.assertEqual(self.one("SELECT count(*) FROM inscription_reference WHERE inscription='small-other-04' AND citation LIKE '%Jin Yongtian 金永田%'"), 1)
         self.assertEqual(self.one("SELECT count(*) FROM inscription WHERE name_en || coalesce(place_en,'') || coalesce(description_en,'') GLOB '*[{}<>]*'"), 0)
 
     def test_spelling_ids_exist(self):

@@ -34,7 +34,7 @@ HEADERS = {
 }
 ENGLISH_ONLY = {("small", "other"): {6}}  # the second fish-shaped tally has no row in the Chinese list
 FIELDS = ("id", "script", "kind", "name_en", "name_zh", "date", "place_en", "place_zh", "latitude", "longitude", "found_en", "found_zh",
-          "held_en", "held_zh", "description_en", "description_zh", "image", "note_en", "references")
+          "held_en", "held_zh", "description_en", "description_zh", "image", "note_en", "references_en", "references_zh")
 
 
 def balanced(text: str, start: int, opener: str = "{{", closer: str = "}}") -> int:
@@ -119,12 +119,14 @@ def citation(body: str) -> str:
                 pages = named.get("p") or named.get("pp")
                 out.append(" and ".join(positional[:-1]) + " " + positional[-1] + (f": {pages}" if pages else ""))
             elif key.startswith("cite") or key == "citation":
-                authors = [named[k] for k in ("author", "author1", "last", "last1", "author2", "author3") if named.get(k)]
-                if named.get("first") or named.get("first1"):
-                    authors[0] += ", " + (named.get("first") or named.get("first1"))
+                authors = []
+                for n in ("", *map(str, range(1, 10))):
+                    who = named.get("author" + n) or named.get("last" + n)
+                    if who and who not in authors:
+                        authors.append(who + (", " + named["first" + n] if named.get("first" + n) and not named.get("author" + n) else ""))
                 title = named.get("script-title") or named.get("title") or ""
                 title = re.sub(r"^[a-z]{2}:", "", title)
-                where = named.get("journal") or named.get("publisher") or named.get("website") or ""
+                where = (named.get("journal") or named.get("publisher") or named.get("website") or "").split("｜")[0]
                 issue = "".join(x for x in (named.get("volume", ""), f"({named['issue']})" if named.get("issue") else "") if x)
                 pages = named.get("pages") or named.get("page")
                 year = named.get("year") or named.get("date") or ""
@@ -161,21 +163,33 @@ def take_refs(text: str, named: dict[str, str]) -> tuple[str, list[str], list[st
         refs += inner
         text = text[:start] + text[end:]
 
+    page = r"(?:\{\{rp\|([^}]*)\}\})?"  # the Chinese list gives the page after the reference
+
     def full(m: re.Match) -> str:
         body = citation(m[2])
         name = re.search(r'name\s*=\s*"?([^">/]+)"?', m[1] or "")
         if name:
             named[name[1].strip()] = body
-        refs.append(body)
+            if m[3]:
+                named["page of " + name[1].strip()] = m[3]
+        refs.append(body + (f": {m[3]}" if m[3] else ""))
         return ""
 
     def short(m: re.Match) -> str:
-        refs.append("@" + m[1].strip())
+        refs.append("@" + m[1].strip() + "\t" + (m[2] or ""))
         return ""
 
-    text = re.sub(r"<ref([^>/]*)>(.*?)</ref>", full, text, flags=re.S)
-    text = re.sub(r'<ref\s+name\s*=\s*"?([^">/]+)"?\s*/>', short, text)
+    text = re.sub(r"<ref([^>/]*)>(.*?)</ref>" + page, full, text, flags=re.S)
+    text = re.sub(r'<ref\s+name\s*=\s*"?([^">/]+)"?\s*/>' + page, short, text)
     return text, refs, notes
+
+
+def resolve(ref: str, named: dict[str, str]) -> str:
+    if not ref.startswith("@"):
+        return ref
+    name, page = ref[1:].split("\t")
+    page = page or named.get("page of " + name)  # a bare reuse keeps the page given where the reference is defined
+    return named[name] + (f": {page}" if page else "")
 
 
 def tables(wikitext: str) -> dict[tuple[str, str], list[dict]]:
@@ -216,7 +230,7 @@ def tables(wikitext: str) -> dict[tuple[str, str], list[dict]]:
             pending.append(row)
         out[key] = rows
     for row in pending:
-        row["refs"] = [named[r[1:]] if r.startswith("@") else r for r in row["refs"]]
+        row["refs"] = [resolve(r, named) for r in row["refs"]]
     return out
 
 
@@ -231,20 +245,20 @@ def main() -> None:
         for (script, kind), rows in en.items():
             other = list(zh[(script, kind)])
             for n in sorted(ENGLISH_ONLY.get((script, kind), ())):
-                other.insert(n - 1, {"name": "", "place": "", "found": "", "held": "", "description": ""})
+                other.insert(n - 1, {"name": "", "place": "", "found": "", "held": "", "description": "", "refs": []})
             if len(rows) != len(other):
                 raise SystemExit(f"{script} {kind}: {len(rows)} English rows, {len(other)} Chinese rows")
             for n, (e, z) in enumerate(zip(rows, other), 1):
                 if "latitude" in e and "latitude" in z and (e["latitude"], e["longitude"]) != (z["latitude"], z["longitude"]):
                     raise SystemExit(f"{script} {kind} {n}: coordinates differ between the lists: {e['name']} / {z['name']}")
-                refs = list(dict.fromkeys(e["refs"]))
                 w.writerow({
                     "id": f"{script}-{kind}-{n:02d}", "script": script, "kind": kind,
                     "name_en": e["name"], "name_zh": z["name"], "date": e.get("date", ""),
                     "place_en": e["place"], "place_zh": z["place"], "latitude": e.get("latitude", ""), "longitude": e.get("longitude", ""),
                     "found_en": e["found"], "found_zh": z["found"], "held_en": e["held"], "held_zh": z["held"],
                     "description_en": e["description"], "description_zh": z["description"], "image": e["image"] if "image" in e else "",
-                    "note_en": " ".join(e["notes"]), "references": " | ".join(refs),
+                    "note_en": " ".join(e["notes"]),
+                    "references_en": " | ".join(dict.fromkeys(e["refs"])), "references_zh": " | ".join(dict.fromkeys(z["refs"])),
                 })
             print(f"{script} {kind}: {len(rows)}", file=sys.stderr)
 

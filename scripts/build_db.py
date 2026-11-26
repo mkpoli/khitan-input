@@ -224,9 +224,10 @@ def main() -> None:
         db.execute("INSERT INTO inscription VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", tuple(r[k] or None for k in (
             "id", "script", "kind", "name_en", "name_zh", "date", "place_en", "place_zh", "latitude", "longitude", "found_en", "found_zh",
             "held_en", "held_zh", "description_en", "description_zh", "image", "note_en")) + ("wikipedia_inscriptions",))
-        for n, ref in enumerate(filter(None, r["references"].split(" | ")), 1):
-            m = re.fullmatch(r"(.*?)(?: <(\S+)>)?", ref)
-            db.execute("INSERT INTO inscription_reference VALUES (?,?,?,?)", (r["id"], n, m[1], m[2]))
+        for edition in ("en", "zh"):
+            for n, ref in enumerate(filter(None, r["references_" + edition].split(" | ")), 1):
+                m = re.fullmatch(r"(.*?)(?: <(\S+)>)?(: [^<>]*)?", ref)
+                db.execute("INSERT INTO inscription_reference VALUES (?,?,?,?,?)", (r["id"], edition, n, m[1] + (m[3] or ""), m[2]))
 
     def attest(kind: str, rid: int, text: str) -> None:
         current = None

@@ -63,7 +63,7 @@ His values keep their printed marks: a lowered digit separates homophones (`jurâ
 | Table | Rows | Content |
 | --- | --- | --- |
 | `document` | 146 | 43 small-script, 13 large-script and 90 Chinese inscriptions |
-| `inscription`, `inscription_reference` | 102, 178 | the corpus as Wikipedia's two lists give it: 58 monuments, 24 other objects and 20 seals, with the works each row cites |
+| `inscription`, `inscription_reference` | 102, 355 | the corpus as Wikipedia's two lists give it: 58 monuments, 24 other objects and 20 seals, with the works each list cites for a row (`list` is `en` or `zh`) |
 | `rhyme` | 795 | rhyme words by document, line, stanza and verse |
 | `cognate`, `cognate_reflex` | 178, 799 | Khitan words with Mongolic and other comparanda |
 | `loan_spelling`, `loan_use` | 702, 1490 | Chinese words in the small script, by rhyme group |
