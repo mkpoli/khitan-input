@@ -237,31 +237,33 @@ def tables(wikitext: str) -> dict[tuple[str, str], list[dict]]:
 def main() -> None:
     en = tables((SOURCE / "en.wikitext").read_text(encoding="utf8"))
     zh = tables((SOURCE / "zh.wikitext").read_text(encoding="utf8"))
+    records = []  # every section is checked before the file is touched
+    for (script, kind), rows in en.items():
+        other = list(zh[(script, kind)])
+        for n in sorted(ENGLISH_ONLY.get((script, kind), ())):
+            other.insert(n - 1, {"name": "", "place": "", "found": "", "held": "", "description": "", "refs": []})
+        if len(rows) != len(other):
+            raise SystemExit(f"{script} {kind}: {len(rows)} English rows, {len(other)} Chinese rows")
+        for n, (e, z) in enumerate(zip(rows, other), 1):
+            if "latitude" in e and "latitude" in z and (e["latitude"], e["longitude"]) != (z["latitude"], z["longitude"]):
+                raise SystemExit(f"{script} {kind} {n}: coordinates differ between the lists: {e['name']} / {z['name']}")
+            records.append({
+                "id": f"{script}-{kind}-{n:02d}", "script": script, "kind": kind,
+                "name_en": e["name"], "name_zh": z["name"], "date": e.get("date", ""),
+                "place_en": e["place"], "place_zh": z["place"], "latitude": e.get("latitude", ""), "longitude": e.get("longitude", ""),
+                "found_en": e["found"], "found_zh": z["found"], "held_en": e["held"], "held_zh": z["held"],
+                "description_en": e["description"], "description_zh": z["description"], "image": e["image"] if "image" in e else "",
+                "note_en": " ".join(e["notes"]),
+                "references_en": " | ".join(dict.fromkeys(e["refs"])), "references_zh": " | ".join(dict.fromkeys(z["refs"])),
+            })
+        print(f"{script} {kind}: {len(rows)}", file=sys.stderr)
+
     target = ROOT / "data/inscriptions/inscriptions.tsv"
     target.parent.mkdir(parents=True, exist_ok=True)
     with open(target, "w", encoding="utf8", newline="") as f:
         w = csv.DictWriter(f, FIELDS, delimiter="\t", lineterminator="\n")
         w.writeheader()
-        for (script, kind), rows in en.items():
-            other = list(zh[(script, kind)])
-            for n in sorted(ENGLISH_ONLY.get((script, kind), ())):
-                other.insert(n - 1, {"name": "", "place": "", "found": "", "held": "", "description": "", "refs": []})
-            if len(rows) != len(other):
-                raise SystemExit(f"{script} {kind}: {len(rows)} English rows, {len(other)} Chinese rows")
-            for n, (e, z) in enumerate(zip(rows, other), 1):
-                if "latitude" in e and "latitude" in z and (e["latitude"], e["longitude"]) != (z["latitude"], z["longitude"]):
-                    raise SystemExit(f"{script} {kind} {n}: coordinates differ between the lists: {e['name']} / {z['name']}")
-                w.writerow({
-                    "id": f"{script}-{kind}-{n:02d}", "script": script, "kind": kind,
-                    "name_en": e["name"], "name_zh": z["name"], "date": e.get("date", ""),
-                    "place_en": e["place"], "place_zh": z["place"], "latitude": e.get("latitude", ""), "longitude": e.get("longitude", ""),
-                    "found_en": e["found"], "found_zh": z["found"], "held_en": e["held"], "held_zh": z["held"],
-                    "description_en": e["description"], "description_zh": z["description"], "image": e["image"] if "image" in e else "",
-                    "note_en": " ".join(e["notes"]),
-                    "references_en": " | ".join(dict.fromkeys(e["refs"])), "references_zh": " | ".join(dict.fromkeys(z["refs"])),
-                })
-            print(f"{script} {kind}: {len(rows)}", file=sys.stderr)
-
+        w.writerows(records)
 
 if __name__ == "__main__":
     main()
