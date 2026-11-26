@@ -24,7 +24,7 @@ const KEYS = {
   jurchen: { title: 'jurchen.title', description: 'jurchen.lead' },
   seal: { title: 'nav.seal', description: 'seal.intro' },
   codes: { title: 'nav.codes', description: 'nav.codes.hint' },
-  documents: { title: 'nav.documents', description: 'documents.intro' },
+  documents: { title: 'nav.documents', description: 'documents.corpus.intro' },
   about: { title: 'nav.about', description: 'about.intro' },
 }
 
