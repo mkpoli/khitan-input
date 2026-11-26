@@ -1,5 +1,5 @@
 <script>
-  // Seals with a face in the Khitan large script, in the wording of West's survey.
+  // Seals with a Khitan-script face, in the wording of West's survey.
   import survey from '../../data/seal/large/west2012.json' with { type: 'json' }
   import { t } from '../lib/i18n.svelte.js'
 
@@ -25,9 +25,9 @@
       <label class="ui-segment"><input type="radio" name="large-seal-kind" value={key} bind:group={kind} /><span class="ui-segment-face">{t(`seal.large.${key}`)}</span></label>
     {/each}
   </div>
-  <div class="ui-table-wrap"><table class="ui-table seals" lang="en">
+  <div class="ui-table-wrap"><table class="ui-table seals">
     <thead><tr><th>{t('seal.large.seal')}</th><th>{t('documents.place')}</th><th>{t('documents.held')}</th><th>{t('seal.large.inscription')}</th><th>{t('seal.large.reading')}</th></tr></thead>
-    <tbody>
+    <tbody lang="en">
       {#each seals as seal (seal.id)}
         <tr>
           <th scope="row"><a href={seal.url}>{seal.id}</a>{#if seal.plate}<span class="plate">{seal.plate}</span>{/if}</th>
@@ -48,9 +48,9 @@
     <h3 class="ui-label">{t('seal.large.characters')}</h3>
     <span class="ui-count">{characters.length}</span>
   </div>
-  <div class="ui-table-wrap"><table class="ui-table" lang="en">
+  <div class="ui-table-wrap"><table class="ui-table">
     <thead><tr><th>{t('seal.large.standard')}</th><th>{t('seal.large.meaning')}</th></tr></thead>
-    <tbody>
+    <tbody lang="en">
       {#each characters as row, n (n)}
         <tr><td class="form">{@render said(row.standard)}</td><td>{@render said(row.meaning)}</td></tr>
       {/each}
