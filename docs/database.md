@@ -63,6 +63,7 @@ His values keep their printed marks: a lowered digit separates homophones (`jurâ
 | Table | Rows | Content |
 | --- | --- | --- |
 | `document` | 146 | 43 small-script, 13 large-script and 90 Chinese inscriptions |
+| `inscription`, `inscription_reference` | 102, 355 | the corpus as Wikipedia's two lists give it: 58 monuments, 24 other objects and 20 seals, with the works each list cites for a row (`list` is `en` or `zh`) |
 | `rhyme` | 795 | rhyme words by document, line, stanza and verse |
 | `cognate`, `cognate_reflex` | 178, 799 | Khitan words with Mongolic and other comparanda |
 | `loan_spelling`, `loan_use` | 702, 1490 | Chinese words in the small script, by rhyme group |
@@ -71,6 +72,8 @@ His values keep their printed marks: a lowered digit separates homophones (`jurâ
 | `attestation` | 5825 | document and line for the above |
 | `bibliography` | 460 | the dissertation's references |
 | `erratum` | 9 | places where a glyph and its printed number disagree |
+
+`inscription` is a tertiary list and is not joined to `document`; names, places and descriptions keep the wording of the English and the Chinese list, which differ in places.
 
 Rows in `form` come from a pattern over running text and include noise. Remarks in the appendices are
 left out.

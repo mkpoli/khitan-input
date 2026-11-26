@@ -8,6 +8,7 @@ export const ix = {
   /** @type {any[]} */ words: [],
   /** @type {any[]} */ examples: [],
   /** @type {any[]} */ documents: [],
+  /** @type {any[]} */ inscriptions: [],
   /** @type {any[]} */ sources: [],
   /** @type {any[]} */ large: [],
   /** @type {Map<string, any>} */ largeByPua: new Map(),
@@ -25,7 +26,7 @@ function rankOf(r) {
 
 /** @param {any} data */
 export function fill(data) {
-  Object.assign(ix, { graphemes: data.graphemes, words: data.words, examples: data.examples, documents: data.documents, sources: data.sources, large: data.large })
+  Object.assign(ix, { graphemes: data.graphemes, words: data.words, examples: data.examples, documents: data.documents, inscriptions: data.inscriptions, sources: data.sources, large: data.large })
   for (const g of ix.graphemes) {
     g.char = g.cp ? fromHex(g.cp) : ''
     ix.byId.set(g.id, g)

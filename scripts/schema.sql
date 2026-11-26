@@ -33,6 +33,17 @@ CREATE TABLE primary_reading (grapheme TEXT PRIMARY KEY, value TEXT NOT NULL, ti
 CREATE TABLE relation (codepoint TEXT NOT NULL, type TEXT NOT NULL, other TEXT NOT NULL, source TEXT NOT NULL);
 
 CREATE TABLE document (id TEXT PRIMARY KEY, script TEXT NOT NULL, abbreviation TEXT, title TEXT, date_text TEXT, year INTEGER, khitan_lines INTEGER, cf TEXT, page INTEGER);
+-- The corpus as Wikipedia lists it. Names, places and descriptions are each list's own wording.
+CREATE TABLE inscription (
+  id TEXT PRIMARY KEY, script TEXT NOT NULL,  -- large | small
+  kind TEXT NOT NULL,                          -- monument | other | seal
+  name_en TEXT NOT NULL, name_zh TEXT, date_text TEXT, place_en TEXT, place_zh TEXT, latitude REAL, longitude REAL,
+  found_en TEXT, found_zh TEXT, held_en TEXT, held_zh TEXT, description_en TEXT, description_zh TEXT,
+  image TEXT,                                  -- Wikimedia Commons file name
+  note_en TEXT, source TEXT NOT NULL REFERENCES source
+);
+CREATE TABLE inscription_reference (inscription TEXT NOT NULL REFERENCES inscription, list TEXT NOT NULL,  -- en | zh: the list that cites it
+  position INTEGER NOT NULL, citation TEXT NOT NULL, url TEXT);
 CREATE TABLE attestation (kind TEXT NOT NULL, ref INTEGER NOT NULL, document TEXT NOT NULL, line TEXT NOT NULL);
 CREATE INDEX attestation_ref ON attestation(kind, ref);
 

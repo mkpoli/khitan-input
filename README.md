@@ -21,6 +21,7 @@ Grapheme values follow 大竹昌巳 (2020, 2025). Other scholars' values sit bes
   BabelStone's glyphs and the Jurchen face, with what the sources say of the four directions.
 - **Seal script**: the two seal-script covers of the Qingling 哀册, with a
   [block record](data/seal/README.md) for each. The [Qingling Seal typeface](data/seal/font/README.md) encodes 36 cover forms at 38 Unicode code points. Sixteen proposed designs extend its coverage to 54 code points.
+- **Inscriptions**: the corpus in both scripts by monument, object and seal, from Wikipedia's lists, and the inscriptions Otake (2020) cites.
 - **Code chart**: every mapped character in block order, with the inventory's counts.
 
 ## Build
@@ -34,6 +35,7 @@ scripts/extract_otake_papers.py <directory of the papers>
 scripts/extract_kss_mappings.py cache/web/KSS_Mappings.pdf > data/unicode/kss_mappings.tsv
 scripts/extract_web_layers.py
 scripts/extract_rona_tas2026.py <volume two PDF>
+scripts/extract_wikipedia_inscriptions.py   # cache/web/wikipedia/{en,zh}.wikitext
 python3 scripts/build_db.py          # dist/khitan.sqlite
 python3 -m unittest discover tests
 python3 scripts/build_site_data.py   # app/public/data/khitan.json

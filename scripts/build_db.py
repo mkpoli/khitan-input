@@ -220,6 +220,15 @@ def main() -> None:
         if d["abbreviation"]:
             abbreviations.add(d["abbreviation"])
 
+    for r in tsv(DATA / "inscriptions/inscriptions.tsv"):
+        db.execute("INSERT INTO inscription VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", tuple(r[k] or None for k in (
+            "id", "script", "kind", "name_en", "name_zh", "date", "place_en", "place_zh", "latitude", "longitude", "found_en", "found_zh",
+            "held_en", "held_zh", "description_en", "description_zh", "image", "note_en")) + ("wikipedia_inscriptions",))
+        for edition in ("en", "zh"):
+            for n, ref in enumerate(filter(None, r["references_" + edition].split(" | ")), 1):
+                m = re.fullmatch(r"(.*?)(?: <(\S+)>)?(: [^<>]*)?", ref)
+                db.execute("INSERT INTO inscription_reference VALUES (?,?,?,?,?)", (r["id"], edition, n, m[1] + (m[3] or ""), m[2]))
+
     def attest(kind: str, rid: int, text: str) -> None:
         current = None
         for part in re.split(r"[,，;、]\s*", text):
@@ -271,7 +280,7 @@ def main() -> None:
     for r in tsv(DATA / "large/liu_wang2004.tsv"):
         db.execute("INSERT INTO large_reading VALUES (?,?,?,?,?,?)", (int(r["number"]), r["babelstone_pua"], r["reconstruction"], r["chinese_transcription"] or None, r["meaning"] or None, "liu_wang2004"))
     db.commit()
-    for name in ("character", "grapheme", "reading", "primary_reading", "catalogue_number", "relation", "document", "rhyme", "cognate", "cognate_reflex", "loan_spelling", "loan_use", "form", "attestation", "bibliography", "erratum", "large_reading", "example", "example_line", "example_word"):
+    for name in ("character", "grapheme", "reading", "primary_reading", "catalogue_number", "relation", "document", "inscription", "inscription_reference", "rhyme", "cognate", "cognate_reflex", "loan_spelling", "loan_use", "form", "attestation", "bibliography", "erratum", "large_reading", "example", "example_line", "example_word"):
         print(f"{name}: {db.execute(f'SELECT count(*) FROM {name}').fetchone()[0]}")
     db.close()
 
