@@ -1,4 +1,5 @@
 <script>
+  import LargeSeals from '../ui/LargeSeals.svelte'
   import SealAnalogues from '../ui/SealAnalogues.svelte'
   import SealSpecimen from '../ui/SealSpecimen.svelte'
   import mappings from '../../data/seal/correspondences.json' with { type: 'json' }
@@ -91,6 +92,8 @@
   </section>
 
   <SealAnalogues {weight} />
+
+  <LargeSeals />
 
   <section class="ui-section">
     <h2 class="ui-label">{t('seal.sources')}</h2>
