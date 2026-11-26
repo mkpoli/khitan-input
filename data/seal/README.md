@@ -56,3 +56,18 @@ uv run scripts/build_seal_images.py
 The builder downloads each photograph once into `cache/`, checks its SHA-256, crops the cover, writes
 `app/public/seal/daozong-cover.webp` and `xuanyi-cover.webp`, and writes `records.json`. The page
 reads `records.json` directly.
+
+## Large-script seals
+
+`large/west2012.json` is read from Andrew West's survey [Khitan Seals](https://www.babelstone.co.uk/Blog/2012/10/khitan-seals.html) (2012, with later additions) by `scripts/extract_west_seals.py`. Every field is the survey's wording, and Khitan characters stay on BabelStone's Private Use code points.
+
+| field | meaning |
+| --- | --- |
+| `id` | the survey's number, `A1`–`A14` and `B1`–`B7` |
+| `kind` | `ninefold` for the A seals, `other` for the B seals |
+| `plate` | the publication of the picture shown in the survey |
+| `references`, `found`, `held`, `description`, `inscription` | the survey's labelled fields |
+| `reading` | the sentences that read the whole seal face; four seals have one |
+| `remark` | the survey's comment on a B seal |
+
+`characters` keeps one row for each row of the survey's table of ninefold seal-script characters: the seal glyphs by their code in BabelStone Khitan Seals, the standard form, and the meaning. A cell spanning several rows is repeated on each; rows the survey leaves blank stay blank.
