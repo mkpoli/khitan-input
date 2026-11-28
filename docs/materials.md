@@ -102,6 +102,8 @@ Jurchen Small Script; `character.jurchen_tentative` carries that. Noto Serif Khi
 - 康鹏 (2016), 「《马卫集书》中的契丹语词“Sh.rghūr（汉人）”」, 《西域研究》2016(3): 30–37: Khitan words in Arabic transcription (*ǰiaukūr, *suŋkur, *kur/*kui); the Khitan-script forms are images in the PDF, so no reading is added.
 - 康鹏 (2017), 「马卫集书中的契丹“都城”」, 《民族研究》2017(2): *ūdkīn and *ūam in the same source, with the route east. Offprint PDF; the forms are images.
 - 孙伯君 (2015), 「契丹小字碑铭中的金代年号」, 《满语研究》2015(1): 54–57: the Jin era names in the three Jin-dated small-script epitaphs, read through Jurchen. The glyphs are images in the PDF and are not transcribed here.
+- 张少珊 (2025), 「契丹大字铜印研究展望」, 《呼伦贝尔学院学报》2025(3), [Scribd](https://www.scribd.com/document/1023416262/%E5%A5%91%E4%B8%B9%E5%A4%A7%E5%AD%97%E9%93%9C%E5%8D%B0%E7%A0%94%E7%A9%B6%E5%B1%95%E6%9C%9B): survey and outlook on Khitan large-script bronze seals; not opened (Scribd returned an anti-bot challenge).
+- 「辽圣宗时代契丹大字官印考证」, [Academia.edu](https://www.academia.edu/38856944/%E8%BE%BD%E5%9C%A3%E5%AE%97%E6%97%B6%E4%BB%A3%E5%A5%91%E4%B8%B9%E5%A4%A7%E5%AD%97%E5%AE%98%E5%8D%B0%E8%80%83%E8%AF%81): study of Khitan large-script official seals from the Liao Shengzong period; author/venue unchecked and not opened (Academia.edu returned a Cloudflare challenge).
 
 ## Missing
 
